@@ -1,4 +1,5 @@
 using Source.Scripts.Infrastructure.States;
+using Source.Scripts.Services;
 
 namespace Source.Scripts.Infrastructure
 {
@@ -8,7 +9,7 @@ namespace Source.Scripts.Infrastructure
 
         public Game(ICoroutineRunner coroutineRunner)
         {
-            StateMachine = new GameStateMachine();
+            StateMachine = new GameStateMachine(new SceneLoader(coroutineRunner), AllServices.Container);
         }
     }
 }
