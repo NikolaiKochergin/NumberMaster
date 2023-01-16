@@ -1,9 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.Animations;
-using UnityEngine.UIElements;
-using UnityEngine.Windows;
 
-namespace Source.Service.Input
+namespace Source.Scripts.Services.Input
 {
     public abstract class InputService : IInputService
     {
