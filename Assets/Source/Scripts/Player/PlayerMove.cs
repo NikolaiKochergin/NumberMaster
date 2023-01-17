@@ -1,4 +1,5 @@
 using Source.Scripts.Infrastructure;
+using Source.Scripts.Services;
 using Source.Scripts.Services.Input;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,11 +9,14 @@ namespace Scripts.Plauer
 {
     public class PlayerMove : MonoBehaviour
     {
+        [SerializeField] private float _offset;
+        [SerializeField] private Camera _camera;
         public float Speed;
+
         private IInputService _inputService;
         private void Awake()
         {
-            _inputService = Game.InputService;
+           _inputService = AllServices.Container.Single<IInputService>();
         }
 
         private void Update()
@@ -22,7 +26,9 @@ namespace Scripts.Plauer
 
         private void Move()
         {
-            transform.position = new Vector3(Speed * 3, 0, 0) * Time.deltaTime; 
+            float positionX = _inputService.PositionX;
+            transform.position += new Vector3(0, 0, Speed * 1) * Time.deltaTime;
+            transform.position = new Vector3(positionX * Speed, transform.position.y, transform.position.z);
         }
     }
 }
