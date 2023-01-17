@@ -2,24 +2,44 @@
 using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.StaticData;
 using Source.Scripts.UI.Services.Factory;
+using UnityEngine;
 
 namespace Source.Scripts.Infrastructure.States
 {
     public class LoadLevelState : IPayloadedState<string>
     {
-        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IGameFactory gameFactory, IPersistentProgressService progressService, IStaticDataService staticData, IUIFactory uiFactory)
+        private readonly GameStateMachine _stateMachine;
+        private readonly SceneLoader _sceneLoader;
+        private readonly IGameFactory _gameFactory;
+        private readonly IPersistentProgressService _progressService;
+        private readonly IStaticDataService _staticData;
+        private readonly IUIFactory _uiFactory;
+
+        public LoadLevelState(GameStateMachine stateMachine, SceneLoader sceneLoader, IGameFactory gameFactory, IPersistentProgressService progressService, IStaticDataService staticData, IUIFactory uiFactory)
         {
-            
+            _stateMachine = stateMachine;
+            _sceneLoader = sceneLoader;
+            _gameFactory = gameFactory;
+            _progressService = progressService;
+            _staticData = staticData;
+            _uiFactory = uiFactory;
         }
         
-        public void Enter(string payload)
+        public void Enter(string sceneName)
         {
-            throw new System.NotImplementedException();
+            _gameFactory.Cleanup();
+            _sceneLoader.Load(sceneName, OnLoaded);
+        }
+
+        private void OnLoaded()
+        {
+            Debug.Log("Загрузка игрового мира");
+            
+            _stateMachine.Enter<GameLoopState>();
         }
 
         public void Exit()
         {
-            throw new System.NotImplementedException();
         }
     }
 }

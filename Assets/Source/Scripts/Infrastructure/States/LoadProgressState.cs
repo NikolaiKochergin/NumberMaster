@@ -6,6 +6,7 @@ namespace Source.Scripts.Infrastructure.States
 {
     public class LoadProgressState : IState
     {
+        private const string GameSceneName = "001_Level_1";
         private readonly GameStateMachine _stateMachine;
         private readonly IPersistentProgressService _progressService;
         private readonly ISaveLoadService _saveLoadProgress;
@@ -21,7 +22,7 @@ namespace Source.Scripts.Infrastructure.States
         {
             LoadProgressOrInitNew();
             
-            //_stateMachine.Enter<LoadLevelState, string>(_progressService.Progress.WorldData.PositionOnLevel.Level);
+            _stateMachine.Enter<LoadLevelState, string>(GameSceneName);
         }
 
         public void Exit()
@@ -37,7 +38,7 @@ namespace Source.Scripts.Infrastructure.States
 
         private PlayerProgress NewProgress()
         {
-            PlayerProgress progress = new PlayerProgress(initialLevel: "Main");
+            PlayerProgress progress = new PlayerProgress(initialLevel: GameSceneName);
 
 
             return progress;
