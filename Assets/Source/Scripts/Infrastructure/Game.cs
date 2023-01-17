@@ -1,5 +1,7 @@
 using Source.Scripts.Infrastructure.States;
 using Source.Scripts.Services;
+using Source.Scripts.Services.Input;
+using UnityEngine;
 
 namespace Source.Scripts.Infrastructure
 {
@@ -9,7 +11,7 @@ namespace Source.Scripts.Infrastructure
 
         public Game(ICoroutineRunner coroutineRunner)
         {
-            StateMachine = new GameStateMachine(new SceneLoader(coroutineRunner), AllServices.Container);
+            StateMachine = new GameStateMachine(new SceneLoader(coroutineRunner), AllServices.Container);   
         }
     }
 }
