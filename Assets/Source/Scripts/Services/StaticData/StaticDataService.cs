@@ -1,10 +1,12 @@
-﻿namespace Source.Scripts.Services.StaticData
+﻿using UnityEngine;
+
+namespace Source.Scripts.Services.StaticData
 {
     public class StaticDataService : IStaticDataService
     {
         public void Load()
         {
-            throw new System.NotImplementedException();
+            Debug.Log("Загрузка статик даты");
         }
     }
 }
