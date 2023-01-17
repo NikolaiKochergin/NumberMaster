@@ -8,7 +8,6 @@ using Source.Scripts.Services.StaticData;
 using Source.Scripts.UI.Services.Factory;
 using Source.Scripts.UI.Services.Windows;
 using UnityEngine.Device;
-using UnityEngine.PlayerLoop;
 
 namespace Source.Scripts.Infrastructure.States
 {
