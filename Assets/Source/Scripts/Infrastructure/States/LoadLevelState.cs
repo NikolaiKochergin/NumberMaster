@@ -33,9 +33,26 @@ namespace Source.Scripts.Infrastructure.States
 
         private void OnLoaded()
         {
-            Debug.Log("Загрузка игрового мира");
+            InitUIRoot();
+            InitGameWorld();
+            InformProgressReaders();
             
             _stateMachine.Enter<GameLoopState>();
+        }
+
+        private void InitUIRoot()
+        {
+            _uiFactory.SetUIRoot();
+        }
+
+        private void InformProgressReaders()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private void InitGameWorld()
+        {
+            throw new System.NotImplementedException();
         }
 
         public void Exit()

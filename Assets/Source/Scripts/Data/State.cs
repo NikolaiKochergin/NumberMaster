@@ -5,12 +5,13 @@ namespace Source.Scripts.Data
     [Serializable]
     public class State
     {
-        public int CurrentHP;
-        public int StartHP;
+        public int CurrentNumber;
+        public int IncomeLevel;
+        public int StartNumber;
 
         public void ResetHP()
         {
-            CurrentHP = StartHP;
+            CurrentNumber = StartNumber;
         }
     }
 }

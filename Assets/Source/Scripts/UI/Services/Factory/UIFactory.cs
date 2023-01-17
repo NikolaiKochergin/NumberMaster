@@ -1,6 +1,8 @@
 ﻿using Source.Scripts.Infrastructure.AssetManagement;
 using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.StaticData;
+using Source.Scripts.UI.Elements;
+using UnityEngine;
 
 namespace Source.Scripts.UI.Services.Factory
 {
@@ -9,6 +11,8 @@ namespace Source.Scripts.UI.Services.Factory
         private readonly IAssetProvider _assets;
         private readonly IStaticDataService _staticData;
         private readonly IPersistentProgressService _progressService;
+
+        private Transform _uiRoot;
 
         public UIFactory(IAssetProvider assets, IStaticDataService staticData,
             IPersistentProgressService progressService)
@@ -21,6 +25,11 @@ namespace Source.Scripts.UI.Services.Factory
         public void CreateUpgradeMenu()
         {
             throw new System.NotImplementedException();
+        }
+
+        public void SetUIRoot()
+        {
+            _uiRoot = Camera.main.GetComponentInChildren<UIRoot>().transform;
         }
     }
 }
