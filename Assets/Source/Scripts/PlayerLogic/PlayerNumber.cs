@@ -10,8 +10,6 @@ namespace Source.Scripts.PlayerLogic
         private State _state;
 
         public event Action NumberChanged;
-        
-        
 
         public int Current
         {
