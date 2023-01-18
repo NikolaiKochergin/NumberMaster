@@ -8,6 +8,7 @@ namespace Source.Scripts.PlayerLogic
         private IInputService _inputService;
         private float _speed;
 
+        public float Speed => _speed;
         public void Construct(IInputService inputService) => 
             _inputService = inputService;
 
@@ -21,6 +22,11 @@ namespace Source.Scripts.PlayerLogic
         {
             transform.position += transform.forward * _speed * Time.deltaTime;
             transform.position = new Vector3(_inputService.OffsetX, transform.position.y, transform.position.z);
+        }
+
+        public void SetSpeed(float speed)
+        {
+            _speed= speed;
         }
     }
 }
