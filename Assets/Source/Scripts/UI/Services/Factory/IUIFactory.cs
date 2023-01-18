@@ -4,7 +4,8 @@ namespace Source.Scripts.UI.Services.Factory
 {
     public interface IUIFactory : IService
     {
-        void CreateUpgradeMenu();
+        void CreateShop();
         void InitUIRoot();
+        void CreateGameMenu();
     }
 }

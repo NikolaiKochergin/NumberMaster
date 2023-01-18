@@ -5,12 +5,9 @@ namespace Source.Scripts.Data
     [Serializable]
     public class Soft
     {
-        public int Collected;
+        public int Collected = 0;
 
         public event Action Changed;
-
-        public Soft() => 
-            Collected = 0;
 
         public void Add(int value)
         {

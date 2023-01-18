@@ -44,7 +44,6 @@ namespace Source.Scripts.Infrastructure.States
             _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
             
             _services.RegisterSingle<IUIFactory>(new UIFactory(
-                _services.Single<IAssetProvider>(),
                 _services.Single<IStaticDataService>(),
                 _services.Single<IPersistentProgressService>()
                 ));

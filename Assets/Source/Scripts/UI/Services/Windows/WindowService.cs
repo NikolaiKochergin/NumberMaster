@@ -1,5 +1,4 @@
-﻿using System;
-using Source.Scripts.UI.Services.Factory;
+﻿using Source.Scripts.UI.Services.Factory;
 
 namespace Source.Scripts.UI.Services.Windows
 {
@@ -7,10 +6,8 @@ namespace Source.Scripts.UI.Services.Windows
     {
         private readonly IUIFactory _uiFactory;
 
-        public WindowService(IUIFactory uiFactory)
-        {
+        public WindowService(IUIFactory uiFactory) => 
             _uiFactory = uiFactory;
-        }
 
         public void Open(WindowId windowId)
         {
@@ -18,8 +15,11 @@ namespace Source.Scripts.UI.Services.Windows
             {
                 case WindowId.None:
                     break;
-                case WindowId.UpgradeMenu:
-                    _uiFactory.CreateUpgradeMenu();
+                case WindowId.Shop:
+                    _uiFactory.CreateShop();
+                    break;
+                case WindowId.GameMenu:
+                    _uiFactory.CreateGameMenu();
                     break;
             }
         }

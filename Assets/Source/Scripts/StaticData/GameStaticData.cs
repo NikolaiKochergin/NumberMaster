@@ -2,7 +2,7 @@
 
 namespace Source.Scripts.StaticData
 {
-    [CreateAssetMenu(fileName = "GameData", menuName = "StaticData/GameData")]
+    [CreateAssetMenu(fileName = "GameData", menuName = "Static Data/GameData")]
     public class GameStaticData : ScriptableObject
     {
         [Header("Player Stats")]

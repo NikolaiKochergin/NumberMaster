@@ -1,4 +1,7 @@
-﻿namespace Source.Scripts.Services.StaticData
+﻿using Source.Scripts.StaticData.Windows;
+using Source.Scripts.UI.Services.Windows;
+
+namespace Source.Scripts.Services.StaticData
 {
     public interface IStaticDataService : IService
     {
@@ -6,5 +9,6 @@
         float ForPlayerSpeed();
         float ForMouseSensitivity();
         float ForKeyboardSensitivity();
+        WindowConfig ForWindow(WindowId windowId);
     }
 }
