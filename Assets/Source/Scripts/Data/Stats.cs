@@ -5,7 +5,7 @@ namespace Source.Scripts.Data
     [Serializable]
     public class Stats
     {
-        public int StartNumber = 1;
+        public int StartNumber = 3;
         public int IncomeLevel = 1;
     }
 }

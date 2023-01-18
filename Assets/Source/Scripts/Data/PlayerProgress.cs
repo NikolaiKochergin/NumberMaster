@@ -7,11 +7,13 @@ namespace Source.Scripts.Data
     {
         public State PlayerState;
         public Stats PlayerStats;
+        public Soft Soft;
 
         public PlayerProgress()
         {
             PlayerState = new State();
             PlayerStats = new Stats();
+            Soft = new Soft();
         }
     }
 }

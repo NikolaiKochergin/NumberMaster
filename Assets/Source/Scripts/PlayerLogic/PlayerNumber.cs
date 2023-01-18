@@ -14,7 +14,7 @@ namespace Source.Scripts.PlayerLogic
         public int Current
         {
             get => _state.CurrentNumber;
-            set
+            private set
             {
                 if (value != _state.CurrentNumber)
                 {
@@ -28,6 +28,7 @@ namespace Source.Scripts.PlayerLogic
         public void LoadProgress(PlayerProgress progress)
         {
             _state = progress.PlayerState;
+            Current = progress.PlayerStats.StartNumber;
             NumberChanged?.Invoke();
         }
 
