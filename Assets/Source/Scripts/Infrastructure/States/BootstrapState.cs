@@ -52,6 +52,7 @@ namespace Source.Scripts.Infrastructure.States
             _services.RegisterSingle<IWindowService>(new WindowService(_services.Single<IUIFactory>()));
             
             _services.RegisterSingle<IGameFactory>(new GameFactory(
+                _services.Single<IInputService>(),
                 _services.Single<IAssetProvider>(),
                 _services.Single<IStaticDataService>(),
                 _services.Single<IPersistentProgressService>(),
@@ -72,7 +73,7 @@ namespace Source.Scripts.Infrastructure.States
         private void EnterLoadLevel() => 
             _stateMachine.Enter<LoadProgressState>();
 
-        private IInputService InputService() =>
+        private static IInputService InputService() =>
             Application.isEditor
                 ? (IInputService) new StandaloneInputService(0.2f,0.03f)
                 : new MobileInputService(0.2f);

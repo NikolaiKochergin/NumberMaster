@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Source.Scripts.Infrastructure.AssetManagement;
 using Source.Scripts.PlayerLogic;
+using Source.Scripts.Services.Input;
 using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.StaticData;
 using Source.Scripts.UI.Services.Windows;
@@ -10,6 +11,7 @@ namespace Source.Scripts.Infrastructure.Factory
 {
     public class GameFactory : IGameFactory
     {
+        private readonly IInputService _input;
         private readonly IAssetProvider _assets;
         private readonly IStaticDataService _staticData;
         private readonly IPersistentProgressService _persistentProgressService;
@@ -17,8 +19,9 @@ namespace Source.Scripts.Infrastructure.Factory
 
         private Player _player;
 
-        public GameFactory(IAssetProvider assets, IStaticDataService staticData, IPersistentProgressService persistentProgressService, IWindowService windowService)
+        public GameFactory(IInputService input, IAssetProvider assets, IStaticDataService staticData, IPersistentProgressService persistentProgressService, IWindowService windowService)
         {
+            _input = input;
             _assets = assets;
             _staticData = staticData;
             _persistentProgressService = persistentProgressService;
@@ -31,7 +34,10 @@ namespace Source.Scripts.Infrastructure.Factory
 
         public Player CreatePlayer()
         {
-            _player = Object.FindObjectOfType<Player>();
+            _player = InstantiateRegistered<Player>(AssetPath.PlayerPath);
+            _player.PlayerMove.Construct(_input);
+            _player.PlayerMove.Initialize(_staticData.ForPlayerSpeed());
+            
             return _player;
         }
 

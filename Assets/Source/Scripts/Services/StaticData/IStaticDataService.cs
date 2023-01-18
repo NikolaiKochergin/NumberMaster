@@ -3,5 +3,6 @@
     public interface IStaticDataService : IService
     {
         void Load();
+        float ForPlayerSpeed();
     }
 }

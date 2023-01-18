@@ -34,15 +34,7 @@ namespace Source.Scripts.Infrastructure.States
         {
             _progressService.Progress = 
                 _saveLoadProgress.LoadProgress()
-                ?? NewProgress();
-        }
-
-        private PlayerProgress NewProgress()
-        {
-            PlayerProgress progress = new PlayerProgress();
-
-
-            return progress;
+                ?? new PlayerProgress();
         }
     }
 }
