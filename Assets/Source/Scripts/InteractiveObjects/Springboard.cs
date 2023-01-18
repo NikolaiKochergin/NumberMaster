@@ -4,6 +4,7 @@ using Source.Scripts.PlayerLogic;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ public class Springboard : MonoBehaviour
     [SerializeField] private TriggerObserver _triggerObserver;
     [SerializeField] private AnimationCurve _jumpCurve;
     [SerializeField][Min(0)] private float _duration = 1;
+    [SerializeField] private BoxCollider boxCollider;
+    [SerializeField] private float _jumpForse;
 
     private void OnEnable()
     {
@@ -29,15 +32,12 @@ public class Springboard : MonoBehaviour
         if(obj.TryGetComponent(out Player player))
         {
             Move(player.transform);
+            boxCollider.enabled= false;
         }
     }
 
     private void Move(Transform targetTransform)
     {
-        DG.Tweening.Sequence sequence = DOTween.Sequence();
-        //sequence.Append(targetTransform.DOMoveY(targetTransform.position.y, _duration).SetEase(_jumpCurve));
-        targetTransform.DOMoveY(targetTransform.position.y, _duration).SetEase(_jumpCurve);
-        Debug.Log("Ïðûæîê");
+        targetTransform.DOMoveY(_jumpForse, _duration).SetEase(_jumpCurve).OnComplete(() => targetTransform.position = new Vector3(targetTransform.position.x, 0, targetTransform.position.z));
     }
-
 }

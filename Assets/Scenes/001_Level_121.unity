@@ -204,25 +204,26 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 8.693767
-      outSlope: 8.693767
+      inSlope: 8.03175
+      outSlope: 8.03175
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.00739645
+      outWeight: 0.045074075
     - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: -41.00894
-      outSlope: -41.00894
+      value: 0.012084961
+      inSlope: -7.9339733
+      outSlope: -7.9339733
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.0014792681
+      inWeight: 0.07151371
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _duration: 0.05
+  _duration: 1
+  boxCollider: {fileID: 1609416072}
 --- !u!4 &181675364
 Transform:
   m_ObjectHideFlags: 0
@@ -440,24 +441,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &239362233 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6937854176539129850, guid: 26ac4b2481cf5be4ea75c51d51bda74e, type: 3}
-  m_PrefabInstance: {fileID: 6937854178497399625}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &239362240
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 239362233}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.1021705, z: 1.0865545}
-  m_Center: {x: 0, y: 0.72098994, z: 0.043277264}
 --- !u!1 &533823996
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,6 +976,10 @@ PrefabInstance:
     - target: {fileID: 6937854176539129852, guid: 26ac4b2481cf5be4ea75c51d51bda74e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937854176539129853, guid: 26ac4b2481cf5be4ea75c51d51bda74e, type: 3}
+      propertyPath: Speed
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6937854176539129853, guid: 26ac4b2481cf5be4ea75c51d51bda74e, type: 3}
       propertyPath: m_Enabled
