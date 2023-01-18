@@ -2096,7 +2096,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
-  _dely: 0.2
+  _dely: 0.1
+  _scaleZ: 1
 --- !u!114 &4786296936709649147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2113,6 +2114,7 @@ MonoBehaviour:
   _interactiveNumberView: {fileID: 4786296935439211523}
   _damageWal: {fileID: 4786296936709649146}
   _value: 10
+  _slowDownSpeed: 1
 --- !u!1001 &6937854178497399625
 PrefabInstance:
   m_ObjectHideFlags: 0

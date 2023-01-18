@@ -8,6 +8,7 @@ public class DamageWal : MonoBehaviour
 {
     [SerializeField] private int _damage;
     [SerializeField] private float _dely;
+    [SerializeField] private float _scaleZ;
 
     private InteractiveWal _interactiveWal;
     private Player _player;
@@ -32,7 +33,7 @@ public class DamageWal : MonoBehaviour
             {
                 _player.PlayerNumber.TakeNumber(-_damage);
                 _interactiveWal.TakeDamage(_damage);
-                transform.localScale -= new Vector3(0, 0f, 1f);
+                transform.localScale -= new Vector3(0, 0f, _scaleZ);
                 _isHit= false;
             }
             else

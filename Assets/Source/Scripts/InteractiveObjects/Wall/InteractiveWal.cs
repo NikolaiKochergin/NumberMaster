@@ -11,6 +11,7 @@ public class InteractiveWal : MonoBehaviour
     [SerializeField] private InteractiveNumberView _interactiveNumberView;
     [SerializeField] private DamageWal _damageWal;
     [SerializeField] private int _value;
+    [SerializeField] private float _slowDownSpeed;
 
     private float _speed = 0;
 
@@ -52,7 +53,7 @@ public class InteractiveWal : MonoBehaviour
         if (player.PlayerNumber.Current >= _value)
         {
             _speed = player.PlayerMove.Speed;
-            player.PlayerMove.SetSpeed(1f);
+            player.PlayerMove.SetSpeed(_slowDownSpeed);
             _damageWal.enabled = true;
             _damageWal.SetHealth(player,this);
             //playerNumber.TakeNumber(_value);
