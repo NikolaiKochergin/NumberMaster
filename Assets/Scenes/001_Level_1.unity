@@ -204,27 +204,27 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 8.693767
-      outSlope: 8.693767
+      inSlope: 7.2965817
+      outSlope: 7.2965817
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.00739645
+      outWeight: 0.04699739
     - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: -41.00894
-      outSlope: -41.00894
+      value: -0.008178711
+      inSlope: -8.795481
+      outSlope: -8.795481
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.0014792681
+      inWeight: 0.02785033
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _duration: 0.05
-  boxCollider: {fileID: 0}
-  _jumpForse: 0
+  _duration: 1
+  boxCollider: {fileID: 1609416072}
+  _jumpForse: 2
 --- !u!4 &181675364
 Transform:
   m_ObjectHideFlags: 0
