@@ -1,7 +1,4 @@
-using DG.Tweening;
 using Source.Scripts.PlayerLogic;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Source.Scripts.InteractiveObjects.Wall
@@ -9,12 +6,12 @@ namespace Source.Scripts.InteractiveObjects.Wall
     public class DamageWall : MonoBehaviour
     {
         [SerializeField] private int _damage;
-        [SerializeField] private float _dely;
+        [SerializeField] private float _delay = 0.1f;
         [SerializeField] private float _scaleZ;
 
-        private InteractiveWal _interactiveWal;
+        private InteractiveWall _interactiveWall;
         private Player _player;
-        private float _elepsedTime = 0;
+        private float _elapsedTime = 0;
         private bool _isHit = false;
 
         private void Awake()
@@ -24,9 +21,9 @@ namespace Source.Scripts.InteractiveObjects.Wall
 
         private void Update()
         {
-            _elepsedTime += Time.deltaTime;
+            _elapsedTime += Time.deltaTime;
 
-            if (_elepsedTime >= _dely)
+            if (_elapsedTime >= _delay)
             {
 
                 _isHit = true;
@@ -34,7 +31,7 @@ namespace Source.Scripts.InteractiveObjects.Wall
                 if (transform.localScale.z > 0 && _isHit)
                 {
                     _player.PlayerNumber.TakeNumber(-_damage);
-                    _interactiveWal.TakeDamage(_damage);
+                    _interactiveWall.TakeDamage(_damage);
                     transform.localScale -= new Vector3(0, 0f, _scaleZ);
                     _isHit = false;
                 }
@@ -43,15 +40,15 @@ namespace Source.Scripts.InteractiveObjects.Wall
                     transform.localScale = Vector3.zero;
                 }
 
-                _elepsedTime = 0;
-                Debug.Log("Óäàðû!");
+                _elapsedTime = 0;
+                Debug.Log("Ð£Ð´Ð°Ñ€Ñ‹!");
             }
         }
 
-        public void SetHealth(Player player, InteractiveWal interactiveWal)
+        public void SetHealth(Player player, InteractiveWall interactiveWall)
         {
             _player = player;
-            _interactiveWal = interactiveWal;
+            _interactiveWall = interactiveWall;
         }
     }
 }
