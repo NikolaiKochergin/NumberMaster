@@ -6,12 +6,5 @@ namespace Source.Scripts.Data
     public class State
     {
         public int CurrentNumber;
-        public int IncomeLevel;
-        public int StartNumber;
-
-        public void ResetHP()
-        {
-            CurrentNumber = StartNumber;
-        }
     }
 }

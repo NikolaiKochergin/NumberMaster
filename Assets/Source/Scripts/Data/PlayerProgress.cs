@@ -6,10 +6,12 @@ namespace Source.Scripts.Data
     public class PlayerProgress
     {
         public State PlayerState;
+        public Stats PlayerStats;
 
-        public PlayerProgress(string initialLevel)
+        public PlayerProgress()
         {
             PlayerState = new State();
+            PlayerStats = new Stats();
         }
     }
 }

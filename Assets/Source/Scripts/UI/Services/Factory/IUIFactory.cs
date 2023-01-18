@@ -5,6 +5,6 @@ namespace Source.Scripts.UI.Services.Factory
     public interface IUIFactory : IService
     {
         void CreateUpgradeMenu();
-        void SetUIRoot();
+        void InitUIRoot();
     }
 }

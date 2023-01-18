@@ -40,10 +40,8 @@ namespace Source.Scripts.Infrastructure.States
             _stateMachine.Enter<GameLoopState>();
         }
 
-        private void InitUIRoot()
-        {
-            _uiFactory.SetUIRoot();
-        }
+        private void InitUIRoot() => 
+            _uiFactory.InitUIRoot();
 
         private void InformProgressReaders()
         {

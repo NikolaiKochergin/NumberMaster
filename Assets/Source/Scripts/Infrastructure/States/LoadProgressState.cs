@@ -38,7 +38,7 @@ namespace Source.Scripts.Infrastructure.States
 
         private PlayerProgress NewProgress()
         {
-            PlayerProgress progress = new PlayerProgress(initialLevel: GameSceneName);
+            PlayerProgress progress = new PlayerProgress();
 
 
             return progress;

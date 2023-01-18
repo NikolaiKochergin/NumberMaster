@@ -12,7 +12,7 @@ namespace Source.Scripts.UI.Services.Factory
         private readonly IStaticDataService _staticData;
         private readonly IPersistentProgressService _progressService;
 
-        private Transform _uiRoot;
+        private UIRoot _uiRoot;
 
         public UIFactory(IAssetProvider assets, IStaticDataService staticData,
             IPersistentProgressService progressService)
@@ -27,9 +27,9 @@ namespace Source.Scripts.UI.Services.Factory
             throw new System.NotImplementedException();
         }
 
-        public void SetUIRoot()
+        public void InitUIRoot()
         {
-            _uiRoot = Camera.main.GetComponentInChildren<UIRoot>().transform;
+            _uiRoot = Camera.main.GetComponentInChildren<UIRoot>();
         }
     }
 }
