@@ -25,8 +25,11 @@ namespace Source.Scripts.InteractiveObjects.Saw
 
         private void ActivateDamage(Collider colliderTarget)
         {
-            if(colliderTarget.TryGetComponent(out Player player))
+            if(colliderTarget.TryGetComponent(out PlayerNumber playerNumber))
+            {
                _damgeSaw.enabled= true;
+               _damgeSaw.SetHealth(playerNumber);
+            }
         }
 
         private void TurnOffDamage(Collider colliderTarget)
