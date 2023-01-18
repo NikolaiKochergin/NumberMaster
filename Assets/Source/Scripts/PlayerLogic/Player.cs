@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Source.Scripts.PlayerLogic
 {
+    [SelectionBase]
     public class Player : MonoBehaviour , ISavedProgress
     {
         [SerializeField] private PlayerMove _playerMove;

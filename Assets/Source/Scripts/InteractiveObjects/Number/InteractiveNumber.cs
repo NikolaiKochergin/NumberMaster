@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Source.Scripts.InteractiveObjects.Number
 {
+    [SelectionBase]
     public class InteractiveNumber : MonoBehaviour
     {
         [SerializeField] private TriggerObserver _triggerObserver;
@@ -20,11 +21,21 @@ namespace Source.Scripts.InteractiveObjects.Number
 
         private void AffectPlayer(Collider other)
         {
-            if (other.TryGetComponent(out PlayerNumber playerNumber))
+            if (!other.TryGetComponent(out PlayerNumber playerNumber)) return;
+            if (playerNumber.Current >= _value)
             {
                 playerNumber.TakeNumber(_value);
-                Destroy(gameObject);
+                Die();
             }
+            else
+            {
+                Debug.Log("Player Die");
+            }
+        }
+
+        private void Die()
+        {
+            Destroy(gameObject);
         }
     }
 }
