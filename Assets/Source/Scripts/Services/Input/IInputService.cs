@@ -4,7 +4,7 @@ namespace Source.Scripts.Services.Input
 {
     public interface IInputService : IService
     {
-        float PositionX { get; }
+        float OffsetX { get; }
         bool IsAttackButtonUp();
     }
 }
