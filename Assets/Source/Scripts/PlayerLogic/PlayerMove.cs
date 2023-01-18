@@ -22,7 +22,7 @@ namespace Source.Scripts.PlayerLogic
 
         private void Move()
         {
-            transform.position += new Vector3(0, 0, Speed * 1) * Time.deltaTime;
+            transform.position += new Vector3(0,0, Speed * 1) * Time.deltaTime;
             transform.position = new Vector3(_inputService.OffsetX, transform.position.y, transform.position.z);
         }
     }
