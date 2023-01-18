@@ -1,35 +1,42 @@
-﻿using Source.Scripts.Infrastructure.AssetManagement;
-using Source.Scripts.Services.PersistentProgress;
+﻿using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.StaticData;
+using Source.Scripts.StaticData.Windows;
 using Source.Scripts.UI.Elements;
+using Source.Scripts.UI.Services.Windows;
+using Source.Scripts.UI.Windows.GameMenu;
+using Source.Scripts.UI.Windows.Shop;
 using UnityEngine;
 
 namespace Source.Scripts.UI.Services.Factory
 {
     public class UIFactory : IUIFactory
     {
-        private readonly IAssetProvider _assets;
         private readonly IStaticDataService _staticData;
         private readonly IPersistentProgressService _progressService;
 
-        private UIRoot _uiRoot;
+        private Transform _uiRoot;
 
-        public UIFactory(IAssetProvider assets, IStaticDataService staticData,
-            IPersistentProgressService progressService)
+        public UIFactory( IStaticDataService staticData, IPersistentProgressService progressService)
         {
-            _assets = assets;
             _staticData = staticData;
             _progressService = progressService;
         }
 
-        public void CreateUpgradeMenu()
+        public void InitUIRoot() => 
+            _uiRoot = Camera.main.GetComponentInChildren<UIRoot>().transform;
+
+        public void CreateShop()
         {
-            throw new System.NotImplementedException();
+            WindowConfig config = _staticData.ForWindow(WindowId.Shop);
+            ShopWindow window = Object.Instantiate(config.Template, _uiRoot) as ShopWindow;
+            window.Construct(_progressService);
         }
 
-        public void InitUIRoot()
+        public void CreateGameMenu()
         {
-            _uiRoot = Camera.main.GetComponentInChildren<UIRoot>();
+            WindowConfig config = _staticData.ForWindow(WindowId.GameMenu);
+            GameMenuWindow window = Object.Instantiate(config.Template, _uiRoot) as GameMenuWindow;
+            window.Construct(_progressService);
         }
     }
 }

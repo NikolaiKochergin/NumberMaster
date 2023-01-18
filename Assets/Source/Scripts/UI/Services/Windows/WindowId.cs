@@ -3,6 +3,7 @@ namespace Source.Scripts.UI.Services.Windows
     public enum WindowId
     {
         None = 0,
-        UpgradeMenu = 1
+        Shop = 1,
+        GameMenu = 2
     }
 }
