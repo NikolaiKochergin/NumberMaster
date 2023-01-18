@@ -8,6 +8,7 @@ using Source.Scripts.Services.StaticData;
 using Source.Scripts.UI.Services.Factory;
 using Source.Scripts.UI.Services.Windows;
 using UnityEngine.Device;
+using UnityEngine.SceneManagement;
 
 namespace Source.Scripts.Infrastructure.States
 {
@@ -28,7 +29,7 @@ namespace Source.Scripts.Infrastructure.States
         }
 
         public void Enter() => 
-            _sceneLoader.Load(Initial, onLoaded: EnterLoadLevel);
+            _sceneLoader.Load(SceneManager.GetActiveScene().name, onLoaded: EnterLoadLevel);
 
         public void Exit()
         {

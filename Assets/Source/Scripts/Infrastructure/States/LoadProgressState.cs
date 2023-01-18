@@ -1,6 +1,7 @@
 ﻿using Source.Scripts.Data;
 using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.SaveLoad;
+using UnityEngine.SceneManagement;
 
 namespace Source.Scripts.Infrastructure.States
 {
@@ -22,7 +23,7 @@ namespace Source.Scripts.Infrastructure.States
         {
             LoadProgressOrInitNew();
             
-            _stateMachine.Enter<LoadLevelState, string>(GameSceneName);
+            _stateMachine.Enter<LoadLevelState, string>(SceneManager.GetActiveScene().name);
         }
 
         public void Exit()
