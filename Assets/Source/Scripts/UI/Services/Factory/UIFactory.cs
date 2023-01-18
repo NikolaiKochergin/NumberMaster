@@ -3,7 +3,7 @@ using Source.Scripts.Services.StaticData;
 using Source.Scripts.StaticData.Windows;
 using Source.Scripts.UI.Elements;
 using Source.Scripts.UI.Services.Windows;
-using Source.Scripts.UI.Windows.GameMenu;
+using Source.Scripts.UI.Windows.GameLoop;
 using Source.Scripts.UI.Windows.Shop;
 using UnityEngine;
 
@@ -32,10 +32,10 @@ namespace Source.Scripts.UI.Services.Factory
             window.Construct(_progressService);
         }
 
-        public void CreateGameMenu()
+        public void CreateGameLoopWindow()
         {
             WindowConfig config = _staticData.ForWindow(WindowId.GameMenu);
-            GameMenuWindow window = Object.Instantiate(config.Template, _uiRoot) as GameMenuWindow;
+            GameLoopWindow window = Object.Instantiate(config.Template, _uiRoot) as GameLoopWindow;
             window.Construct(_progressService);
         }
     }

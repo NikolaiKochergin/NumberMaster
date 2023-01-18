@@ -9,13 +9,13 @@ namespace Source.Scripts.UI.Windows
         private IPersistentProgressService _progressService;
         protected PlayerProgress Progress => _progressService.Progress;
 
-        public void Construct(IPersistentProgressService progressService) =>
+        public virtual void Construct(IPersistentProgressService progressService) =>
             _progressService = progressService;
 
         private void Start()
         {
             Initialize();
-            SubscriveUpdates();
+            SubscribeUpdates();
         }
 
         private void OnDestroy() => 
@@ -25,7 +25,7 @@ namespace Source.Scripts.UI.Windows
             Destroy(gameObject);
         
         protected virtual void Initialize(){}
-        protected virtual void SubscriveUpdates(){}
+        protected virtual void SubscribeUpdates(){}
         protected virtual void Cleanup(){}
     }
 }

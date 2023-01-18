@@ -19,7 +19,7 @@ namespace Source.Scripts.UI.Services.Windows
                     _uiFactory.CreateShop();
                     break;
                 case WindowId.GameMenu:
-                    _uiFactory.CreateGameMenu();
+                    _uiFactory.CreateGameLoopWindow();
                     break;
             }
         }
