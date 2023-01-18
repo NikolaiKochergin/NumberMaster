@@ -2,7 +2,7 @@ using Source.Scripts.Services;
 using Source.Scripts.Services.Input;
 using UnityEngine;
 
-namespace Source.Scripts.Player
+namespace Source.Scripts.PlayerLogic
 {
     public class PlayerMove : MonoBehaviour
     {

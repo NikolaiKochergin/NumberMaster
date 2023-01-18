@@ -3,13 +3,15 @@ using Source.Scripts.Data;
 using Source.Scripts.Services.PersistentProgress;
 using UnityEngine;
 
-namespace Source.Scripts.Player
+namespace Source.Scripts.PlayerLogic
 {
     public class PlayerNumber : MonoBehaviour , ISavedProgress
     {
         private State _state;
 
         public event Action NumberChanged;
+        
+        
 
         public int Current
         {

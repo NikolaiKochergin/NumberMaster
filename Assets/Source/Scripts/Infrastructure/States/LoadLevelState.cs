@@ -1,4 +1,5 @@
 ﻿using Source.Scripts.Infrastructure.Factory;
+using Source.Scripts.PlayerLogic;
 using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.StaticData;
 using Source.Scripts.UI.Services.Factory;
@@ -31,6 +32,10 @@ namespace Source.Scripts.Infrastructure.States
             _sceneLoader.Load(sceneName, OnLoaded);
         }
 
+        public void Exit()
+        {
+        }
+
         private void OnLoaded()
         {
             InitUIRoot();
@@ -45,16 +50,17 @@ namespace Source.Scripts.Infrastructure.States
 
         private void InformProgressReaders()
         {
-            throw new System.NotImplementedException();
+            foreach (ISavedProgressReader progressReader in _gameFactory.ProgressReaders)
+                progressReader.LoadProgress(_progressService.Progress);
         }
 
         private void InitGameWorld()
         {
-            throw new System.NotImplementedException();
+            Player player = _gameFactory.CreatePlayer();
+            CameraFollow(player.transform);
         }
 
-        public void Exit()
-        {
-        }
+        private void CameraFollow(Transform player) => 
+            Camera.main.GetComponentInParent<CameraLogic.CameraFollow>().Follow(player);
     }
 }

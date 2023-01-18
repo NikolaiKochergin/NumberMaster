@@ -6,7 +6,7 @@
         
         public abstract float OffsetX { get; }
 
-        public static float GetMouseDeltaX() => 
+        protected static float GetMouseDeltaX() => 
             UnityEngine.Input.GetMouseButton(0) ? UnityEngine.Input.GetAxis("Mouse X") : 0f;
     }
 }
