@@ -26,9 +26,9 @@ namespace Scripts.Plauer
 
         private void Move()
         {
-            float positionX = _inputService.PositionX;
+            float positionX = _inputService.OffsetX;
             transform.position += new Vector3(0, 0, Speed * 1) * Time.deltaTime;
-            transform.position = new Vector3(positionX * Speed, transform.position.y, transform.position.z);
+            transform.position = new Vector3(positionX * _offset, transform.position.y, transform.position.z);
         }
     }
 }

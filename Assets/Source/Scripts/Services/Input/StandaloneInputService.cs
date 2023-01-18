@@ -21,7 +21,7 @@ namespace Source.Scripts.Services.Input
         //    }
         //}
 
-        public float PositionX { get
+        public float OffsetX { get
             {
                 float Position = MouspositionX(); 
                 return Position;
