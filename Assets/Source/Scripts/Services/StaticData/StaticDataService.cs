@@ -14,5 +14,11 @@ namespace Source.Scripts.Services.StaticData
 
         public float ForPlayerSpeed() => 
             _gameData.PlayerSpeed;
+
+        public float ForMouseSensitivity() => 
+            _gameData.MouseSensitivity;
+
+        public float ForKeyboardSensitivity() => 
+            _gameData.KeyboardSensitivity;
     }
 }

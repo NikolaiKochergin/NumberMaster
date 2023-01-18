@@ -73,9 +73,11 @@ namespace Source.Scripts.Infrastructure.States
         private void EnterLoadLevel() => 
             _stateMachine.Enter<LoadProgressState>();
 
-        private static IInputService InputService() =>
+        private IInputService InputService() =>
             Application.isEditor
-                ? (IInputService) new StandaloneInputService(0.2f,0.03f)
-                : new MobileInputService(0.2f);
+                ? (IInputService) new StandaloneInputService(
+                    _services.Single<IStaticDataService>().ForMouseSensitivity(),
+                    _services.Single<IStaticDataService>().ForKeyboardSensitivity())
+                : new MobileInputService(_services.Single<IStaticDataService>().ForMouseSensitivity());
     }
 }

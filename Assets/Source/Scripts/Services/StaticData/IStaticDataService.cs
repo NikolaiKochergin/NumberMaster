@@ -4,5 +4,7 @@
     {
         void Load();
         float ForPlayerSpeed();
+        float ForMouseSensitivity();
+        float ForKeyboardSensitivity();
     }
 }
