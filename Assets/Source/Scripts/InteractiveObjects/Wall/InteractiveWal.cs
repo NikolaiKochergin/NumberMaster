@@ -5,77 +5,80 @@ using System.Collections.Generic;
 using UnityEngine;
 using Source.Scripts.PlayerLogic;
 
-public class InteractiveWal : MonoBehaviour
+namespace Source.Scripts.InteractiveObjects.Wall
 {
-    [SerializeField] private TriggerObserver _triggerObserver;
-    [SerializeField] private InteractiveNumberView _interactiveNumberView;
-    [SerializeField] private DamageWal _damageWal;
-    [SerializeField] private int _value;
-    [SerializeField] private float _slowDownSpeed;
-
-    private float _speed = 0;
-
-    private void Awake()
+    public class InteractiveWal : MonoBehaviour
     {
-        _interactiveNumberView.SetValue(_value);
-    }
+        [SerializeField] private TriggerObserver _triggerObserver;
+        [SerializeField] private InteractiveNumberView _interactiveNumberView;
+        [SerializeField] private DamageWall _damageWal;
+        [SerializeField] private int _value;
+        [SerializeField] private float _slowDownSpeed;
 
-    private void OnEnable()
-    {
-        _triggerObserver.TriggerEnter += AffectPlayer;
-        _triggerObserver.TriggerExit += AffectPlayerOff;
-    }
+        private float _speed = 0;
 
-    private void OnDisable()
-    {
-        
-    }
-
-    private void OnDestroy() =>
-            _triggerObserver.TriggerEnter -= AffectPlayer;
-
-    public void TakeDamage(int damage)
-    {
-        _value -= damage;
-        if (_value < 0)
-            _value = 0;
-        Show();
-    }
-
-    private void Show()
-    {
-        _interactiveNumberView.SetValue(_value);
-    }
-
-    private void AffectPlayer(Collider other)
-    {
-        if (!other.TryGetComponent(out Player player)) return;
-        if (player.PlayerNumber.Current >= _value)
+        private void Awake()
         {
-            _speed = player.PlayerMove.Speed;
-            player.PlayerMove.SetSpeed(_slowDownSpeed);
-            _damageWal.enabled = true;
-            _damageWal.SetHealth(player,this);
-            //playerNumber.TakeNumber(_value);
-            //Die();
+            _interactiveNumberView.SetValue(_value);
         }
-        else
-        {
-            Debug.Log("Player Die");
-        }
-    }
 
-    private void AffectPlayerOff(Collider collider)
-    {
-        if(collider.TryGetComponent(out Player player))
+        private void OnEnable()
         {
-            _damageWal.enabled = false;
-            player.PlayerMove.SetSpeed(_speed);
+            _triggerObserver.TriggerEnter += AffectPlayer;
+            _triggerObserver.TriggerExit += AffectPlayerOff;
         }
-    }
 
-    private void Die()
-    {
-        Destroy(gameObject);
+        private void OnDisable()
+        {
+
+        }
+
+        private void OnDestroy() =>
+                _triggerObserver.TriggerEnter -= AffectPlayer;
+
+        public void TakeDamage(int damage)
+        {
+            _value -= damage;
+            if (_value < 0)
+                _value = 0;
+            Show();
+        }
+
+        private void Show()
+        {
+            _interactiveNumberView.SetValue(_value);
+        }
+
+        private void AffectPlayer(Collider other)
+        {
+            if (!other.TryGetComponent(out Player player)) return;
+            if (player.PlayerNumber.Current >= _value)
+            {
+                _speed = player.PlayerMove.Speed;
+                player.PlayerMove.SetSpeed(_slowDownSpeed);
+                _damageWal.enabled = true;
+                _damageWal.SetHealth(player, this);
+                //playerNumber.TakeNumber(_value);
+                //Die();
+            }
+            else
+            {
+                Debug.Log("Player Die");
+            }
+        }
+
+        private void AffectPlayerOff(Collider collider)
+        {
+            if (collider.TryGetComponent(out Player player))
+            {
+                _damageWal.enabled = false;
+                player.PlayerMove.SetSpeed(_speed);
+            }
+        }
+
+        private void Die()
+        {
+            Destroy(gameObject);
+        }
     }
 }
