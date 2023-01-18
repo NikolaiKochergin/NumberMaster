@@ -1,21 +1,12 @@
-﻿using UnityEngine;
-using UnityEngine.Animations;
-
-namespace Source.Scripts.Services.Input
+﻿namespace Source.Scripts.Services.Input
 {
-    //public abstract class InputService : IInputService
-    //{
-    //    public abstract Vector2 Axis { get;}
-    //    public bool IsAttackButtonUp() => false;
+    public abstract class InputService : IInputService
+    {
+        protected float _offsetX = 0f;
+        
+        public abstract float OffsetX { get; }
 
-    //    protected static Vector2 MousAxis()
-    //    {
-    //        if (UnityEngine.Input.GetMouseButton(0))
-    //        {
-    //            float pointX = UnityEngine.Input.mousePosition.x;
-    //            Vector2 AxisX = new Vector2(pointX, 0);
-    //        }
-    //        return new Vector2();
-    //    }
-    //}
+        public static float GetMouseDeltaX() => 
+            UnityEngine.Input.GetMouseButton(0) ? UnityEngine.Input.GetAxis("Mouse X") : 0f;
+    }
 }

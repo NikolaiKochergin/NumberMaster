@@ -1,15 +1,12 @@
-﻿using UnityEngine;
-
-namespace Source.Scripts.Services.Input
+﻿namespace Source.Scripts.Services.Input
 {
-    public class MobileInputService : IInputService
+    public class MobileInputService : InputService
     {
-        //public override Vector2 Axis => MousAxis();
-        public float OffsetX => throw new System.NotImplementedException();
-
-        public bool IsAttackButtonUp()
-        {
-            throw new System.NotImplementedException();
+        public override float OffsetX { get
+            {
+                _offsetX += GetMouseDeltaX();
+                return _offsetX;
+            }
         }
     }
 }

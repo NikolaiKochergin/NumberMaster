@@ -73,7 +73,7 @@ namespace Source.Scripts.Infrastructure.States
 
         private IInputService InputService() =>
             Application.isEditor
-                ? (IInputService) new StandaloneInputService()
+                ? (IInputService) new StandaloneInputService(0.2f,0.03f)
                 : new MobileInputService();
     }
 }

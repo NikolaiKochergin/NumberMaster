@@ -6,9 +6,10 @@ namespace Source.Scripts.CameraLogic
     {
         [SerializeField] private Transform _target;
 
-        private void Update()
-        {
-            transform.position = _target.position;
-        }
+        private void Update() => 
+            transform.position = GetPosition();
+
+        private Vector3 GetPosition() => 
+            new Vector3(transform.position.x, transform.position.y, _target.transform.position.z);
     }
 }
