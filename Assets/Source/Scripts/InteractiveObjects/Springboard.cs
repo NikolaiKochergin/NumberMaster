@@ -35,7 +35,7 @@ public class Springboard : MonoBehaviour
     private void Move(Transform targetTransform)
     {
         DG.Tweening.Sequence sequence = DOTween.Sequence();
-        sequence.Append(targetTransform.DOMoveY(targetTransform.position.y, _duration).SetEase(_jumpCurve));
+        //sequence.Append(targetTransform.DOMoveY(targetTransform.position.y, _duration).SetEase(_jumpCurve));
         targetTransform.DOMoveY(targetTransform.position.y, _duration).SetEase(_jumpCurve);
         Debug.Log("Прыжок");
     }
