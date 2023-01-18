@@ -2,7 +2,7 @@ using Source.Scripts.Services;
 using Source.Scripts.Services.Input;
 using UnityEngine;
 
-namespace Scripts.Plauer
+namespace Source.Scripts.Player
 {
     public class PlayerMove : MonoBehaviour
     {
@@ -22,9 +22,8 @@ namespace Scripts.Plauer
 
         private void Move()
         {
-            float positionX = _inputService.OffsetX;
             transform.position += new Vector3(0, 0, Speed * 1) * Time.deltaTime;
-            transform.position = new Vector3(positionX * _offset, transform.position.y, transform.position.z);
+            transform.position = new Vector3(_inputService.OffsetX, transform.position.y, transform.position.z);
         }
     }
 }
