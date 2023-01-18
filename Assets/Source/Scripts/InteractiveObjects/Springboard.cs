@@ -8,36 +8,39 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Springboard : MonoBehaviour
+namespace Source.Scripts.InteractiveObjects
 {
-    [SerializeField] private TriggerObserver _triggerObserver;
-    [SerializeField] private AnimationCurve _jumpCurve;
-    [SerializeField][Min(0)] private float _duration = 1;
-    [SerializeField] private BoxCollider boxCollider;
-    [SerializeField] private float _jumpForse;
-
-    private void OnEnable()
+    public class Springboard : MonoBehaviour
     {
-        _triggerObserver.TriggerEnter += MovePlayer;
-    }
+        [SerializeField] private TriggerObserver _triggerObserver;
+        [SerializeField] private AnimationCurve _jumpCurve;
+        [SerializeField][Min(0)] private float _duration = 1;
+        [SerializeField] private BoxCollider boxCollider;
+        [SerializeField] private float _jumpForse;
 
-
-    private void OnDisable()
-    {
-        _triggerObserver.TriggerEnter -= MovePlayer;
-    }
-
-    private void MovePlayer(Collider obj)
-    {
-        if(obj.TryGetComponent(out Player player))
+        private void OnEnable()
         {
-            Move(player.transform);
-            boxCollider.enabled= false;
+            _triggerObserver.TriggerEnter += MovePlayer;
         }
-    }
 
-    private void Move(Transform targetTransform)
-    {
-        targetTransform.DOMoveY(_jumpForse, _duration).SetEase(_jumpCurve).OnComplete(() => targetTransform.position = new Vector3(targetTransform.position.x, 0, targetTransform.position.z));
+
+        private void OnDisable()
+        {
+            _triggerObserver.TriggerEnter -= MovePlayer;
+        }
+
+        private void MovePlayer(Collider obj)
+        {
+            if (obj.TryGetComponent(out Player player))
+            {
+                Move(player.transform);
+                boxCollider.enabled = false;
+            }
+        }
+
+        private void Move(Transform targetTransform)
+        {
+            targetTransform.DOMoveY(_jumpForse, _duration).SetEase(_jumpCurve).OnComplete(() => targetTransform.position = new Vector3(targetTransform.position.x, 0, targetTransform.position.z));
+        }
     }
 }
