@@ -33,15 +33,28 @@ public class InteractiveWal : MonoBehaviour
     private void OnDestroy() =>
             _triggerObserver.TriggerEnter -= AffectPlayer;
 
+    public void TakeDamage(int damage)
+    {
+        _value -= damage;
+        if (_value < 0)
+            _value = 0;
+        Show();
+    }
+
+    private void Show()
+    {
+        _interactiveNumberView.SetValue(_value);
+    }
+
     private void AffectPlayer(Collider other)
     {
         if (!other.TryGetComponent(out Player player)) return;
         if (player.PlayerNumber.Current >= _value)
         {
             _speed = player.PlayerMove.Speed;
-            player.PlayerMove.SetSpeed(1);
+            player.PlayerMove.SetSpeed(1f);
             _damageWal.enabled = true;
-            _damageWal.SetHealth(player);
+            _damageWal.SetHealth(player,this);
             //playerNumber.TakeNumber(_value);
             //Die();
         }
