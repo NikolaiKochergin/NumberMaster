@@ -2,6 +2,7 @@
 using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.SaveLoad;
 using Source.Scripts.Services.StaticData;
+using UnityEngine;
 
 namespace Source.Scripts.Infrastructure.States
 {
@@ -26,7 +27,13 @@ namespace Source.Scripts.Infrastructure.States
 
         public void Enter()
         {
-            _progressService.Progress.Soft.Add(_factory.Player.PlayerNumber.Current);
+            float collected = _factory.Player.PlayerNumber.Current * (1.0f +
+                                                                      (_progressService.Progress.PlayerStats
+                                                                          .IncomeLevel - 1) * _staticDataService
+                                                                          .ForIncomeIncrement());
+            
+            Debug.Log((int)collected);
+            _progressService.Progress.Soft.Add((int)collected);
             SetNextLevelIndex();
             _saveLoadService.SaveProgress();
             _stateMachine.Enter<LoadLevelState, string>(_staticDataService.ForSceneName(_progressService.Progress.World.CurrentLevel));
