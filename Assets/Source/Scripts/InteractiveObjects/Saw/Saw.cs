@@ -1,7 +1,4 @@
-using Source.Scripts.InteractiveObjects;
 using Source.Scripts.PlayerLogic;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Source.Scripts.InteractiveObjects.Saw
@@ -29,17 +26,13 @@ namespace Source.Scripts.InteractiveObjects.Saw
             {
                _damgeSaw.enabled= true;
                _damgeSaw.SetHealth(player.PlayerNumber);
-                player.ActorNumberChangeParticles.PlayPartikleDestroyWall();
             }
         }
 
         private void TurnOffDamage(Collider colliderTarget)
         {
-            if (colliderTarget.TryGetComponent(out Player player))
-            {
+            if (colliderTarget.TryGetComponent(out Player player)) 
                 _damgeSaw.enabled = false;
-                player.ActorNumberChangeParticles.StopPartikleDestroyWall();
-            }
         }
     }
 }

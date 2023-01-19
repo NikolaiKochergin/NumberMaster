@@ -10,6 +10,7 @@ namespace Source.Scripts.PlayerLogic
         private State _state;
 
         public event Action NumberChanged;
+        public event Action FailHappened;
 
         public int Current
         {
@@ -39,6 +40,12 @@ namespace Source.Scripts.PlayerLogic
         {
             if(Current <= 0)
                 return;
+
+            if (Current - value < 1)
+            {
+                FailHappened?.Invoke();
+                return;
+            }
 
             Current += value;
         }
