@@ -252,6 +252,7 @@ GameObject:
   - component: {fileID: 2392093040022180732}
   - component: {fileID: 239362240}
   - component: {fileID: 8896181255023199324}
+  - component: {fileID: 2230375042224216044}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -307,7 +308,7 @@ MonoBehaviour:
   _playerMove: {fileID: 6937854176539129853}
   _playerNumber: {fileID: 6937854176539129855}
   _playerMoveFinish: {fileID: 8896181255023199324}
-  _particleSystemWallDistroi: {fileID: 3227819043759271881}
+  _actorPlayerPartikle: {fileID: 2230375042224216044}
 --- !u!114 &6937854176539129853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,6 +374,21 @@ MonoBehaviour:
   _positionX: 0
   _duration: 2
   _speed: 3
+--- !u!114 &2230375042224216044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6937854176539129850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bec37bafdf284d444af69dbc4e0323a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerNumber: {fileID: 6937854176539129855}
+  _particleSystemWallDistroi: {fileID: 3227819043759271881}
+  _partikleSistemIncreaseNumber: {fileID: 1370396956978010151}
 --- !u!1 &6937854176809586806
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,6 +590,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c216d4b27b876240a8fd23af07e80de, type: 3}
+--- !u!198 &1370396956978010151 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1907732653596025038, guid: 2c216d4b27b876240a8fd23af07e80de, type: 3}
+  m_PrefabInstance: {fileID: 683703234462906601}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2981754372858055710 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2313814150626571511, guid: 2c216d4b27b876240a8fd23af07e80de, type: 3}
