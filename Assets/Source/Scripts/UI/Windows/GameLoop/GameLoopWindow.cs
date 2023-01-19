@@ -27,6 +27,6 @@ namespace Source.Scripts.UI.Windows.GameLoop
             _softCounter.SetText(Progress.Soft.Collected);
 
         private void SetCurrentLevelNumberText() => 
-            _levelCounter.SetText(Progress.World.CurrentLevel);
+            _levelCounter.SetText(Progress.World.DisplayedLevel);
     }
 }

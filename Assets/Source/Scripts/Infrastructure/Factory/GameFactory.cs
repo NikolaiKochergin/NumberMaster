@@ -35,8 +35,7 @@ namespace Source.Scripts.Infrastructure.Factory
         public Player CreatePlayer()
         {
             Player = InstantiateRegistered<Player>(AssetPath.PlayerPath);
-            Player.PlayerMove.Construct(_input);
-            Player.PlayerMove.Initialize(_staticData.ForPlayerSpeed());
+            Player.PlayerMove.Construct(_input, _staticData);
             Player.PlayerMove.Disable();
             
             return Player;
