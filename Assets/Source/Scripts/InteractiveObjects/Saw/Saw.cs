@@ -25,17 +25,21 @@ namespace Source.Scripts.InteractiveObjects.Saw
 
         private void ActivateDamage(Collider colliderTarget)
         {
-            if(colliderTarget.TryGetComponent(out PlayerNumber playerNumber))
+            if(colliderTarget.TryGetComponent(out Player player))
             {
                _damgeSaw.enabled= true;
-               _damgeSaw.SetHealth(playerNumber);
+               _damgeSaw.SetHealth(player.PlayerNumber);
+                player.ActorPlayerPartikle.PlayPartikleDestroyWall();
             }
         }
 
         private void TurnOffDamage(Collider colliderTarget)
         {
             if (colliderTarget.TryGetComponent(out Player player))
+            {
                 _damgeSaw.enabled = false;
+                player.ActorPlayerPartikle.StopPartikleDestroyWall();
+            }
         }
     }
 }
