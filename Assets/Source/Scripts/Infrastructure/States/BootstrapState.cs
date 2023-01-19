@@ -14,10 +14,11 @@ namespace Source.Scripts.Infrastructure.States
 {
     public class BootstrapState : IState
     {
-        private const string Initial = "Initial";
         private readonly GameStateMachine _stateMachine;
         private readonly SceneLoader _sceneLoader;
         private readonly AllServices _services;
+
+        private IStaticDataService _staticData;
 
         public BootstrapState(GameStateMachine stateMachine, SceneLoader sceneLoader, AllServices services)
         {
@@ -29,7 +30,7 @@ namespace Source.Scripts.Infrastructure.States
         }
 
         public void Enter() => 
-            _sceneLoader.Load(SceneManager.GetActiveScene().name, onLoaded: EnterLoadLevel);
+            _sceneLoader.Load(_staticData.ForSceneName(0), onLoaded: EnterLoadLevel);
 
         public void Exit()
         {
@@ -66,9 +67,9 @@ namespace Source.Scripts.Infrastructure.States
 
         private void RegisterStaticDataService()
         {
-            IStaticDataService staticData = new StaticDataService();
-            staticData.Load();
-            _services.RegisterSingle(staticData);
+            _staticData = new StaticDataService();
+            _staticData.Load();
+            _services.RegisterSingle(_staticData);
         }
 
         private void EnterLoadLevel() => 

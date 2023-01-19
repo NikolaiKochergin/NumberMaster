@@ -27,11 +27,14 @@ namespace Source.Scripts.Infrastructure.States
                     services.Single<IUIFactory>()),
                 [typeof(LoadProgressState)] = new LoadProgressState(this, 
                     services.Single<IPersistentProgressService>(),
+                    services.Single<IStaticDataService>(),
                     services.Single<ISaveLoadService>()),
                 [typeof(ShopState)] = new ShopState(services.Single<IWindowService>()),
                 [typeof(GameLoopState)] = new GameLoopState(services.Single<IGameFactory>()),
-                [typeof(LevelCompleteState)] = new LevelCompleteState(
+                [typeof(LevelCompleteState)] = new LevelCompleteState(this,
                     services.Single<IPersistentProgressService>(),
+                    services.Single<IStaticDataService>(),
+                    services.Single<ISaveLoadService>(),
                     services.Single<IGameFactory>())
             };
         }

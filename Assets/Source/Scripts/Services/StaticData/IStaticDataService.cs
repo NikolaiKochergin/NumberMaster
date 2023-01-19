@@ -10,5 +10,7 @@ namespace Source.Scripts.Services.StaticData
         float ForMouseSensitivity();
         float ForKeyboardSensitivity();
         WindowConfig ForWindow(WindowId windowId);
+        string ForSceneName(int index);
+        int ForRepeatLevelNumber();
     }
 }

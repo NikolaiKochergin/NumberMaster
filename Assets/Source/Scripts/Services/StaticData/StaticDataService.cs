@@ -40,5 +40,13 @@ namespace Source.Scripts.Services.StaticData
             _windowConfigs.TryGetValue(windowId, out WindowConfig windowConfig)
                 ? windowConfig
                 : null;
+
+        public string ForSceneName(int index) =>
+            index >= 0 && index < _gameData.LevelSceneNames.Count
+                ? _gameData.LevelSceneNames[index]
+                : null;
+
+        public int ForRepeatLevelNumber() =>
+            _gameData.RepeatLevelNumber;
     }
 }

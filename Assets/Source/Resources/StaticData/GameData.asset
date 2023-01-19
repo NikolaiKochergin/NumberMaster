@@ -13,3 +13,9 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: 
   PlayerSpeed: 3
+  MouseSensitivity: 0.2
+  KeyboardSensitivity: 0.03
+  LevelSceneNames:
+  - Initial
+  - 
+  - 
