@@ -1,23 +1,32 @@
-﻿using Source.Scripts.Services.PersistentProgress;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Source.Scripts.UI.Windows.GameLoop
 {
-    public class GameLoopWindow : WindowBase
+    public sealed class GameLoopWindow : WindowBase
     {
-        [SerializeField] private SoftCounter _softCounter;
-        [SerializeField] private LevelCounter _levelCounter;
-
-        public override void Construct(IPersistentProgressService progressService)
-        {
-            base.Construct(progressService);
-            _softCounter.Construct(Progress.Soft);
-        }
+        [SerializeField] private Counter _softCounter;
+        [SerializeField] private Counter _levelCounter;
 
         protected override void Initialize()
         {
             base.Initialize();
-            _levelCounter.SetLevel(Progress.World.CurrentLevel);
+            SetCurrentLevelNumberText();
+            RefreshSoftValueText();
         }
+
+        protected override void SubscribeUpdates() => 
+            Progress.Soft.Changed += RefreshSoftValueText;
+
+        protected override void Cleanup()
+        {
+            base.Cleanup();
+            Progress.Soft.Changed -= RefreshSoftValueText;
+        }
+
+        private void RefreshSoftValueText() => 
+            _softCounter.SetText(Progress.Soft.Collected);
+
+        private void SetCurrentLevelNumberText() => 
+            _levelCounter.SetText(Progress.World.CurrentLevel);
     }
 }

@@ -456,7 +456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0aad532403462a865ff3a8898d8138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _softCounter: {fileID: 8321269711657823916}
+  _softCounter: {fileID: 8963661975363748846}
   _levelCounter: {fileID: 8423129283734881718}
 --- !u!1 &6099733550220696337
 GameObject:
@@ -672,7 +672,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 566068480863248298}
-  - component: {fileID: 8321269711657823916}
+  - component: {fileID: 8963661975363748846}
   m_Layer: 5
   m_Name: SoftCounter
   m_TagString: Untagged
@@ -702,7 +702,7 @@ RectTransform:
   m_AnchoredPosition: {x: -36, y: -50}
   m_SizeDelta: {x: 303.9403, y: 100}
   m_Pivot: {x: 1, y: 1}
---- !u!114 &8321269711657823916
+--- !u!114 &8963661975363748846
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -711,7 +711,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8204017291253122573}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5516c70ad55bdf43b152baeb9aab714, type: 3}
+  m_Script: {fileID: 11500000, guid: c0f3b642ec3e66a4397b510b37f9f955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _counterText: {fileID: 1306480263700228737}

@@ -42,7 +42,7 @@ namespace Source.Scripts.Infrastructure.States
             InitGameWorld();
             InformProgressReaders();
             
-            _stateMachine.Enter<GameLoopState>();
+            _stateMachine.Enter<ShopState>();
         }
 
         private void InitUIRoot()

@@ -1,4 +1,5 @@
-﻿using Source.Scripts.Services.PersistentProgress;
+﻿using Source.Scripts.Infrastructure.States;
+using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.StaticData;
 using Source.Scripts.StaticData.Windows;
 using Source.Scripts.UI.Elements;
@@ -11,13 +12,15 @@ namespace Source.Scripts.UI.Services.Factory
 {
     public class UIFactory : IUIFactory
     {
+        private readonly IGameStateMachine _stateMachine;
         private readonly IStaticDataService _staticData;
         private readonly IPersistentProgressService _progressService;
 
         private Transform _uiRoot;
 
-        public UIFactory( IStaticDataService staticData, IPersistentProgressService progressService)
+        public UIFactory(IGameStateMachine stateMachine, IStaticDataService staticData, IPersistentProgressService progressService)
         {
+            _stateMachine = stateMachine;
             _staticData = staticData;
             _progressService = progressService;
         }
@@ -29,7 +32,7 @@ namespace Source.Scripts.UI.Services.Factory
         {
             WindowConfig config = _staticData.ForWindow(WindowId.Shop);
             ShopWindow window = Object.Instantiate(config.Template, _uiRoot) as ShopWindow;
-            window.Construct(_progressService);
+            window.Construct(_stateMachine, _progressService);
         }
 
         public void CreateGameLoopWindow()

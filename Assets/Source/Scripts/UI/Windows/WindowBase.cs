@@ -9,7 +9,7 @@ namespace Source.Scripts.UI.Windows
         private IPersistentProgressService _progressService;
         protected PlayerProgress Progress => _progressService.Progress;
 
-        public virtual void Construct(IPersistentProgressService progressService) =>
+        public void Construct(IPersistentProgressService progressService) =>
             _progressService = progressService;
 
         private void Start()
