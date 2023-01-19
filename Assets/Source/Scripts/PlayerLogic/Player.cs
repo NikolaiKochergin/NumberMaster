@@ -9,9 +9,11 @@ namespace Source.Scripts.PlayerLogic
     {
         [SerializeField] private PlayerMove _playerMove;
         [SerializeField] private PlayerNumber _playerNumber;
+        [SerializeField] private PlayerMoveFinish _playerMoveFinish;
 
         public PlayerMove PlayerMove => _playerMove;
         public PlayerNumber PlayerNumber => _playerNumber;
+        public PlayerMoveFinish PlayerMoveFinish => _playerMoveFinish;
         
         public void LoadProgress(PlayerProgress progress)
         {
