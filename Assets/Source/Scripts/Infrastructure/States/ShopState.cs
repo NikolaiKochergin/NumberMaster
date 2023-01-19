@@ -1,16 +1,16 @@
-﻿using Source.Scripts.UI.Services.Factory;
+﻿using Source.Scripts.UI.Services.Windows;
 
 namespace Source.Scripts.Infrastructure.States
 {
     public class ShopState : IState
     {
-        private readonly IUIFactory _uiFactory;
+        private readonly IWindowService _windowService;
 
-        public ShopState(IUIFactory uiFactory) => 
-            _uiFactory = uiFactory;
+        public ShopState(IWindowService windowService) => 
+            _windowService = windowService;
 
-        public void Enter() => 
-            _uiFactory.CreateShop();
+        public void Enter() =>
+            _windowService.Open(WindowId.Shop);
 
         public void Exit()
         {

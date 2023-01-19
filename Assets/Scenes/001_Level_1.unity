@@ -855,17 +855,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2086171127835643337, guid: 4d27f776fe0edaa4e8788ce7bf8faba0, type: 3}
   m_PrefabInstance: {fileID: 478166705}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1192075159 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4653568291187206358, guid: b334302a9f32a664aa019e1f008fe3a8, type: 3}
-  m_PrefabInstance: {fileID: 1633585353256782707}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cfb7fe4c43b49f69be0ea3001afe116, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1286574148
 GameObject:
   m_ObjectHideFlags: 0
@@ -1478,22 +1467,6 @@ PrefabInstance:
     - target: {fileID: 1633585353248882245, guid: b334302a9f32a664aa019e1f008fe3a8, type: 3}
       propertyPath: m_Name
       value: CameraContainer
-      objectReference: {fileID: 0}
-    - target: {fileID: 2263485247544299302, guid: b334302a9f32a664aa019e1f008fe3a8, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -21.946503
-      objectReference: {fileID: 0}
-    - target: {fileID: 2610057891054818138, guid: b334302a9f32a664aa019e1f008fe3a8, type: 3}
-      propertyPath: m_TargetGraphic
-      value: 
-      objectReference: {fileID: 1192075159}
-    - target: {fileID: 7632426908388461786, guid: b334302a9f32a664aa019e1f008fe3a8, type: 3}
-      propertyPath: m_TargetGraphic
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 9041588598197071582, guid: b334302a9f32a664aa019e1f008fe3a8, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -21.946503
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b334302a9f32a664aa019e1f008fe3a8, type: 3}

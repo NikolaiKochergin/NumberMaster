@@ -6,6 +6,7 @@ using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.SaveLoad;
 using Source.Scripts.Services.StaticData;
 using Source.Scripts.UI.Services.Factory;
+using Source.Scripts.UI.Services.Windows;
 
 namespace Source.Scripts.Infrastructure.States
 {
@@ -27,7 +28,7 @@ namespace Source.Scripts.Infrastructure.States
                 [typeof(LoadProgressState)] = new LoadProgressState(this, 
                     services.Single<IPersistentProgressService>(),
                     services.Single<ISaveLoadService>()),
-                [typeof(ShopState)] = new ShopState(services.Single<IUIFactory>()),
+                [typeof(ShopState)] = new ShopState(services.Single<IWindowService>()),
                 [typeof(GameLoopState)] = new GameLoopState(services.Single<IGameFactory>()),
                 [typeof(LevelCompleteState)] = new LevelCompleteState(
                     services.Single<IPersistentProgressService>(),
