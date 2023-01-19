@@ -35,7 +35,7 @@ namespace Source.Scripts.InteractiveObjects.Wall
                     transform.localScale -= new Vector3(0, 0f, _scaleZ);
                     _isHit = false;
                 }
-                else
+                if(transform.lossyScale.z <= 0 && _isHit)
                 {
                     transform.localScale = Vector3.zero;
                 }
