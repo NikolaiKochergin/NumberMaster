@@ -28,7 +28,8 @@ namespace Source.Scripts.Infrastructure.States
             
             // На релизе этот кусок вырезать
             Debug.Log("Этот кусок тоже вырезать");
-            if(PlayerPrefs.GetString("SceneToLoad") != _staticDataService.ForSceneName(_progressService.Progress.World.CurrentLevel))
+            if(PlayerPrefs.GetString("SceneToLoad") != _staticDataService.ForSceneName(_progressService.Progress.World.CurrentLevel) &&
+               PlayerPrefs.GetString("SceneToLoad") != _staticDataService.ForSceneName(0))
                 _stateMachine.Enter<LoadLevelState, string>(PlayerPrefs.GetString("SceneToLoad"));
             else
             //---------------------------------------------
