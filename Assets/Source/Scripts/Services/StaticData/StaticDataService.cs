@@ -48,5 +48,14 @@ namespace Source.Scripts.Services.StaticData
 
         public int ForRepeatLevelNumber() =>
             _gameData.RepeatLevelNumber;
+
+        public int ForStartNumberBasePrice() =>
+            _gameData.StartNumberBasePrice;
+
+        public int ForIncomeBasePrice() => 
+            _gameData.IncomeBasePrice;
+
+        public float ForIncomeIncrement() =>
+            _gameData.IncomeIncrement;
     }
 }

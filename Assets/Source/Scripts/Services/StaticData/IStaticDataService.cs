@@ -12,5 +12,8 @@ namespace Source.Scripts.Services.StaticData
         WindowConfig ForWindow(WindowId windowId);
         string ForSceneName(int index);
         int ForRepeatLevelNumber();
+        int ForStartNumberBasePrice();
+        int ForIncomeBasePrice();
+        float ForIncomeIncrement();
     }
 }

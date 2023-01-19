@@ -1004,6 +1004,8 @@ MonoBehaviour:
   _currentLevelText: {fileID: 2083812998302035660}
   _nextLevelText: {fileID: 6277011359229808725}
   _priceText: {fileID: 1390847592367512528}
+  _defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  _notEnoughMoneyColor: {r: 0.9960785, g: 0.6039216, b: 0.5882353, a: 1}
 --- !u!1 &7361353186115108829
 GameObject:
   m_ObjectHideFlags: 0

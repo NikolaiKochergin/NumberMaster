@@ -345,6 +345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerView: {fileID: 7776000554604048574}
+  _playerNumber: {fileID: 6937854176539129855}
 --- !u!65 &239362240
 BoxCollider:
   m_ObjectHideFlags: 0

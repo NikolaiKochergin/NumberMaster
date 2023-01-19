@@ -4,7 +4,6 @@ using Source.Scripts.PlayerLogic;
 using Source.Scripts.Services.Input;
 using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.StaticData;
-using Source.Scripts.UI.Services.Windows;
 using UnityEngine;
 
 namespace Source.Scripts.Infrastructure.Factory
@@ -14,18 +13,14 @@ namespace Source.Scripts.Infrastructure.Factory
         private readonly IInputService _input;
         private readonly IAssetProvider _assets;
         private readonly IStaticDataService _staticData;
-        private readonly IPersistentProgressService _persistentProgressService;
-        private readonly IWindowService _windowService;
 
         public Player Player { get; private set; }
 
-        public GameFactory(IInputService input, IAssetProvider assets, IStaticDataService staticData, IPersistentProgressService persistentProgressService, IWindowService windowService)
+        public GameFactory(IInputService input, IAssetProvider assets, IStaticDataService staticData)
         {
             _input = input;
             _assets = assets;
             _staticData = staticData;
-            _persistentProgressService = persistentProgressService;
-            _windowService = windowService;
         }
 
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();

@@ -53,21 +53,20 @@ namespace Source.Scripts.Infrastructure.States
             _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
             _services.RegisterSingle<IGameStateMachine>(_stateMachine);
 
-            _services.RegisterSingle<IUIFactory>(new UIFactory(
-                _services.Single<IGameStateMachine>(),
-                _services.Single<IStaticDataService>(),
-                _services.Single<IPersistentProgressService>()
-                ));
-            
-            _services.RegisterSingle<IWindowService>(new WindowService(_services.Single<IUIFactory>()));
-            
             _services.RegisterSingle<IGameFactory>(new GameFactory(
                 _services.Single<IInputService>(),
                 _services.Single<IAssetProvider>(),
+                _services.Single<IStaticDataService>()));
+            
+            _services.RegisterSingle<IUIFactory>(new UIFactory(
+                _services.Single<IGameStateMachine>(),
                 _services.Single<IStaticDataService>(),
                 _services.Single<IPersistentProgressService>(),
-                _services.Single<IWindowService>()));
-            
+                _services.Single<IGameFactory>()
+                ));
+
+            _services.RegisterSingle<IWindowService>(new WindowService(_services.Single<IUIFactory>()));
+
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(
                 _services.Single<IPersistentProgressService>(),
                 _services.Single<IGameFactory>()));
