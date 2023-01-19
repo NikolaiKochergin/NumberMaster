@@ -1,6 +1,5 @@
 using Source.Scripts.CameraLogic;
 using Source.Scripts.Infrastructure.States;
-using Source.Scripts.InteractiveObjects.Number;
 using Source.Scripts.PlayerLogic;
 using Source.Scripts.Services;
 using UnityEngine;
@@ -10,7 +9,7 @@ namespace Source.Scripts.InteractiveObjects.Finisher
     public class FinishPanel : MonoBehaviour
     {
         [SerializeField] private int _value;
-        [SerializeField] private InteractiveNumberView _interactiveNumberView;
+        [SerializeField] private NumberText _numberText;
         [SerializeField] private TriggerObserver _triggerObserver;
         [SerializeField] private ShakeCamera _shakeCamera;
 
@@ -19,7 +18,7 @@ namespace Source.Scripts.InteractiveObjects.Finisher
         private void Awake()
         {
             _stateMachine = AllServices.Container.Single<IGameStateMachine>();
-            _interactiveNumberView.SetValue(_value);
+            _numberText.SetText(_value);
         }
 
         private void OnEnable()

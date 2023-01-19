@@ -1,4 +1,3 @@
-using Source.Scripts.InteractiveObjects.Number;
 using UnityEngine;
 using Source.Scripts.PlayerLogic;
 
@@ -7,14 +6,14 @@ namespace Source.Scripts.InteractiveObjects.Wall
     public class InteractiveWall : MonoBehaviour
     {
         [SerializeField] private TriggerObserver _triggerObserver;
-        [SerializeField] private InteractiveNumberView _interactiveNumberView;
-        [SerializeField] private DamageWall _damageWal;
+        [SerializeField] private NumberText _numberText;
+        [SerializeField] private DamageWall _damageWall;
         [SerializeField] private int _value;
         [SerializeField] private float _slowDownFactor = 0.3f;
 
         private void Awake()
         {
-            _interactiveNumberView.SetValue(_value);
+            _numberText.SetText(_value);
         }
 
         private void OnEnable()
@@ -36,17 +35,19 @@ namespace Source.Scripts.InteractiveObjects.Wall
 
         private void Show()
         {
-            _interactiveNumberView.SetValue(_value);
+            _numberText.SetText(_value);
         }
 
         private void AffectPlayer(Collider other)
         {
-            if (!other.TryGetComponent(out Player player)) return;
+            if (!other.TryGetComponent(out Player player)) 
+                return;
+            
             if (player.PlayerNumber.Current >= _value)
             {
                 player.PlayerMove.SetSpeedFactor(_slowDownFactor);
-                _damageWal.enabled = true;
-                _damageWal.SetHealth(player, this);
+                _damageWall.enabled = true;
+                _damageWall.SetHealth(player, this);
             }
             else
             {
@@ -58,7 +59,7 @@ namespace Source.Scripts.InteractiveObjects.Wall
         {
             if (collider.TryGetComponent(out Player player))
             {
-                _damageWal.enabled = false;
+                _damageWall.enabled = false;
                 player.PlayerMove.SetSpeedFactor(1f);
             }
         }

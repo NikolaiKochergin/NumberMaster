@@ -42,19 +42,17 @@ namespace Source.Scripts.InteractiveObjects.Number
         {
             if (_playerNumber.Current < _value)
             {
-                if (_isRed == false)
-                {
-                    _meshRenderer.material = _redMaterial;
-                    _isRed = true;
-                }
+                if (_isRed) 
+                    return;
+                _meshRenderer.material = _redMaterial;
+                _isRed = true;
             }
             else
             {
-                if (_isRed)
-                {
-                    _meshRenderer.material = _blueMaterial;
-                    _isRed = false;
-                }
+                if (!_isRed) 
+                    return;
+                _meshRenderer.material = _blueMaterial;
+                _isRed = false;
             }
         }
     }
