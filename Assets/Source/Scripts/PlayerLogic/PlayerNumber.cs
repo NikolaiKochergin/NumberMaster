@@ -41,7 +41,7 @@ namespace Source.Scripts.PlayerLogic
             if(Current <= 0)
                 return;
 
-            if (Current - value < 1)
+            if (Current + value < 1)
             {
                 FailHappened?.Invoke();
                 return;

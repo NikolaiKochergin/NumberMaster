@@ -40,18 +40,11 @@ namespace Source.Scripts.InteractiveObjects.Wall
 
         private void AffectPlayer(Collider other)
         {
-            if (!other.TryGetComponent(out Player player)) 
-                return;
-            
-            if (player.PlayerNumber.Current >= _value)
+            if (other.TryGetComponent(out Player player))
             {
                 player.PlayerMove.SetSpeedFactor(_slowDownFactor);
                 _damageWall.enabled = true;
                 _damageWall.SetHealth(player, this);
-            }
-            else
-            {
-                Debug.Log("Player Die");
             }
         }
 
@@ -62,11 +55,6 @@ namespace Source.Scripts.InteractiveObjects.Wall
                 _damageWall.enabled = false;
                 player.PlayerMove.SetSpeedFactor(1f);
             }
-        }
-
-        private void Die()
-        {
-            Destroy(gameObject);
         }
     }
 }

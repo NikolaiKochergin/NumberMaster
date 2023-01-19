@@ -25,7 +25,6 @@ namespace Source.Scripts.InteractiveObjects.Wall
 
             if (_elapsedTime >= _delay)
             {
-
                 _isHit = true;
 
                 if (transform.localScale.z > 0 && _isHit)
