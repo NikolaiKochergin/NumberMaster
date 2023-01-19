@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Source.Scripts.UI.Windows.Shop
 {
-    public class StartButton : Graphic , IPointerDownHandler
+    public class ClickedDownButton : Graphic , IPointerDownHandler
     {
         public override void SetMaterialDirty() { return; }
         public override void SetVerticesDirty() { return; }

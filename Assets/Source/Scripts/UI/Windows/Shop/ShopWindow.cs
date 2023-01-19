@@ -6,7 +6,11 @@ namespace Source.Scripts.UI.Windows.Shop
 {
     public sealed class ShopWindow : WindowBase
     {
-        [SerializeField] private StartButton _startButton;
+        [SerializeField] private ClickedDownButton _startButton;
+        [SerializeField] private ClickedDownButton _startNumberButton;
+        [SerializeField] private ClickedDownButton _incomeButton;
+        [SerializeField] private ShopButtonShowing _startNumberButtonShowing;
+        [SerializeField] private ShopButtonShowing _incomeButtonShowing;
         
         private IGameStateMachine _stateMachine;
 

@@ -32,6 +32,7 @@ namespace Source.Scripts.UI.Services.Factory
         {
             WindowConfig config = _staticData.ForWindow(WindowId.Shop);
             ShopWindow window = Object.Instantiate(config.Template, _uiRoot) as ShopWindow;
+            window.transform.SetAsFirstSibling();
             window.Construct(_stateMachine, _progressService);
         }
 

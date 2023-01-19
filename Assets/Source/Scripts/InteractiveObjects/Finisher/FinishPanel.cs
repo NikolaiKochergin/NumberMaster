@@ -40,7 +40,7 @@ public class FinishPanel : MonoBehaviour
             else
             {
                 player.PlayerMoveFinish.enabled= false;
-                Debug.Log("Ñìåðòü!");
+                Debug.Log("Ð¡Ð¼ÐµÑ€Ñ‚ÑŒ!");
             }
         }
     }

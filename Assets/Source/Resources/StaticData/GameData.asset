@@ -15,7 +15,8 @@ MonoBehaviour:
   PlayerSpeed: 3
   MouseSensitivity: 0.2
   KeyboardSensitivity: 0.03
+  RepeatLevelNumber: 1
   LevelSceneNames:
   - Initial
-  - 
-  - 
+  - 001_Level_1
+  - 002_Level_2
