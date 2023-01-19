@@ -7,17 +7,19 @@ using Source.Scripts.Services.SaveLoad;
 using Source.Scripts.Services.StaticData;
 using Source.Scripts.UI.Services.Factory;
 using Source.Scripts.UI.Services.Windows;
-using UnityEngine.Device;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using Application = UnityEngine.Device.Application;
 
 namespace Source.Scripts.Infrastructure.States
 {
     public class BootstrapState : IState
     {
-        private const string Initial = "Initial";
         private readonly GameStateMachine _stateMachine;
         private readonly SceneLoader _sceneLoader;
         private readonly AllServices _services;
+
+        private IStaticDataService _staticData;
 
         public BootstrapState(GameStateMachine stateMachine, SceneLoader sceneLoader, AllServices services)
         {
@@ -28,8 +30,15 @@ namespace Source.Scripts.Infrastructure.States
             RegisterServices();
         }
 
-        public void Enter() => 
-            _sceneLoader.Load(SceneManager.GetActiveScene().name, onLoaded: EnterLoadLevel);
+        public void Enter()
+        {
+            // На релизе этот кусок вырезать
+            Debug.Log("На релизе этот кусок вырезать");
+            PlayerPrefs.SetString("SceneToLoad", SceneManager.GetActiveScene().name);
+            // ----------
+            
+            _sceneLoader.Load(_staticData.ForSceneName(0), onLoaded: EnterLoadLevel);
+        }
 
         public void Exit()
         {
@@ -66,9 +75,9 @@ namespace Source.Scripts.Infrastructure.States
 
         private void RegisterStaticDataService()
         {
-            IStaticDataService staticData = new StaticDataService();
-            staticData.Load();
-            _services.RegisterSingle(staticData);
+            _staticData = new StaticDataService();
+            _staticData.Load();
+            _services.RegisterSingle(_staticData);
         }
 
         private void EnterLoadLevel() => 

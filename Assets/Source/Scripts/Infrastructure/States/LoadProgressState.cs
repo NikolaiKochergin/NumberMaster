@@ -1,21 +1,24 @@
 ﻿using Source.Scripts.Data;
 using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.SaveLoad;
-using UnityEngine.SceneManagement;
+using Source.Scripts.Services.StaticData;
+using UnityEngine;
 
 namespace Source.Scripts.Infrastructure.States
 {
     public class LoadProgressState : IState
     {
-        private const string GameSceneName = "001_Level_1";
         private readonly GameStateMachine _stateMachine;
         private readonly IPersistentProgressService _progressService;
+        private readonly IStaticDataService _staticDataService;
         private readonly ISaveLoadService _saveLoadProgress;
 
-        public LoadProgressState(GameStateMachine stateMachine, IPersistentProgressService progressService, ISaveLoadService saveLoadProgress)
+        public LoadProgressState(GameStateMachine stateMachine, IPersistentProgressService progressService,
+            IStaticDataService staticDataService, ISaveLoadService saveLoadProgress)
         {
             _stateMachine = stateMachine;
             _progressService = progressService;
+            _staticDataService = staticDataService;
             _saveLoadProgress = saveLoadProgress;
         }
 
@@ -23,7 +26,13 @@ namespace Source.Scripts.Infrastructure.States
         {
             LoadProgressOrInitNew();
             
-            _stateMachine.Enter<LoadLevelState, string>(SceneManager.GetActiveScene().name);
+            // На релизе этот кусок вырезать
+            Debug.Log("Этот кусок тоже вырезать");
+            if(PlayerPrefs.GetString("SceneToLoad") != _staticDataService.ForSceneName(_progressService.Progress.World.CurrentLevel))
+                _stateMachine.Enter<LoadLevelState, string>(PlayerPrefs.GetString("SceneToLoad"));
+            else
+            //---------------------------------------------
+                _stateMachine.Enter<LoadLevelState, string>(_staticDataService.ForSceneName(_progressService.Progress.World.CurrentLevel));
         }
 
         public void Exit()

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Source.Scripts.StaticData
 {
@@ -14,5 +15,10 @@ namespace Source.Scripts.StaticData
         public float MouseSensitivity = 0.2f;
         [Min(0)] 
         public float KeyboardSensitivity = 0.03f;
+
+        [Space] 
+        [Header("Levels Settings")] 
+        [Min(1)] public int RepeatLevelNumber = 1;
+        public List<string> LevelSceneNames;
     }
 }
