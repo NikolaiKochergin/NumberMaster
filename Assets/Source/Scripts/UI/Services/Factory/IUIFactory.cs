@@ -6,6 +6,6 @@ namespace Source.Scripts.UI.Services.Factory
     {
         void CreateShop();
         void InitUIRoot();
-        void CreateGameMenu();
+        void CreateGameLoopWindow();
     }
 }

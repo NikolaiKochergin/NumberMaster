@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 1520794605939987529}
   - component: {fileID: 1520794605939987534}
   m_Layer: 0
-  m_Name: springboard
+  m_Name: Springboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

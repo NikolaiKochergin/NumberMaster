@@ -1,13 +1,10 @@
 using Source.Scripts.InteractiveObjects.Number;
-using Source.Scripts.InteractiveObjects;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Source.Scripts.PlayerLogic;
 
 namespace Source.Scripts.InteractiveObjects.Wall
 {
-    public class InteractiveWal : MonoBehaviour
+    public class InteractiveWall : MonoBehaviour
     {
         [SerializeField] private TriggerObserver _triggerObserver;
         [SerializeField] private InteractiveNumberView _interactiveNumberView;
@@ -28,13 +25,8 @@ namespace Source.Scripts.InteractiveObjects.Wall
             _triggerObserver.TriggerExit += AffectPlayerOff;
         }
 
-        private void OnDisable()
-        {
-
-        }
-
         private void OnDestroy() =>
-                _triggerObserver.TriggerEnter -= AffectPlayer;
+            _triggerObserver.TriggerEnter -= AffectPlayer;
 
         public void TakeDamage(int damage)
         {

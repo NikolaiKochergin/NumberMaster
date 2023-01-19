@@ -9,6 +9,7 @@ namespace Source.Scripts.Infrastructure.Factory
     {
         List<ISavedProgressReader> ProgressReaders { get; }
         List<ISavedProgress> ProgressWriters { get; }
+        Player Player { get; }
         void Cleanup();
         Player CreatePlayer();
     }

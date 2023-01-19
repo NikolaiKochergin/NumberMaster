@@ -9,7 +9,7 @@ using Source.Scripts.UI.Services.Factory;
 
 namespace Source.Scripts.Infrastructure.States
 {
-    public class GameStateMachine
+    public class GameStateMachine : IGameStateMachine
     {
         private readonly Dictionary<Type, IExitableState> _states;
         private IExitableState _activeState;
@@ -27,7 +27,11 @@ namespace Source.Scripts.Infrastructure.States
                 [typeof(LoadProgressState)] = new LoadProgressState(this, 
                     services.Single<IPersistentProgressService>(),
                     services.Single<ISaveLoadService>()),
-                [typeof(GameLoopState)] = new GameLoopState(this)
+                [typeof(ShopState)] = new ShopState(services.Single<IUIFactory>()),
+                [typeof(GameLoopState)] = new GameLoopState(services.Single<IGameFactory>()),
+                [typeof(LevelCompleteState)] = new LevelCompleteState(
+                    services.Single<IPersistentProgressService>(),
+                    services.Single<IGameFactory>())
             };
         }
 

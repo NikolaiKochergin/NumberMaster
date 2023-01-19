@@ -17,7 +17,7 @@ namespace Source.Scripts.Infrastructure.Factory
         private readonly IPersistentProgressService _persistentProgressService;
         private readonly IWindowService _windowService;
 
-        private Player _player;
+        public Player Player { get; private set; }
 
         public GameFactory(IInputService input, IAssetProvider assets, IStaticDataService staticData, IPersistentProgressService persistentProgressService, IWindowService windowService)
         {
@@ -34,11 +34,12 @@ namespace Source.Scripts.Infrastructure.Factory
 
         public Player CreatePlayer()
         {
-            _player = InstantiateRegistered<Player>(AssetPath.PlayerPath);
-            _player.PlayerMove.Construct(_input);
-            _player.PlayerMove.Initialize(_staticData.ForPlayerSpeed());
+            Player = InstantiateRegistered<Player>(AssetPath.PlayerPath);
+            Player.PlayerMove.Construct(_input);
+            Player.PlayerMove.Initialize(_staticData.ForPlayerSpeed());
+            Player.PlayerMove.Disable();
             
-            return _player;
+            return Player;
         }
 
         public void Cleanup()

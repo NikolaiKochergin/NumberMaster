@@ -18,15 +18,21 @@ namespace Source.Scripts.PlayerLogic
         private void Update() => 
             Move();
 
-        private void Move()
-        {
-            transform.position += transform.forward * _speed * Time.deltaTime;
-            transform.position = new Vector3(_inputService.OffsetX, transform.position.y, transform.position.z);
-        }
+        public void Enable() =>
+            enabled = true;
+
+        public void Disable() =>
+            enabled = false;
 
         public void SetSpeed(float speed)
         {
             _speed= speed;
+        }
+
+        private void Move()
+        {
+            transform.position += transform.forward * _speed * Time.deltaTime;
+            transform.position = new Vector3(_inputService.OffsetX, transform.position.y, transform.position.z);
         }
     }
 }

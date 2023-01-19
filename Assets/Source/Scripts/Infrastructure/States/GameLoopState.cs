@@ -1,20 +1,18 @@
-﻿namespace Source.Scripts.Infrastructure.States
+﻿using Source.Scripts.Infrastructure.Factory;
+
+namespace Source.Scripts.Infrastructure.States
 {
     public class GameLoopState : IState
     {
-        private readonly GameStateMachine _gameStateMachine;
+        private readonly IGameFactory _factory;
 
-        public GameLoopState(GameStateMachine gameStateMachine)
-        {
-            _gameStateMachine = gameStateMachine;
-        }
+        public GameLoopState(IGameFactory factory) => 
+            _factory = factory;
 
-        public void Enter()
-        {
-        }
+        public void Enter() => 
+            _factory.Player.PlayerMove.Enable();
 
-        public void Exit()
-        {
-        }
+        public void Exit() => 
+            _factory.Player.PlayerMove.Disable();
     }
 }
