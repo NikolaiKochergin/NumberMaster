@@ -12,6 +12,7 @@ public class FinishPanel : MonoBehaviour
     [SerializeField] private int _value;
     [SerializeField] private InteractiveNumberView _interactiveNumberView;
     [SerializeField] private TriggerObserver _triggerObserver;
+    [SerializeField] private ShakeCamera _shakeCamera;
 
     private void Awake()
     {
@@ -36,6 +37,7 @@ public class FinishPanel : MonoBehaviour
             {
                 transform.position = new Vector3(transform.position.x,-8,transform.position.z);
                 player.PlayerMoveFinish.SetSpeed(1);
+                _shakeCamera.PlayCameraShake();
             }
             else
             {

@@ -541,6 +541,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6937854176539129852}
     m_Modifications:
+    - target: {fileID: 1874127259741779968, guid: 2c216d4b27b876240a8fd23af07e80de, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874127259741779968, guid: 2c216d4b27b876240a8fd23af07e80de, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1875385325389208402, guid: 2c216d4b27b876240a8fd23af07e80de, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907732653596025038, guid: 2c216d4b27b876240a8fd23af07e80de, type: 3}
+      propertyPath: cullingMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907732653596025038, guid: 2c216d4b27b876240a8fd23af07e80de, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2313814150626571511, guid: 2c216d4b27b876240a8fd23af07e80de, type: 3}
       propertyPath: m_RootOrder
       value: 1
