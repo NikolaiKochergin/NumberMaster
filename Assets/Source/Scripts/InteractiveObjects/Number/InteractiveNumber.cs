@@ -1,3 +1,4 @@
+using System;
 using Source.Scripts.PlayerLogic;
 using UnityEngine;
 
@@ -37,5 +38,10 @@ namespace Source.Scripts.InteractiveObjects.Number
         {
             Destroy(gameObject);
         }
+        
+#if UNITY_EDITOR
+        private void OnValidate() => 
+            _interactiveNumberView.SetValue(_value);
+#endif
     }
 }

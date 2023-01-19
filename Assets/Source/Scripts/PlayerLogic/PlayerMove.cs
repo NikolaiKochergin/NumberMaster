@@ -1,4 +1,5 @@
 using Source.Scripts.Services.Input;
+using Source.Scripts.Services.StaticData;
 using UnityEngine;
 
 namespace Source.Scripts.PlayerLogic
@@ -6,14 +7,17 @@ namespace Source.Scripts.PlayerLogic
     public class PlayerMove : MonoBehaviour
     {
         private IInputService _inputService;
+        private IStaticDataService _staticData;
         private float _speed;
-
-        public float Speed => _speed;
-        public void Construct(IInputService inputService) => 
+        
+        public void Construct(IInputService inputService, IStaticDataService staticData)
+        {
             _inputService = inputService;
+            _staticData = staticData;
+        }
 
-        public void Initialize(float speed) => 
-            _speed = speed;
+        private void Start() => 
+            _speed = _staticData.ForPlayerSpeed();
 
         private void Update() => 
             Move();
@@ -24,10 +28,8 @@ namespace Source.Scripts.PlayerLogic
         public void Disable() =>
             enabled = false;
 
-        public void SetSpeed(float speed)
-        {
-            _speed= speed;
-        }
+        public void SetSpeedFactor(float factor) => 
+            _speed = _staticData.ForPlayerSpeed() * factor;
 
         private void Move()
         {

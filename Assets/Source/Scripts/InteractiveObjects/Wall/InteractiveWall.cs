@@ -10,9 +10,7 @@ namespace Source.Scripts.InteractiveObjects.Wall
         [SerializeField] private InteractiveNumberView _interactiveNumberView;
         [SerializeField] private DamageWall _damageWal;
         [SerializeField] private int _value;
-        [SerializeField] private float _slowDownSpeed;
-
-        private float _speed = 0;
+        [SerializeField] private float _slowDownFactor = 0.3f;
 
         private void Awake()
         {
@@ -46,8 +44,7 @@ namespace Source.Scripts.InteractiveObjects.Wall
             if (!other.TryGetComponent(out Player player)) return;
             if (player.PlayerNumber.Current >= _value)
             {
-                _speed = player.PlayerMove.Speed;
-                player.PlayerMove.SetSpeed(_slowDownSpeed);
+                player.PlayerMove.SetSpeedFactor(_slowDownFactor);
                 _damageWal.enabled = true;
                 _damageWal.SetHealth(player, this);
                 //playerNumber.TakeNumber(_value);
@@ -64,7 +61,7 @@ namespace Source.Scripts.InteractiveObjects.Wall
             if (collider.TryGetComponent(out Player player))
             {
                 _damageWal.enabled = false;
-                player.PlayerMove.SetSpeed(_speed);
+                player.PlayerMove.SetSpeedFactor(1f);
             }
         }
 
