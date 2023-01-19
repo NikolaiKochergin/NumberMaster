@@ -7,8 +7,9 @@ using Source.Scripts.Services.SaveLoad;
 using Source.Scripts.Services.StaticData;
 using Source.Scripts.UI.Services.Factory;
 using Source.Scripts.UI.Services.Windows;
-using UnityEngine.Device;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using Application = UnityEngine.Device.Application;
 
 namespace Source.Scripts.Infrastructure.States
 {
@@ -29,8 +30,15 @@ namespace Source.Scripts.Infrastructure.States
             RegisterServices();
         }
 
-        public void Enter() => 
+        public void Enter()
+        {
+            // На релизе этот кусок вырезать
+            Debug.Log("На релизе этот кусок вырезать");
+            PlayerPrefs.SetString("SceneToLoad", SceneManager.GetActiveScene().name);
+            // ----------
+            
             _sceneLoader.Load(_staticData.ForSceneName(0), onLoaded: EnterLoadLevel);
+        }
 
         public void Exit()
         {

@@ -2,6 +2,7 @@
 using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.SaveLoad;
 using Source.Scripts.Services.StaticData;
+using UnityEngine;
 
 namespace Source.Scripts.Infrastructure.States
 {
@@ -25,7 +26,13 @@ namespace Source.Scripts.Infrastructure.States
         {
             LoadProgressOrInitNew();
             
-            _stateMachine.Enter<LoadLevelState, string>(_staticDataService.ForSceneName(_progressService.Progress.World.CurrentLevel));
+            // На релизе этот кусок вырезать
+            Debug.Log("Этот кусок тоже вырезать");
+            if(PlayerPrefs.GetString("SceneToLoad") != _staticDataService.ForSceneName(_progressService.Progress.World.CurrentLevel))
+                _stateMachine.Enter<LoadLevelState, string>(PlayerPrefs.GetString("SceneToLoad"));
+            else
+            //---------------------------------------------
+                _stateMachine.Enter<LoadLevelState, string>(_staticDataService.ForSceneName(_progressService.Progress.World.CurrentLevel));
         }
 
         public void Exit()
