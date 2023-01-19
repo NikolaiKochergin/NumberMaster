@@ -14,8 +14,11 @@ namespace Source.Scripts.Infrastructure
 
         public void Load(string name, Action onLoaded = null) => 
             _coroutineRunner.StartCoroutine(LoadScene(name, onLoaded));
+        
+        public void Reload(Action onLoaded = null) => 
+            _coroutineRunner.StartCoroutine(ReloadScene(onLoaded));
 
-        public IEnumerator LoadScene(string nextScene, Action onLoaded = null)
+        private IEnumerator LoadScene(string nextScene, Action onLoaded = null)
         {
             if (SceneManager.GetActiveScene().name == nextScene)
             {
@@ -24,6 +27,16 @@ namespace Source.Scripts.Infrastructure
             }
 
             AsyncOperation waitNextScene = SceneManager.LoadSceneAsync(nextScene);
+
+            while (!waitNextScene.isDone)
+                yield return null;
+
+            onLoaded?.Invoke();
+        }
+        
+        private IEnumerator ReloadScene(Action onLoaded = null)
+        {
+            AsyncOperation waitNextScene = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
 
             while (!waitNextScene.isDone)
                 yield return null;

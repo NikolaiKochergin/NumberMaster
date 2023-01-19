@@ -22,8 +22,7 @@ namespace Source.Scripts.Infrastructure.States
                 [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services),
                 [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader,
                     services.Single<IGameFactory>(), 
-                    services.Single<IPersistentProgressService>(),
-                    services.Single<IStaticDataService>(), 
+                    services.Single<IPersistentProgressService>(), 
                     services.Single<IUIFactory>()),
                 [typeof(LoadProgressState)] = new LoadProgressState(this, 
                     services.Single<IPersistentProgressService>(),
@@ -35,7 +34,11 @@ namespace Source.Scripts.Infrastructure.States
                     services.Single<IPersistentProgressService>(),
                     services.Single<IStaticDataService>(),
                     services.Single<ISaveLoadService>(),
-                    services.Single<IGameFactory>())
+                    services.Single<IGameFactory>()),
+                [typeof(FailState)] = new FailState(this,
+                    sceneLoader,
+                    services.Single<IPersistentProgressService>(),
+                    services.Single<IStaticDataService>())
             };
         }
 

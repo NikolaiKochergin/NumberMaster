@@ -252,6 +252,7 @@ GameObject:
   - component: {fileID: 6937854176539129855}
   - component: {fileID: 2392093040022180732}
   - component: {fileID: 2230375042224216044}
+  - component: {fileID: 2010308629910517125}
   - component: {fileID: 8896181255023199324}
   m_Layer: 0
   m_Name: Player
@@ -321,7 +322,7 @@ MonoBehaviour:
   _playerMove: {fileID: 6937854176539129853}
   _playerNumber: {fileID: 6937854176539129855}
   _playerFinisherMove: {fileID: 8896181255023199324}
-  _actorNumberChangeParticles: {fileID: 2230375042224216044}
+  _actorFail: {fileID: 2010308629910517125}
 --- !u!114 &6937854176539129853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,6 +376,19 @@ MonoBehaviour:
   _playerNumber: {fileID: 6937854176539129855}
   _reductionNumberParticles: {fileID: 3227819043759271881}
   _increaseNumberParticles: {fileID: 1370396956978010151}
+--- !u!114 &2010308629910517125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6937854176539129850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ac3c2ab6728ad64e9814d0f95f4e57e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerNumber: {fileID: 6937854176539129855}
 --- !u!114 &8896181255023199324
 MonoBehaviour:
   m_ObjectHideFlags: 0

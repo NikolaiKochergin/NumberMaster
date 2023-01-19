@@ -10,10 +10,12 @@ namespace Source.Scripts.PlayerLogic
         [SerializeField] private PlayerMove _playerMove;
         [SerializeField] private PlayerNumber _playerNumber;
         [SerializeField] private PlayerFinisherMove _playerFinisherMove;
+        [SerializeField] private ActorFail _actorFail;
 
         public PlayerMove PlayerMove => _playerMove;
         public PlayerNumber PlayerNumber => _playerNumber;
         public PlayerFinisherMove PlayerFinisherMove => _playerFinisherMove;
+        public ActorFail ActorFail => _actorFail;
 
         public void LoadProgress(PlayerProgress progress) => 
             _playerNumber.LoadProgress(progress);

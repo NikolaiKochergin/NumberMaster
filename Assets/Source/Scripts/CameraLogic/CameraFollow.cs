@@ -6,8 +6,11 @@ namespace Source.Scripts.CameraLogic
     {
         private Transform _following;
 
-        private void LateUpdate() => 
-            transform.position = FollowPointPosition();
+        private void LateUpdate()
+        {
+            if(_following != null)
+                transform.position = FollowPointPosition();
+        }
 
         public void Follow(Transform following) => 
             _following = following;

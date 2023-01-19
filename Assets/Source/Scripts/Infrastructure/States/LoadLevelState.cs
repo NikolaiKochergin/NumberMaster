@@ -1,7 +1,6 @@
 ﻿using Source.Scripts.Infrastructure.Factory;
 using Source.Scripts.PlayerLogic;
 using Source.Scripts.Services.PersistentProgress;
-using Source.Scripts.Services.StaticData;
 using Source.Scripts.UI.Services.Factory;
 using UnityEngine;
 
@@ -13,16 +12,14 @@ namespace Source.Scripts.Infrastructure.States
         private readonly SceneLoader _sceneLoader;
         private readonly IGameFactory _gameFactory;
         private readonly IPersistentProgressService _progressService;
-        private readonly IStaticDataService _staticData;
         private readonly IUIFactory _uiFactory;
 
-        public LoadLevelState(GameStateMachine stateMachine, SceneLoader sceneLoader, IGameFactory gameFactory, IPersistentProgressService progressService, IStaticDataService staticData, IUIFactory uiFactory)
+        public LoadLevelState(GameStateMachine stateMachine, SceneLoader sceneLoader, IGameFactory gameFactory, IPersistentProgressService progressService, IUIFactory uiFactory)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
             _gameFactory = gameFactory;
             _progressService = progressService;
-            _staticData = staticData;
             _uiFactory = uiFactory;
         }
         

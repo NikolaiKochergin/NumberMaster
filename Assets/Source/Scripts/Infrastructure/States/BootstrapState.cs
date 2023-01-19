@@ -54,6 +54,7 @@ namespace Source.Scripts.Infrastructure.States
             _services.RegisterSingle<IGameStateMachine>(_stateMachine);
 
             _services.RegisterSingle<IGameFactory>(new GameFactory(
+                _services.Single<IGameStateMachine>(),
                 _services.Single<IInputService>(),
                 _services.Single<IAssetProvider>(),
                 _services.Single<IStaticDataService>()));

@@ -289,6 +289,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 2086171127365222494}
+  _meshRenderer: {fileID: 2086171126731060789}
+  _redMaterial: {fileID: 2100000, guid: 73483fa7523c3924599087b33404816e, type: 2}
+  _blueMaterial: {fileID: 2100000, guid: 23295406813a9ae4986af55b217f4429, type: 2}
 --- !u!1 &2086171127365222492
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,7 +358,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5
+  m_text: 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
