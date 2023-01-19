@@ -1,5 +1,6 @@
 using DG.Tweening;
 using Newtonsoft.Json.Linq;
+using Source.Scripts.CameraLogic;
 using Source.Scripts.InteractiveObjects;
 using Source.Scripts.InteractiveObjects.Number;
 using Source.Scripts.PlayerLogic;
