@@ -35,11 +35,11 @@ public class FinishPanel : MonoBehaviour
             if(player.PlayerNumber.Current >= _value)
             {
                 transform.position = new Vector3(transform.position.x,-8,transform.position.z);
-                player.PlayerMoveFinish.SetSpeed(1);
+                player.PlayerFinisherMove.AddSpeed(1);
             }
             else
             {
-                player.PlayerMoveFinish.enabled= false;
+                player.PlayerFinisherMove.enabled= false;
                 Debug.Log("Смерть!");
             }
         }

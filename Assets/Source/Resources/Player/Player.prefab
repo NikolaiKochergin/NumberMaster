@@ -307,7 +307,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerMove: {fileID: 6937854176539129853}
   _playerNumber: {fileID: 6937854176539129855}
-  _playerMoveFinish: {fileID: 8896181255023199324}
+  _playerFinisherMove: {fileID: 8896181255023199324}
   _actorPlayerPartikle: {fileID: 2230375042224216044}
 --- !u!114 &6937854176539129853
 MonoBehaviour:

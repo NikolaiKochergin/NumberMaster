@@ -29,7 +29,7 @@ namespace Source.Scripts.InteractiveObjects.Saw
             {
                _damgeSaw.enabled= true;
                _damgeSaw.SetHealth(player.PlayerNumber);
-                player.ActorPlayerPartikle.PlayPartikleDestroyWall();
+                player.ActorNumberChangeParticles.PlayPartikleDestroyWall();
             }
         }
 
@@ -38,7 +38,7 @@ namespace Source.Scripts.InteractiveObjects.Saw
             if (colliderTarget.TryGetComponent(out Player player))
             {
                 _damgeSaw.enabled = false;
-                player.ActorPlayerPartikle.StopPartikleDestroyWall();
+                player.ActorNumberChangeParticles.StopPartikleDestroyWall();
             }
         }
     }

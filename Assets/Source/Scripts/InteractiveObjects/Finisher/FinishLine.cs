@@ -23,7 +23,7 @@ public class FinishLine : MonoBehaviour
         if(collider.TryGetComponent(out Player player))
         {
             player.PlayerMove.enabled = false;
-            player.PlayerMoveFinish.enabled = true;
+            player.PlayerFinisherMove.enabled = true;
         }
     }
 }

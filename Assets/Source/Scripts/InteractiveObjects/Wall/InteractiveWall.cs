@@ -47,7 +47,7 @@ namespace Source.Scripts.InteractiveObjects.Wall
                 player.PlayerMove.SetSpeedFactor(_slowDownFactor);
                 _damageWal.enabled = true;
                 _damageWal.SetHealth(player, this);
-                player.ActorPlayerPartikle.PlayPartikleDestroyWall();
+                player.ActorNumberChangeParticles.PlayPartikleDestroyWall();
             }
             else
             {
@@ -61,7 +61,7 @@ namespace Source.Scripts.InteractiveObjects.Wall
             {
                 _damageWal.enabled = false;
                 player.PlayerMove.SetSpeedFactor(1f);
-                player.ActorPlayerPartikle.StopPartikleDestroyWall();
+                player.ActorNumberChangeParticles.StopPartikleDestroyWall();
             }
         }
 
