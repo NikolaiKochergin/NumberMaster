@@ -10,6 +10,7 @@ namespace Source.Scripts.PlayerLogic
         [SerializeField] private PlayerMove _playerMove;
         [SerializeField] private PlayerNumber _playerNumber;
         [SerializeField] private PlayerMoveFinish _playerMoveFinish;
+        [SerializeField] private ParticleSystem _particleSystemWallDistroi;
 
         public PlayerMove PlayerMove => _playerMove;
         public PlayerNumber PlayerNumber => _playerNumber;
@@ -23,6 +24,16 @@ namespace Source.Scripts.PlayerLogic
         public void UpdateProgress(PlayerProgress progress)
         {
             _playerNumber.UpdateProgress(progress);
+        }
+
+        public void PlayPartikleDestroyWall()
+        {
+            _particleSystemWallDistroi.Play();
+        }
+
+        public void StopPartikleDestroyWall()
+        {
+            _particleSystemWallDistroi.Stop();
         }
     }
 }
