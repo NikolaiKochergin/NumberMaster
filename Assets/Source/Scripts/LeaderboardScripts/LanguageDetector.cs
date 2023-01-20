@@ -4,7 +4,7 @@ using Lean.Localization;
 using TMPro;
 using UnityEngine;
 
-namespace Source.Scripts.Leaderboard
+namespace Source.Scripts.LeaderboardScripts
 {
     public class LanguageDetector : MonoBehaviour
     {

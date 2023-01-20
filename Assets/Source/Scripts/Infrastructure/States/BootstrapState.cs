@@ -1,4 +1,5 @@
-﻿using Source.Scripts.Infrastructure.AssetManagement;
+﻿using Agava.YandexGames;
+using Source.Scripts.Infrastructure.AssetManagement;
 using Source.Scripts.Infrastructure.Factory;
 using Source.Scripts.Services;
 using Source.Scripts.Services.Input;
@@ -9,7 +10,6 @@ using Source.Scripts.UI.Services.Factory;
 using Source.Scripts.UI.Services.Windows;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Application = UnityEngine.Device.Application;
 
 namespace Source.Scripts.Infrastructure.States
 {
@@ -82,7 +82,7 @@ namespace Source.Scripts.Infrastructure.States
             _stateMachine.Enter<LoadProgressState>();
 
         private IInputService InputService() =>
-            Application.isEditor
+            Device.Type == Agava.YandexGames.DeviceType.Desktop
                 ? (IInputService) new StandaloneInputService(
                     _services.Single<IStaticDataService>().ForMouseSensitivity(),
                     _services.Single<IStaticDataService>().ForKeyboardSensitivity())

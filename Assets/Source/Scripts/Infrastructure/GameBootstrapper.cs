@@ -1,4 +1,6 @@
-﻿using Source.Scripts.Infrastructure.States;
+﻿using Agava.YandexGames;
+using Source.Scripts.Infrastructure.States;
+using System.Collections;
 using UnityEngine;
 
 namespace Source.Scripts.Infrastructure
@@ -7,12 +9,24 @@ namespace Source.Scripts.Infrastructure
     {
         private Game _game;
 
-        private void Awake()
+#if YANDEX_GAMES && !UNITY_EDITOR
+        private IEnumerator Start()
         {
+            yield return YandexGamesSdk.Initialize();
+            //GameAnalytics.Initialize();
             _game = new Game(this);
             _game.StateMachine.Enter<BootstrapState>();
             
             DontDestroyOnLoad(this);
         }
+#else
+        private void Start()
+        {
+           //GameAnalytics.Initialize();
+            _game = new Game(this);
+            _game.StateMachine.Enter<BootstrapState>();
+            DontDestroyOnLoad(this);
+        }
+#endif
     }
 }
