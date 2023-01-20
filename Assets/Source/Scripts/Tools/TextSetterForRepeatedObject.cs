@@ -1,6 +1,5 @@
 #if UNITY_EDITOR
 using Source.Scripts.InteractiveObjects.Finisher;
-using TMPro;
 using UnityEngine;
 
 namespace Source.Scripts.Tools
@@ -29,13 +28,9 @@ namespace Source.Scripts.Tools
         private void CorrectText()
         {
             FinishPanel[] finishPanels = GetComponentsInChildren<FinishPanel>();
-
-            for (int i = 0; i < finishPanels.Length; i++)
-            {
-                TextMeshProUGUI[] texts = finishPanels[i].GetComponentsInChildren<TextMeshProUGUI>();
-                foreach (TextMeshProUGUI text in texts) 
-                    text.text = (_startValue + _increment * i).ToString();
-            }
+            
+            for (int i = 0; i < finishPanels.Length; i++) 
+                finishPanels[i].SetValue(_startValue + _increment * i);
         }
     }
 }
