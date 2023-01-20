@@ -17,6 +17,6 @@ namespace Source.Scripts.PlayerLogic
         }
 
         private void UpdatePlayerView() => 
-            _playerView.SetValue(_playerNumber.Current);
+            _playerView.ShowValue(_playerNumber.Current);
     }
 }
