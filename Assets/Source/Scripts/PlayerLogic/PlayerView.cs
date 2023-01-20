@@ -12,15 +12,22 @@ namespace Source.Scripts.PlayerLogic
         {
             string numberString = playerNumberCurrent.ToString();
 
-            int length = numberString.Length > _numberViews.Count ? numberString.Length : _numberViews.Count;
-
             if (numberString.Length > _numberViews.Count)
             {
                 for (int i = _numberViews.Count; i < numberString.Length; i++)
                 {
-                    var number = Instantiate(_numberViews[0], transform);
+                    NumberView number = Instantiate(_numberViews[0], transform);
+                    number.transform.localPosition += transform.right * i * 0.5f;
                     _numberViews.Add(number);
-                    
+                }
+            }
+            else if(numberString.Length < _numberViews.Count)
+            {
+                for (int i = _numberViews.Count - 1; _numberViews.Count > numberString.Length; i--)
+                {
+                    NumberView number = _numberViews[i];
+                    _numberViews.Remove(number);
+                    Destroy(number.gameObject);
                 }
             }
             

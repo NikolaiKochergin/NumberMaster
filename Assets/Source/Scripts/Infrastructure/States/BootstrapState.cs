@@ -81,11 +81,20 @@ namespace Source.Scripts.Infrastructure.States
         private void EnterLoadLevel() => 
             _stateMachine.Enter<LoadProgressState>();
 
+#if UNITY_EDITOR
+        private IInputService InputService() =>
+            Application.isEditor
+                ? (IInputService) new StandaloneInputService(
+                    _services.Single<IStaticDataService>().ForMouseSensitivity(),
+                    _services.Single<IStaticDataService>().ForKeyboardSensitivity())
+                : new MobileInputService(_services.Single<IStaticDataService>().ForMouseSensitivity());
+#else
         private IInputService InputService() =>
             Device.Type == Agava.YandexGames.DeviceType.Desktop
                 ? (IInputService) new StandaloneInputService(
                     _services.Single<IStaticDataService>().ForMouseSensitivity(),
                     _services.Single<IStaticDataService>().ForKeyboardSensitivity())
                 : new MobileInputService(_services.Single<IStaticDataService>().ForMouseSensitivity());
+#endif
     }
 }
