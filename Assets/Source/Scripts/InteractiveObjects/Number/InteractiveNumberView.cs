@@ -20,6 +20,7 @@ namespace Source.Scripts.InteractiveObjects.Number
 
         private IEnumerator Start()
         {
+            yield return AllServices.Container.Single<IGameFactory>();
             yield return AllServices.Container.Single<IGameFactory>().Player;
             _playerNumber = AllServices.Container.Single<IGameFactory>().Player.PlayerNumber;
             SetView();

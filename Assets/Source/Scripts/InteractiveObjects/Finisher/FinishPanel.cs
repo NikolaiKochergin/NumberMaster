@@ -51,5 +51,22 @@ namespace Source.Scripts.InteractiveObjects.Finisher
                 }
             }
         }
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            InitCameraShake();
+        }
+
+        private void Reset()
+        {
+            InitCameraShake();
+        }
+
+        private void InitCameraShake()
+        {
+            if(Camera.main.GetComponentInParent<ShakeCamera>())
+                _shakeCamera = Camera.main.GetComponentInParent<ShakeCamera>();
+        }
+#endif
     }
 }
