@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace Source.Scripts.InteractiveObjects.Finisher
 {
+    [SelectionBase]
     public class FinishPanel : MonoBehaviour
     {
         [SerializeField] private int _value;
@@ -21,14 +22,16 @@ namespace Source.Scripts.InteractiveObjects.Finisher
             _numberText.SetText(_value);
         }
 
-        private void OnEnable()
-        {
+        private void OnEnable() => 
             _triggerObserver.TriggerEnter += IsPlayerWeaker;
-        }
 
-        private void OnDisable()
-        {
+        private void OnDisable() => 
             _triggerObserver.TriggerEnter -= IsPlayerWeaker;
+
+        public void SetValue(int value)
+        {
+            _value = value;
+            _numberText.SetText(value);
         }
 
         private void IsPlayerWeaker(Collider collider)
