@@ -13,27 +13,36 @@ namespace Source.Scripts.PlayerLogic
             string numberString = playerNumberCurrent.ToString();
 
             if (numberString.Length > _numberViews.Count)
-            {
-                for (int i = _numberViews.Count; i < numberString.Length; i++)
-                {
-                    NumberView number = Instantiate(_numberViews[0], transform);
-                    number.transform.localPosition += transform.right * i * 0.5f;
-                    _numberViews.Add(number);
-                }
-            }
-            else if(numberString.Length < _numberViews.Count)
-            {
-                for (int i = _numberViews.Count - 1; _numberViews.Count > numberString.Length; i--)
-                {
-                    NumberView number = _numberViews[i];
-                    _numberViews.Remove(number);
-                    Destroy(number.gameObject);
-                }
-            }
-            
+                AddNumbers(numberString);
+            else if(numberString.Length < _numberViews.Count) RemoveNumbers(numberString);
 
-            for (int i = 0; i < numberString.Length; i++) 
+            InitNumbers(numberString);
+        }
+
+        private void InitNumbers(string numberString)
+        {
+            for (int i = 0; i < numberString.Length; i++)
                 _numberViews[i].Show(numberString[i]);
+        }
+
+        private void RemoveNumbers(string numberString)
+        {
+            for (int i = _numberViews.Count - 1; _numberViews.Count > numberString.Length; i--)
+            {
+                NumberView number = _numberViews[i];
+                _numberViews.Remove(number);
+                Destroy(number.gameObject);
+            }
+        }
+
+        private void AddNumbers(string numberString)
+        {
+            for (int i = _numberViews.Count; i < numberString.Length; i++)
+            {
+                NumberView number = Instantiate(_numberViews[0], transform);
+                number.transform.localPosition += transform.right * i * 0.5f;
+                _numberViews.Add(number);
+            }
         }
     }
 }
