@@ -13,10 +13,21 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: 
   PlayerSpeed: 3
+  StartNumberBasePrice: 200
+  IncomeBasePrice: 500
+  IncomeIncrement: 0.1
   MouseSensitivity: 0.2
   KeyboardSensitivity: 0.03
   RepeatLevelNumber: 1
   LevelSceneNames:
   - Initial
-  - 001_Level_1
-  - 002_Level_2
+  - 001_Level_121 1
+  - 001_Level_121 2
+  - 001_Level_121 3
+  - 001_Level_121 4
+  - 001_Level_121 5
+  - 001_Level_121 6
+  - 001_Level_121 7
+  - 001_Level_121 8
+  - 001_Level_121 9
+  - 001_Level_121 10
