@@ -4,14 +4,14 @@ using Lean.Localization;
 using TMPro;
 using UnityEngine;
 
-namespace Localization
+namespace Source.Scripts.Leaderboard
 {
     public class LanguageDetector : MonoBehaviour
     {
         [SerializeField] private LeanLocalization _leanLocalization;
 
         private string _language;
-        
+
         private const string RussianTranslationCode = "ru";
         private const string EnglishTranslationCode = "en";
         private const string TurkishTranslationCode = "tr";
