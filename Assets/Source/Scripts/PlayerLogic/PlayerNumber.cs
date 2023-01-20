@@ -8,6 +8,7 @@ namespace Source.Scripts.PlayerLogic
     public class PlayerNumber : MonoBehaviour , ISavedProgress
     {
         private State _state;
+        private bool _isFail;
 
         public event Action NumberChanged;
         public event Action FailHappened;
@@ -38,16 +39,22 @@ namespace Source.Scripts.PlayerLogic
 
         public void TakeNumber(int value)
         {
-            if(Current <= 0)
+            if(_isFail)
                 return;
 
-            if (Current + value < 1)
+            if (Current + value < 0 || Current < value)
             {
-                FailHappened?.Invoke();
+                SetFail();
                 return;
             }
 
             Current += value;
+        }
+
+        private void SetFail()
+        {
+            _isFail = true;
+            FailHappened?.Invoke();
         }
     }
 }
