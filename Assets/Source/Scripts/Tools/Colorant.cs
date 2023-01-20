@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Source.Scripts.Tools
 {
-    [ExecuteAlways]
+    [ExecuteInEditMode]
     public class Colorant : MonoBehaviour
     {
         [SerializeField] private Material _templateMaterial;

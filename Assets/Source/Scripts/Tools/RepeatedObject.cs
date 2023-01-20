@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Source.Scripts.Tools
 {
-    [ExecuteAlways]
+    [ExecuteInEditMode]
     [SelectionBase]
     public class RepeatedObject : MonoBehaviour
     {
@@ -20,10 +20,8 @@ namespace Source.Scripts.Tools
             }
         }
 
-        private void Update()
-        {
+        private void Update() => 
             CorrectChildCount();
-        }
 
         private void CorrectChildCount()
         {
