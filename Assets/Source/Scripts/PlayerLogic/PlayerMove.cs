@@ -34,7 +34,8 @@ namespace Source.Scripts.PlayerLogic
         private void Move()
         {
             transform.position += transform.forward * _speed * Time.deltaTime;
-            transform.position = new Vector3(_inputService.OffsetX, transform.position.y, transform.position.z);
+            transform.position += transform.right * _inputService.DeltaX;
+            //transform.position = new Vector3(_inputService.DeltaX, transform.position.y, transform.position.z);
         }
     }
 }

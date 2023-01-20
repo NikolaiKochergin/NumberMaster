@@ -11,11 +11,10 @@
             _keyboardSensitivity = keyboardSensitivity;
         }
 
-        public override float OffsetX { get
+        public override float DeltaX { get
             {
-                _offsetX += GetMouseDeltaX() * _mouseSensitivity;
-                _offsetX += GetKeyBoardDeltaX() * _keyboardSensitivity;
-                return _offsetX;
+                _deltaX = GetMouseDeltaX() * _mouseSensitivity + GetKeyBoardDeltaX() * _keyboardSensitivity;
+                return _deltaX;
             }
         }
 
