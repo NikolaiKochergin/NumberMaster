@@ -1,8 +1,9 @@
+using Agava.YandexGames;
 using Source.Scripts.Services;
 using Source.Scripts.Services.PersistentProgress;
 using UnityEngine;
 
-namespace Source.Scripts.Leaderboard
+namespace Source.Scripts.LeaderboardScripts
 {
     public class LeaderboardScoreSaver : MonoBehaviour
     {
@@ -37,12 +38,12 @@ namespace Source.Scripts.Leaderboard
 
         private void Save()
         {
-#if !UNITY_EDITOR && UNITY_WEBGL
         if (PlayerAccount.IsAuthorized && _lastSavedScore != _totalScore)
         {
             Leaderboard.SetScore(LeaderboardName.Name, _totalScore);
             _lastSavedScore = _totalScore;
         }
+#if !UNITY_EDITOR && UNITY_WEBGL
 #endif
         }
     }

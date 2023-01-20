@@ -129,9 +129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f0ce3c146dbaac49a3f6a58bc60f530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: {fileID: 0}
-  _coins: {fileID: 0}
-  _image: {fileID: 0}
+  _name: {fileID: 6986114634006086925}
+  _coins: {fileID: 6986114634273412012}
+  _image: {fileID: 6986114633194822424}
   _rank: {fileID: 0}
 --- !u!1 &6986114633194822426
 GameObject:

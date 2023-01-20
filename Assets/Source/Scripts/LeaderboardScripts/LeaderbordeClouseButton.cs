@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Source.Scripts.Leaderboard
+namespace Source.Scripts.LeaderboardScripts
 {
     public class LeaderbordeClouseButton : MonoBehaviour
     {
