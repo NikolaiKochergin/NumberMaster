@@ -421,7 +421,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6891757765427252019, guid: b5a63f35127765140a07c180441f56e7, type: 3}
       propertyPath: m_text
-      value: INCOME
+      value: "\u0414\u041E\u0425\u041E\u0414"
       objectReference: {fileID: 0}
     - target: {fileID: 6891757765427252019, guid: b5a63f35127765140a07c180441f56e7, type: 3}
       propertyPath: m_fontSize
@@ -460,6 +460,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cfb7fe4c43b49f69be0ea3001afe116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2492086182782187324 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5824354435568635045, guid: b5a63f35127765140a07c180441f56e7, type: 3}
+  m_PrefabInstance: {fileID: 8233117427302284185}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2722304608270232306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2492086182782187324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: INCOME
+  FallbackText: "\u0414\u041E\u0425\u041E\u0414"
 --- !u!114 &2642789935398868106 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6263658105469628179, guid: b5a63f35127765140a07c180441f56e7, type: 3}
@@ -502,6 +521,14 @@ PrefabInstance:
     - target: {fileID: 1310701461218911249, guid: b5a63f35127765140a07c180441f56e7, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2648448659249653021, guid: b5a63f35127765140a07c180441f56e7, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -332.2071
+      objectReference: {fileID: 0}
+    - target: {fileID: 2648448659249653021, guid: b5a63f35127765140a07c180441f56e7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 155.40619
       objectReference: {fileID: 0}
     - target: {fileID: 2655354333884516600, guid: b5a63f35127765140a07c180441f56e7, type: 3}
       propertyPath: m_AnchorMax.y
@@ -651,6 +678,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartNumber_Button
       objectReference: {fileID: 0}
+    - target: {fileID: 6891757765427252019, guid: b5a63f35127765140a07c180441f56e7, type: 3}
+      propertyPath: m_text
+      value: "\u0421\u0422\u0410\u0420\u0422\u041E\u0412\u042B\u0419 \u041D\u041E\u041C\u0415\u0420"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6891757765427252019, guid: b5a63f35127765140a07c180441f56e7, type: 3}
+      propertyPath: m_fontSize
+      value: 37.15
+      objectReference: {fileID: 0}
     - target: {fileID: 7935422270965601799, guid: b5a63f35127765140a07c180441f56e7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -695,6 +730,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cfb7fe4c43b49f69be0ea3001afe116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3394177074976707481 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5824354435568635045, guid: b5a63f35127765140a07c180441f56e7, type: 3}
+  m_PrefabInstance: {fileID: 9209519912908283708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1077769140492313944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3394177074976707481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: START NUMBER
+  FallbackText: "\u0421\u0422\u0410\u0420\u0422\u041E\u0412\u042B\u0419 \u041D\u041E\u041C\u0415\u0420"
 --- !u!224 &4565973879076375374 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4653151471968687218, guid: b5a63f35127765140a07c180441f56e7, type: 3}

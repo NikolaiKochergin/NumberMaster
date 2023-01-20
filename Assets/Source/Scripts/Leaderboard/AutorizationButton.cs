@@ -4,29 +4,32 @@ using Agava.YandexGames;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AutorizationButton : MonoBehaviour
+namespace Source.Scripts.Leaderboard
 {
-    private Button _button;
-
-    private void Awake()
+    public class AutorizationButton : MonoBehaviour
     {
-        _button = GetComponent<Button>();
-    }
+        private Button _button;
 
-    private void OnEnable()
-    {
-        _button.onClick.AddListener(OnButtonClick);
-    }
+        private void Awake()
+        {
+            _button = GetComponent<Button>();
+        }
 
-    private void OnDisable()
-    {
-        _button.onClick.RemoveListener(OnButtonClick);
-    }
+        private void OnEnable()
+        {
+            _button.onClick.AddListener(OnButtonClick);
+        }
 
-    private void OnButtonClick()
-    {
+        private void OnDisable()
+        {
+            _button.onClick.RemoveListener(OnButtonClick);
+        }
+
+        private void OnButtonClick()
+        {
 #if (!UNITY_EDITOR && UNITY_WEBGL)
         PlayerAccount.Authorize();
 #endif
+        }
     }
 }
