@@ -32,11 +32,9 @@ namespace Source.Scripts.Infrastructure.States
 
         public void Enter()
         {
-            // На релизе этот кусок вырезать
-            Debug.Log("На релизе этот кусок вырезать");
+#if UNITY_EDITOR
             PlayerPrefs.SetString("SceneToLoad", SceneManager.GetActiveScene().name);
-            // ----------
-            
+#endif
             _sceneLoader.Load(_staticData.ForSceneName(0), onLoaded: EnterLoadLevel);
         }
 

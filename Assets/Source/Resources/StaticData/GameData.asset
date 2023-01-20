@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: 
   PlayerSpeed: 3
+  StartNumberBasePrice: 200
+  IncomeBasePrice: 500
+  IncomeIncrement: 0.1
   MouseSensitivity: 0.2
   KeyboardSensitivity: 0.03
   RepeatLevelNumber: 1

@@ -25,14 +25,12 @@ namespace Source.Scripts.Infrastructure.States
         public void Enter()
         {
             LoadProgressOrInitNew();
-            
-            // На релизе этот кусок вырезать
-            Debug.Log("Этот кусок тоже вырезать");
+#if UNITY_EDITOR
             if(PlayerPrefs.GetString("SceneToLoad") != _staticDataService.ForSceneName(_progressService.Progress.World.CurrentLevel) &&
                PlayerPrefs.GetString("SceneToLoad") != _staticDataService.ForSceneName(0))
                 _stateMachine.Enter<LoadLevelState, string>(PlayerPrefs.GetString("SceneToLoad"));
             else
-            //---------------------------------------------
+#endif
                 _stateMachine.Enter<LoadLevelState, string>(_staticDataService.ForSceneName(_progressService.Progress.World.CurrentLevel));
         }
 

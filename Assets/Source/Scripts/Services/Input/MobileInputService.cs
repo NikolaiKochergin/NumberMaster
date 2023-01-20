@@ -7,10 +7,10 @@
         public MobileInputService(float mouseSensitivity) => 
             _mouseSensitivity = mouseSensitivity;
 
-        public override float OffsetX { get
+        public override float DeltaX { get
             {
-                _offsetX += GetMouseDeltaX() * _mouseSensitivity;
-                return _offsetX;
+                _deltaX = GetMouseDeltaX() * _mouseSensitivity;
+                return _deltaX;
             }
         }
     }
