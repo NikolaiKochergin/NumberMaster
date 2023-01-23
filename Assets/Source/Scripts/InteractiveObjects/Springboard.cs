@@ -19,7 +19,7 @@ namespace Source.Scripts.InteractiveObjects
 
         private void MovePlayer(Collider other)
         {
-            if (other.TryGetComponent(out Player player))
+            if (other.attachedRigidbody.TryGetComponent(out Player player))
             {
                 Move(player.transform);
                 _triggerObserver.gameObject.SetActive(false);

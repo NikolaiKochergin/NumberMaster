@@ -21,7 +21,7 @@ namespace Source.Scripts.InteractiveObjects.Number
 
         private void AffectPlayer(Collider other)
         {
-            if (!other.TryGetComponent(out PlayerNumber playerNumber)) 
+            if (!other.attachedRigidbody.TryGetComponent(out PlayerNumber playerNumber)) 
                 return;
             
             playerNumber.TakeNumber(_value);

@@ -56,7 +56,7 @@ namespace Source.Scripts.PlayerLogic
 
             for (int i = 1; i < _numberViews.Count; i++)
                 _numberViews[i].transform.localPosition = _numberViews[0].transform.localPosition +
-                                                          transform.right * _numberViews[0].transform.localScale.x * i;
+                                                          transform.right * (_numberViews[0].transform.localScale.x * i);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Source.Scripts.InteractiveObjects.Saw
 
         private void ActivateDamage(Collider colliderTarget)
         {
-            if(colliderTarget.TryGetComponent(out Player player))
+            if(colliderTarget.attachedRigidbody.TryGetComponent(out Player player))
             {
                _damgeSaw.enabled= true;
                _damgeSaw.SetHealth(player.PlayerNumber);
@@ -31,7 +31,7 @@ namespace Source.Scripts.InteractiveObjects.Saw
 
         private void TurnOffDamage(Collider colliderTarget)
         {
-            if (colliderTarget.TryGetComponent(out Player player)) 
+            if (colliderTarget.attachedRigidbody.TryGetComponent(out Player player)) 
                 _damgeSaw.enabled = false;
         }
     }

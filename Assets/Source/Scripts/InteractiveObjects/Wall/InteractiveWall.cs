@@ -40,7 +40,7 @@ namespace Source.Scripts.InteractiveObjects.Wall
 
         private void AffectPlayer(Collider other)
         {
-            if (other.TryGetComponent(out Player player))
+            if (other.attachedRigidbody.TryGetComponent(out Player player))
             {
                 player.PlayerMove.SetSpeedFactor(_slowDownFactor);
                 _damageWall.enabled = true;
@@ -50,7 +50,7 @@ namespace Source.Scripts.InteractiveObjects.Wall
 
         private void AffectPlayerOff(Collider collider)
         {
-            if (collider.TryGetComponent(out Player player))
+            if (collider.attachedRigidbody.TryGetComponent(out Player player))
             {
                 _damageWall.enabled = false;
                 player.PlayerMove.SetSpeedFactor(1f);

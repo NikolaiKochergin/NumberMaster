@@ -13,7 +13,11 @@
 
         public override float DeltaX { get
             {
-                _deltaX = GetMouseDeltaX() * _mouseSensitivity + GetKeyBoardDeltaX() * _keyboardSensitivity;
+                if (UnityEngine.Input.GetMouseButton(0))
+                    _deltaX = GetMouseDeltaX() * _mouseSensitivity;
+                else
+                    _deltaX = GetKeyBoardDeltaX() * _keyboardSensitivity;
+                    
                 return _deltaX;
             }
         }
