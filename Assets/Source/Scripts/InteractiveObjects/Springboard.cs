@@ -21,15 +21,24 @@ namespace Source.Scripts.InteractiveObjects
         {
             if (other.attachedRigidbody.TryGetComponent(out Player player))
             {
-                Move(player.transform);
+                Move(player);
                 _triggerObserver.gameObject.SetActive(false);
             }
         }
 
-        private void Move(Transform targetTransform) => 
-            targetTransform
+        private void Move(Player player)
+        {
+            player.ActorFall.Disable();
+            
+            player.transform
                 .DOMoveY(_jumpForse, _duration)
                 .SetEase(_jumpCurve)
-                .OnComplete(() => targetTransform.position = new Vector3(targetTransform.position.x, 0, targetTransform.position.z));
+                .OnComplete(() =>
+                {
+                    player.transform.position =
+                        new Vector3(player.transform.position.x, 0, player.transform.position.z);
+                    player.ActorFall.Enable();
+                });
+        }
     }
 }
