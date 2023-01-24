@@ -15,7 +15,7 @@ namespace Source.Scripts.InteractiveObjects.Finisher
 
         private void —hange—ontrol(Collider collider)
         {
-            if(collider.TryGetComponent(out Player player))
+            if(collider.attachedRigidbody.TryGetComponent(out Player player))
             {
                 player.PlayerMove.Disable();
                 player.PlayerFinisherMove.Enable();
