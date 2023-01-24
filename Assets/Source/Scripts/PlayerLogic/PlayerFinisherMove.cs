@@ -12,11 +12,11 @@ namespace Source.Scripts.PlayerLogic
         private void Awake() => 
             Disable();
 
-        private void Update()
-        {
+        private void OnEnable() => 
             transform.DOMoveX(_positionX, _duration);
+
+        private void Update() => 
             transform.position += transform.forward * _speed * Time.deltaTime;
-        }
 
         public void AddSpeed(float speed) => 
             _speed += speed;

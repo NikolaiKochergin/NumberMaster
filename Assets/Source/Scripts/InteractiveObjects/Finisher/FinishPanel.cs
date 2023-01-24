@@ -15,6 +15,8 @@ namespace Source.Scripts.InteractiveObjects.Finisher
         [SerializeField] private ShakeCamera _shakeCamera;
 
         private IGameStateMachine _stateMachine;
+
+        private bool _isPlayerFinished;
         
         private void Awake()
         {
@@ -36,7 +38,10 @@ namespace Source.Scripts.InteractiveObjects.Finisher
 
         private void IsPlayerWeaker(Collider collider)
         {
-            if(collider.TryGetComponent(out Player player))
+            if(_isPlayerFinished)
+                return;
+            
+            if(collider.attachedRigidbody.TryGetComponent(out Player player))
             {
                 if(player.PlayerNumber.Current >= _value)
                 {
@@ -47,6 +52,7 @@ namespace Source.Scripts.InteractiveObjects.Finisher
                 else
                 {
                     player.PlayerFinisherMove.Disable();
+                    _isPlayerFinished = true;
                     _stateMachine.Enter<LevelCompleteState>();
                 }
             }

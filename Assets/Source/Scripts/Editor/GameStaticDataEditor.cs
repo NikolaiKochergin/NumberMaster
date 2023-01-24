@@ -21,7 +21,8 @@ namespace Source.Scripts.Editor
                 EditorBuildSettingsScene[] scenes = EditorBuildSettings.scenes;
 
                 foreach (EditorBuildSettingsScene scene in scenes)
-                    gameData.LevelSceneNames.Add(Path.GetFileNameWithoutExtension(scene.path));
+                    if(scene.enabled)
+                        gameData.LevelSceneNames.Add(Path.GetFileNameWithoutExtension(scene.path));
             }
             
             EditorUtility.SetDirty(target);

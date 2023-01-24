@@ -34,6 +34,7 @@ namespace Source.Scripts.Infrastructure.Factory
             Player = InstantiateRegistered<Player>(AssetPath.PlayerPath);
             Player.PlayerMove.Construct(_input, _staticData);
             Player.ActorFail.Construct(_stateMachine);
+            Player.ActorFall.Construct(_stateMachine);
             Player.PlayerMove.Disable();
             
             return Player;

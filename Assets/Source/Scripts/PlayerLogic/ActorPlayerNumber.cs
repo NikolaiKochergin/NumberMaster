@@ -4,7 +4,7 @@ namespace Source.Scripts.PlayerLogic
 {
     public class ActorPlayerNumber : MonoBehaviour
     {
-        [SerializeField] private PlayerView _playerView;
+        [SerializeField] private PlayerViewModel _playerViewModel;
         [SerializeField]private PlayerNumber _playerNumber;
 
         private void Awake() => 
@@ -17,6 +17,6 @@ namespace Source.Scripts.PlayerLogic
         }
 
         private void UpdatePlayerView() => 
-            _playerView.ShowValue(_playerNumber.Current);
+            _playerViewModel.ShowValue(_playerNumber.Current);
     }
 }

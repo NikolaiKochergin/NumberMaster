@@ -28,7 +28,9 @@ namespace Source.Scripts.Infrastructure.States
                     services.Single<IPersistentProgressService>(),
                     services.Single<IStaticDataService>(),
                     services.Single<ISaveLoadService>()),
-                [typeof(ShopState)] = new ShopState(services.Single<IWindowService>()),
+                [typeof(ShopState)] = new ShopState(
+                    services.Single<IWindowService>(),
+                    services.Single<ISaveLoadService>()),
                 [typeof(GameLoopState)] = new GameLoopState(services.Single<IGameFactory>()),
                 [typeof(LevelCompleteState)] = new LevelCompleteState(this,
                     services.Single<IPersistentProgressService>(),
