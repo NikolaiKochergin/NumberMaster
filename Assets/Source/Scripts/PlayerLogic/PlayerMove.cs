@@ -9,6 +9,8 @@ namespace Source.Scripts.PlayerLogic
         private IInputService _inputService;
         private IStaticDataService _staticData;
         private float _speed;
+
+        public float Speed => _speed;
         
         public void Construct(IInputService inputService, IStaticDataService staticData)
         {
