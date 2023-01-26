@@ -2,11 +2,12 @@ using UnityEngine;
 
 namespace Source.Scripts.PlayerLogic
 {
-    public class ActorNumberChangeParticles : MonoBehaviour
+    public class ActorNumberChanged : MonoBehaviour
     {
         [SerializeField] private PlayerNumber _playerNumber;
         [SerializeField] private ParticleSystem _reductionNumberParticles;
         [SerializeField] private ParticleSystem _increaseNumberParticles;
+        [SerializeField] private PlayerAnimator _playerAnimator;
 
         private int _oldNumber;
 
@@ -25,9 +26,14 @@ namespace Source.Scripts.PlayerLogic
         private void OnNumberChanged()
         {
             if (_oldNumber < _playerNumber.Current)
+            {
                 _increaseNumberParticles.Play();
+                _playerAnimator.PlayIncreaseNumber();   
+            }
             else
+            {
                 _reductionNumberParticles.Emit(14);
+            }
 
             _oldNumber = _playerNumber.Current;
         }

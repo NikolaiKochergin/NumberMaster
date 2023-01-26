@@ -1,17 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Source.Scripts.CameraLogic
 {
-    public class ShakeCamera : MonoBehaviour
+    public class CameraShake : MonoBehaviour
     {
         [SerializeField] private Animator _animator;
 
         private const string Shake = "Shake";
-        public void PlayCameraShake()
-        {
+        public void PlayCameraShake() => 
             _animator.SetTrigger(Shake);
-        }
     }
 }

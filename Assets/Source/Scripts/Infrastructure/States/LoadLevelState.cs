@@ -1,4 +1,5 @@
-﻿using Source.Scripts.Infrastructure.Factory;
+﻿using Source.Scripts.CameraLogic;
+using Source.Scripts.Infrastructure.Factory;
 using Source.Scripts.PlayerLogic;
 using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.UI.Services.Factory;
@@ -58,9 +59,13 @@ namespace Source.Scripts.Infrastructure.States
         {
             Player player = _gameFactory.CreatePlayer();
             CameraFollow(player.transform);
+            CameraShake(player);
         }
 
         private void CameraFollow(Transform player) => 
             Camera.main.GetComponentInParent<CameraLogic.CameraFollow>().Follow(player);
+
+        private void CameraShake(Player player) => 
+            player.ActorCameraShake.Initialize(Camera.main.GetComponentInParent<CameraShake>());
     }
 }

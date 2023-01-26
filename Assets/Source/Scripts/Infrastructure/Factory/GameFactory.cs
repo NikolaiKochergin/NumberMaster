@@ -35,6 +35,7 @@ namespace Source.Scripts.Infrastructure.Factory
             Player.PlayerMove.Construct(_input, _staticData);
             Player.ActorFail.Construct(_stateMachine);
             Player.ActorFall.Construct(_stateMachine);
+            Player.ActorEndLevel.Construct(_stateMachine);
             Player.PlayerMove.Disable();
             
             return Player;

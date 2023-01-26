@@ -12,12 +12,16 @@ namespace Source.Scripts.PlayerLogic
         [SerializeField] private PlayerFinisherMove _playerFinisherMove;
         [SerializeField] private ActorFail _actorFail;
         [SerializeField] private ActorFall _actorFall;
+        [SerializeField] private ActorCameraShake _actorCameraShake;
+        [SerializeField] private ActorEndLevel _actorEndLevel;
 
         public PlayerMove PlayerMove => _playerMove;
         public PlayerNumber PlayerNumber => _playerNumber;
         public PlayerFinisherMove PlayerFinisherMove => _playerFinisherMove;
         public ActorFail ActorFail => _actorFail;
         public ActorFall ActorFall => _actorFall;
+        public ActorCameraShake ActorCameraShake => _actorCameraShake;
+        public ActorEndLevel ActorEndLevel => _actorEndLevel;
 
         public void LoadProgress(PlayerProgress progress) => 
             _playerNumber.LoadProgress(progress);

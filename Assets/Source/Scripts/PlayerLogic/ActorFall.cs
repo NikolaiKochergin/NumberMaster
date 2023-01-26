@@ -1,4 +1,5 @@
 using Source.Scripts.Infrastructure.States;
+using Source.Scripts.Logic;
 using UnityEngine;
 
 namespace Source.Scripts.PlayerLogic
@@ -6,6 +7,8 @@ namespace Source.Scripts.PlayerLogic
     public class ActorFall : MonoBehaviour
     {
         [SerializeField] private PlayerViewModel _playerViewModel;
+        [SerializeField] private PlayerAnimator _playerAnimator;
+        [SerializeField] private PlayerMove _playerMove;
 
         private IGameStateMachine _stateMachine;
 
@@ -29,8 +32,19 @@ namespace Source.Scripts.PlayerLogic
 
         private void OnFallHappened()
         {
+            _playerMove.Disable();
             _playerViewModel.FallChecker.Disable();
-            _stateMachine.Enter<FailState>();
+            _playerAnimator.PlayFall();
+            _playerAnimator.StateExited += SetFailState;
+        }
+
+        private void SetFailState(AnimatorState state)
+        {
+            if (state == AnimatorState.Fall)
+            {
+                _playerAnimator.StateExited -= SetFailState;
+                _stateMachine.Enter<FailState>();
+            }
         }
     }
 }

@@ -3,26 +3,18 @@ using UnityEngine;
 
 namespace Source.Scripts.InteractiveObjects.Wall
 {
+    [SelectionBase]
     public class DividingWall : MonoBehaviour
     {
         [SerializeField] private TriggerObserver _triggerObserver;
-        [SerializeField] private float _moveForce;
 
         private Player _player;
+        private int _playerTriggersCount;
         
         private void Awake()
         {
             _triggerObserver.TriggerEnter += OnTriggerEnter;
             _triggerObserver.TriggerExit += OnTriggerExit;
-            enabled = false;
-        }
-
-        private void LateUpdate()
-        {
-            if((transform.position - _player.transform.position).x > 0)
-                _player.transform.position += transform.right * _moveForce * Time.deltaTime;
-            else
-                _player.transform.position -= transform.right * _moveForce * Time.deltaTime;
         }
 
         private void OnDestroy()
@@ -38,8 +30,8 @@ namespace Source.Scripts.InteractiveObjects.Wall
         {
             if (other.attachedRigidbody.TryGetComponent(out Player player))
             {
-                _player = player;
-                enabled = true;
+                _playerTriggersCount += 1;
+                player.PlayerMove.SetBorder(this);
             }
         }
 
@@ -47,7 +39,10 @@ namespace Source.Scripts.InteractiveObjects.Wall
         {
             if (other.attachedRigidbody.TryGetComponent(out Player player))
             {
-                enabled = false;
+                _playerTriggersCount -= 1;
+
+                if (_playerTriggersCount == 0) 
+                    player.PlayerMove.UnsetBorder(this);
             }
         }
     }
