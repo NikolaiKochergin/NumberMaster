@@ -2,8 +2,11 @@
 using Source.Scripts.Infrastructure.Factory;
 using Source.Scripts.PlayerLogic;
 using Source.Scripts.Services.PersistentProgress;
+using Source.Scripts.Services.StaticData;
+using Source.Scripts.StaticData;
 using Source.Scripts.UI.Services.Factory;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Source.Scripts.Infrastructure.States
 {
@@ -14,13 +17,15 @@ namespace Source.Scripts.Infrastructure.States
         private readonly IGameFactory _gameFactory;
         private readonly IPersistentProgressService _progressService;
         private readonly IUIFactory _uiFactory;
+        private readonly IStaticDataService _staticData;
 
-        public LoadLevelState(GameStateMachine stateMachine, SceneLoader sceneLoader, IGameFactory gameFactory, IPersistentProgressService progressService, IUIFactory uiFactory)
+        public LoadLevelState(GameStateMachine stateMachine, SceneLoader sceneLoader, IGameFactory gameFactory, IPersistentProgressService progressService, IStaticDataService staticData, IUIFactory uiFactory)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
             _gameFactory = gameFactory;
             _progressService = progressService;
+            _staticData = staticData;
             _uiFactory = uiFactory;
         }
         
@@ -60,10 +65,20 @@ namespace Source.Scripts.Infrastructure.States
             Player player = _gameFactory.CreatePlayer();
             CameraFollow(player.transform);
             CameraShake(player);
+            InitEnemies();
+        }
+
+        private void InitEnemies()
+        {
+            string sceneKey = SceneManager.GetActiveScene().name;
+            LevelStaticData levelData = _staticData.ForLevel(sceneKey);
+
+            foreach (EnemyNumbersStaticData enemyNumberData in levelData.EnemyNumbers)
+                _gameFactory.CreateEnemyNumber(enemyNumberData.NumberValue, enemyNumberData.Position, enemyNumberData.Rotation);
         }
 
         private void CameraFollow(Transform player) => 
-            Camera.main.GetComponentInParent<CameraLogic.CameraFollow>().Follow(player);
+            Camera.main.GetComponentInParent<CameraFollow>().Follow(player);
 
         private void CameraShake(Player player) => 
             player.ActorCameraShake.Initialize(Camera.main.GetComponentInParent<CameraShake>());

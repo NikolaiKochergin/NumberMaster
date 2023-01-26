@@ -1,7 +1,8 @@
 ﻿namespace Source.Scripts.Infrastructure.AssetManagement
 {
-    public class AssetPath
+    public static class AssetPath
     {
         public const string PlayerPath = "Player/Player";
+        public const string EnemyNumberPath = "Enemies/EnemieNumber";
     }
 }

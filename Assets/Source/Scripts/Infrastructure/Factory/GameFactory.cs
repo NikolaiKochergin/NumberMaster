@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Source.Scripts.Infrastructure.AssetManagement;
 using Source.Scripts.Infrastructure.States;
+using Source.Scripts.InteractiveObjects.Number;
 using Source.Scripts.PlayerLogic;
 using Source.Scripts.Services.Input;
 using Source.Scripts.Services.PersistentProgress;
@@ -39,6 +40,15 @@ namespace Source.Scripts.Infrastructure.Factory
             Player.PlayerMove.Disable();
             
             return Player;
+        }
+
+        public void CreateEnemyNumber(int numberValue, Vector3 position, Quaternion rotation)
+        {
+            EnemyNumber number = _assets.Instantiate<EnemyNumber>(AssetPath.EnemyNumberPath, position, rotation);
+            
+            
+            number.Construct(Player.PlayerNumber);
+            number.Initialize(numberValue);
         }
 
         public void Cleanup()

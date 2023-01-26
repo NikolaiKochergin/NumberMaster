@@ -1,4 +1,5 @@
-﻿using Source.Scripts.StaticData.Windows;
+﻿using Source.Scripts.StaticData;
+using Source.Scripts.StaticData.Windows;
 using Source.Scripts.UI.Services.Windows;
 
 namespace Source.Scripts.Services.StaticData
@@ -15,5 +16,6 @@ namespace Source.Scripts.Services.StaticData
         int ForStartNumberBasePrice();
         int ForIncomeBasePrice();
         float ForIncomeIncrement();
+        LevelStaticData ForLevel(string sceneKey);
     }
 }

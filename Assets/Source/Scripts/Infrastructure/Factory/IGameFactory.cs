@@ -2,6 +2,7 @@
 using Source.Scripts.PlayerLogic;
 using Source.Scripts.Services;
 using Source.Scripts.Services.PersistentProgress;
+using UnityEngine;
 
 namespace Source.Scripts.Infrastructure.Factory
 {
@@ -12,5 +13,6 @@ namespace Source.Scripts.Infrastructure.Factory
         Player Player { get; }
         void Cleanup();
         Player CreatePlayer();
+        void CreateEnemyNumber(int numberValue, Vector3 position, Quaternion rotation);
     }
 }

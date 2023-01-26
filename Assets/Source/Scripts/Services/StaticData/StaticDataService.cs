@@ -11,9 +11,11 @@ namespace Source.Scripts.Services.StaticData
     {
         private const string GameDataPath = "StaticData/GameData";
         private const string StaticDataWindowPath = "StaticData/UI/WindowStaticData";
+        private const string LevelDataPath = "StaticData/LevelData";
 
         private GameStaticData _gameData;
         private Dictionary<WindowId, WindowConfig> _windowConfigs;
+        private Dictionary<string, LevelStaticData> _levels;
 
         public void Load()
         {
@@ -24,6 +26,10 @@ namespace Source.Scripts.Services.StaticData
                 .Load<WindowStaticData>(StaticDataWindowPath)
                 .Configs
                 .ToDictionary(x => x.WindowId, x => x);
+
+            _levels = Resources
+                .LoadAll<LevelStaticData>(LevelDataPath)
+                .ToDictionary(x => x.LevelKey, x => x);
         }
 
 
@@ -44,6 +50,11 @@ namespace Source.Scripts.Services.StaticData
         public string ForSceneName(int index) =>
             index >= 0 && index < _gameData.LevelSceneNames.Count
                 ? _gameData.LevelSceneNames[index]
+                : null;
+
+        public LevelStaticData ForLevel(string sceneKey) =>
+            _levels.TryGetValue(sceneKey, out LevelStaticData staticData)
+                ? staticData
                 : null;
 
         public int ForRepeatLevelNumber() =>
