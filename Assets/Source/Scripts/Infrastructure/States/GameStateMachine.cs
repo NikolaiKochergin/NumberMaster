@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Source.Scripts.Infrastructure.Factory;
 using Source.Scripts.Services;
+using Source.Scripts.Services.Ads;
 using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.SaveLoad;
 using Source.Scripts.Services.Sound;
@@ -26,7 +27,8 @@ namespace Source.Scripts.Infrastructure.States
                     services.Single<IPersistentProgressService>(),
                     services.Single<IStaticDataService>(),
                     services.Single<IUIFactory>(),
-                    services.Single<ISoundService>()),
+                    services.Single<ISoundService>(),
+                    services.Single<IAdsService>()),
                 [typeof(LoadProgressState)] = new LoadProgressState(this, 
                     services.Single<IPersistentProgressService>(),
                     services.Single<IStaticDataService>(),
