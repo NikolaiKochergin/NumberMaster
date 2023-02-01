@@ -2,7 +2,6 @@
 using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.SaveLoad;
 using Source.Scripts.Services.StaticData;
-using UnityEngine;
 
 namespace Source.Scripts.Infrastructure.States
 {
@@ -32,8 +31,7 @@ namespace Source.Scripts.Infrastructure.States
                                                                           .IncomeLevel - 1) * _staticDataService
                                                                           .ForIncomeIncrement());
             
-            Debug.Log((int)collected);
-            _progressService.Progress.Soft.Add((int)collected);
+            _progressService.Progress.Soft.Collected += (int)collected;
             SetNextLevelIndex();
             _saveLoadService.SaveProgress();
             _stateMachine.Enter<LoadLevelState, string>(_staticDataService.ForSceneName(_progressService.Progress.World.CurrentLevel));

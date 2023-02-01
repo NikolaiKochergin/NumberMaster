@@ -1,6 +1,7 @@
 ﻿using Source.Scripts.Infrastructure.Factory;
 using Source.Scripts.Infrastructure.States;
 using Source.Scripts.Services.PersistentProgress;
+using Source.Scripts.Services.Sound;
 using Source.Scripts.Services.StaticData;
 using Source.Scripts.StaticData.Windows;
 using Source.Scripts.UI.Elements;
@@ -17,15 +18,17 @@ namespace Source.Scripts.UI.Services.Factory
         private readonly IStaticDataService _staticData;
         private readonly IPersistentProgressService _progressService;
         private readonly IGameFactory _factory;
+        private readonly ISoundService _sounds;
 
         private Transform _uiRoot;
 
-        public UIFactory(IGameStateMachine stateMachine, IStaticDataService staticData, IPersistentProgressService progressService, IGameFactory factory)
+        public UIFactory(IGameStateMachine stateMachine, IStaticDataService staticData, IPersistentProgressService progressService, IGameFactory factory, ISoundService sounds)
         {
             _stateMachine = stateMachine;
             _staticData = staticData;
             _progressService = progressService;
             _factory = factory;
+            _sounds = sounds;
         }
 
         public void InitUIRoot() => 
@@ -43,7 +46,7 @@ namespace Source.Scripts.UI.Services.Factory
         {
             WindowConfig config = _staticData.ForWindow(WindowId.GameMenu);
             GameLoopWindow window = Object.Instantiate(config.Template, _uiRoot) as GameLoopWindow;
-            window.Construct(_progressService);
+            window.Construct(_sounds, _progressService);
         }
     }
 }

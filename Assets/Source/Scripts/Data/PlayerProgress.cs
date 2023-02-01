@@ -17,6 +17,7 @@ namespace Source.Scripts.Data
             PlayerStats = new Stats();
             Soft = new Soft();
             World = new World();
+            GameSettings = new GameSettings();
         }
     }
 }

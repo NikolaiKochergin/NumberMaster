@@ -58,7 +58,7 @@ namespace Source.Scripts.UI.Windows.Shop
                 Progress.Soft.Collected) return;
             
             _factory.Player.PlayerNumber.TakeNumber(1);
-            Progress.Soft.Add(-_staticData.ForStartNumberBasePrice() * Progress.PlayerStats.StartNumber);
+            Progress.Soft.Collected -= _staticData.ForStartNumberBasePrice() * Progress.PlayerStats.StartNumber;
             Progress.PlayerStats.StartNumber += 1;
             UpdateStartNumberButtonShowing();
             UpdateIncomeButtonShowing();
@@ -69,7 +69,7 @@ namespace Source.Scripts.UI.Windows.Shop
             if(_staticData.ForIncomeBasePrice() * Progress.PlayerStats.IncomeLevel > Progress.Soft.Collected)
                 return;
 
-            Progress.Soft.Add(-_staticData.ForIncomeBasePrice() * Progress.PlayerStats.IncomeLevel);
+            Progress.Soft.Collected -= _staticData.ForIncomeBasePrice() * Progress.PlayerStats.IncomeLevel;
             Progress.PlayerStats.IncomeLevel += 1;
             UpdateStartNumberButtonShowing();
             UpdateIncomeButtonShowing();

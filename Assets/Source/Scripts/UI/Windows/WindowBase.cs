@@ -1,5 +1,6 @@
 ﻿using Source.Scripts.Data;
 using Source.Scripts.Services.PersistentProgress;
+using Source.Scripts.Services.Sound;
 using UnityEngine;
 
 namespace Source.Scripts.UI.Windows
@@ -7,9 +8,10 @@ namespace Source.Scripts.UI.Windows
     public abstract class WindowBase : MonoBehaviour
     {
         private IPersistentProgressService _progressService;
+        
         protected PlayerProgress Progress => _progressService.Progress;
 
-        public void Construct(IPersistentProgressService progressService) =>
+        protected void Construct(IPersistentProgressService progressService) => 
             _progressService = progressService;
 
         private void Start()
