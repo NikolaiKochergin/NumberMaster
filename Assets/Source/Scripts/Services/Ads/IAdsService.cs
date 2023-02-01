@@ -5,6 +5,6 @@ namespace Source.Scripts.Services.Ads
     public interface IAdsService : IService
     {
         void ShowInterstitial(Action onCloseCallback = null);
-        void ShowRewardedVideo(Action onRewardedCallback = null);
+        void ShowRewardedVideo(Action onRewardedCallback = null, Action onCloseCallback = null);
     }
 }
