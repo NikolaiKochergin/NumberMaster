@@ -26,5 +26,14 @@ namespace Source.Scripts.Services.Sound
             _sounds.On();
             _progressService.Progress.GameSettings.IsMusicOn = true;
         }
+
+        public void AdsMute() => 
+            _sounds.Off();
+
+        public void AdsUnMute()
+        {
+            if(_progressService.Progress.GameSettings.IsMusicOn)
+                _sounds.On();
+        }
     }
 }

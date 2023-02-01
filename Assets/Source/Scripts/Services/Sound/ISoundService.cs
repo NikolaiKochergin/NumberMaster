@@ -4,5 +4,7 @@ namespace Source.Scripts.Services.Sound
     {
         void Mute();
         void UnMute();
+        void AdsMute();
+        void AdsUnMute();
     }
 }

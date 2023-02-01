@@ -7,7 +7,7 @@ namespace Source.Scripts.Infrastructure
     {
         [SerializeField] private AudioSource _musicSource;
 
-        public bool IsOn { get; private set; }
+        private bool _isMuted;
 
         private void Awake()
         {
@@ -24,7 +24,7 @@ namespace Source.Scripts.Infrastructure
 
         public void On()
         {
-            IsOn = true;
+            _isMuted = false;
             _musicSource.UnPause();
             AudioListener.pause = false;
             AudioListener.volume = 1f;
@@ -32,7 +32,7 @@ namespace Source.Scripts.Infrastructure
 
         public void Off()
         {
-            IsOn = false;
+            _isMuted = true;
             _musicSource.Pause();
             AudioListener.pause = true;
             AudioListener.volume = 0f;
@@ -40,7 +40,8 @@ namespace Source.Scripts.Infrastructure
 
         private void OnInBackgroundChange(bool inBackground)
         {
-            if (!IsOn) return;
+            if (_isMuted) 
+                return;
 
             if(inBackground)
                 Off();

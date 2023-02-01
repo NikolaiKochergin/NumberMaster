@@ -2,6 +2,7 @@
 using Source.Scripts.Infrastructure.AssetManagement;
 using Source.Scripts.Infrastructure.Factory;
 using Source.Scripts.Services;
+using Source.Scripts.Services.Ads;
 using Source.Scripts.Services.Input;
 using Source.Scripts.Services.Pause;
 using Source.Scripts.Services.PersistentProgress;
@@ -63,6 +64,10 @@ namespace Source.Scripts.Infrastructure.States
             _services.RegisterSingle<ISoundService>(new SoundService(
                 _services.Single<IGameFactory>(),
                 _services.Single<IPersistentProgressService>()));
+            
+            _services.RegisterSingle<IAdsService>(new AdsService(
+                _services.Single<IGamePauseService>(),
+                _services.Single<ISoundService>()));
             
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(
                 _services.Single<IPersistentProgressService>(),
