@@ -18,6 +18,8 @@ namespace Source.Scripts.Infrastructure.Factory
         private readonly IStaticDataService _staticData;
 
         public Player Player { get; private set; }
+        public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
+        public List<ISavedProgress> ProgressWriters { get; } = new List<ISavedProgress>();
 
         public GameFactory(IGameStateMachine stateMachine, IInputService input, IAssetProvider assets, IStaticDataService staticData)
         {
@@ -27,9 +29,6 @@ namespace Source.Scripts.Infrastructure.Factory
             _staticData = staticData;
         }
 
-        public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
-        public List<ISavedProgress> ProgressWriters { get; } = new List<ISavedProgress>();
-
         public Player CreatePlayer()
         {
             Player = InstantiateRegistered<Player>(AssetPath.PlayerPath);
@@ -37,19 +36,20 @@ namespace Source.Scripts.Infrastructure.Factory
             Player.ActorFail.Construct(_stateMachine);
             Player.ActorFall.Construct(_stateMachine);
             Player.ActorEndLevel.Construct(_stateMachine);
-            Player.PlayerMove.Disable();
             
             return Player;
         }
 
-        public void CreateEnemyNumber(int numberValue, Vector3 position, Quaternion rotation)
+        public EnemyNumber CreateEnemyNumber(Vector3 position, Quaternion rotation)
         {
             EnemyNumber number = _assets.Instantiate<EnemyNumber>(AssetPath.EnemyNumberPath, position, rotation);
-            
-            
             number.Construct(Player.PlayerNumber);
-            number.Initialize(numberValue);
+
+            return number;
         }
+
+        public Sounds CreateSounds() => 
+            _assets.Instantiate<Sounds>(AssetPath.SoundsPath);
 
         public void Cleanup()
         {

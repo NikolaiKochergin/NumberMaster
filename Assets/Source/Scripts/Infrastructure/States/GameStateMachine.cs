@@ -4,6 +4,7 @@ using Source.Scripts.Infrastructure.Factory;
 using Source.Scripts.Services;
 using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.SaveLoad;
+using Source.Scripts.Services.Sound;
 using Source.Scripts.Services.StaticData;
 using Source.Scripts.UI.Services.Factory;
 using Source.Scripts.UI.Services.Windows;
@@ -24,7 +25,8 @@ namespace Source.Scripts.Infrastructure.States
                     services.Single<IGameFactory>(), 
                     services.Single<IPersistentProgressService>(),
                     services.Single<IStaticDataService>(),
-                    services.Single<IUIFactory>()),
+                    services.Single<IUIFactory>(),
+                    services.Single<ISoundService>()),
                 [typeof(LoadProgressState)] = new LoadProgressState(this, 
                     services.Single<IPersistentProgressService>(),
                     services.Single<IStaticDataService>(),

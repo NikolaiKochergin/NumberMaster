@@ -9,6 +9,7 @@ namespace Source.Scripts.Data
         public Stats PlayerStats;
         public Soft Soft;
         public World World;
+        public GameSettings GameSettings;
 
         public PlayerProgress()
         {

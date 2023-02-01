@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Source.Scripts.InteractiveObjects.Number;
 using Source.Scripts.PlayerLogic;
 using Source.Scripts.Services;
 using Source.Scripts.Services.PersistentProgress;
@@ -13,6 +14,7 @@ namespace Source.Scripts.Infrastructure.Factory
         Player Player { get; }
         void Cleanup();
         Player CreatePlayer();
-        void CreateEnemyNumber(int numberValue, Vector3 position, Quaternion rotation);
+        EnemyNumber CreateEnemyNumber(Vector3 position, Quaternion rotation);
+        Sounds CreateSounds();
     }
 }

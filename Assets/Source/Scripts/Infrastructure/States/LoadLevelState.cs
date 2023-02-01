@@ -1,7 +1,9 @@
 ﻿using Source.Scripts.CameraLogic;
 using Source.Scripts.Infrastructure.Factory;
+using Source.Scripts.InteractiveObjects.Number;
 using Source.Scripts.PlayerLogic;
 using Source.Scripts.Services.PersistentProgress;
+using Source.Scripts.Services.Sound;
 using Source.Scripts.Services.StaticData;
 using Source.Scripts.StaticData;
 using Source.Scripts.UI.Services.Factory;
@@ -17,9 +19,16 @@ namespace Source.Scripts.Infrastructure.States
         private readonly IGameFactory _gameFactory;
         private readonly IPersistentProgressService _progressService;
         private readonly IUIFactory _uiFactory;
+        private readonly ISoundService _sounds;
         private readonly IStaticDataService _staticData;
 
-        public LoadLevelState(GameStateMachine stateMachine, SceneLoader sceneLoader, IGameFactory gameFactory, IPersistentProgressService progressService, IStaticDataService staticData, IUIFactory uiFactory)
+        public LoadLevelState(GameStateMachine stateMachine, 
+            SceneLoader sceneLoader, 
+            IGameFactory gameFactory, 
+            IPersistentProgressService progressService, 
+            IStaticDataService staticData, 
+            IUIFactory uiFactory,
+            ISoundService sounds)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
@@ -27,6 +36,7 @@ namespace Source.Scripts.Infrastructure.States
             _progressService = progressService;
             _staticData = staticData;
             _uiFactory = uiFactory;
+            _sounds = sounds;
         }
         
         public void Enter(string sceneName)
@@ -63,9 +73,16 @@ namespace Source.Scripts.Infrastructure.States
         private void InitGameWorld()
         {
             Player player = _gameFactory.CreatePlayer();
+            player.PlayerMove.Disable();
             CameraFollow(player.transform);
             CameraShake(player);
             InitEnemies();
+            
+            if(_progressService.Progress.GameSettings.IsMusicOn)
+                _sounds.UnMute();
+            else
+                _sounds.Mute();
+
         }
 
         private void InitEnemies()
@@ -74,7 +91,10 @@ namespace Source.Scripts.Infrastructure.States
             LevelStaticData levelData = _staticData.ForLevel(sceneKey);
 
             foreach (EnemyNumbersStaticData enemyNumberData in levelData.EnemyNumbers)
-                _gameFactory.CreateEnemyNumber(enemyNumberData.NumberValue, enemyNumberData.Position, enemyNumberData.Rotation);
+            {
+                EnemyNumber number = _gameFactory.CreateEnemyNumber(enemyNumberData.Position, enemyNumberData.Rotation);
+                number.Initialize(enemyNumberData.NumberValue);
+            }
         }
 
         private void CameraFollow(Transform player) => 
