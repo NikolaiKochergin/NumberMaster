@@ -1,85 +1,33 @@
 #if GAME_ANALYTICS
-using System.Collections.Generic;
 using GameAnalyticsSDK;
 
 namespace Source.Scripts.Analytics
 {
     public class GameAnalyticsAnalytic : IAnalytic
     {
-        public GameAnalyticsAnalytic()
-        {
-            GameAnalytics.Initialize();
-        }
+        public void OnLevelStart(int levelNumber) => 
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, AnalyticNames.Level + levelNumber);
 
-        public void OnGameInitialize(Dictionary<string, object> dataObjects)
-        {
-            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, AnalyticNames.GameStart, dataObjects);
-        }
+        public void OnLevelComplete(int levelNumber) => 
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, AnalyticNames.Level + levelNumber);
 
-        public void OnLevelStart(Dictionary<string, object> dataObjects)
-        {
-            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, AnalyticNames.LevelStart, dataObjects);
-        }
+        public void OnLevelFail(int levelNumber) => 
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, AnalyticNames.Level + levelNumber);
 
-        public void OnLevelComplete(Dictionary<string, object> dataObjects)
-        {
-            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, AnalyticNames.LevelComplete, dataObjects);
-        }
+        public void OnOffer(string rewardType) => 
+            GameAnalytics.NewDesignEvent(rewardType + AnalyticNames.AdOffer);
 
-        public void OnLevelFail(Dictionary<string, object> dataObjects)
-        {
-            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, AnalyticNames.Fail, dataObjects);
-        }
+        public void OnClick(string rewardType) => 
+            GameAnalytics.NewDesignEvent(rewardType + AnalyticNames.AdClick);
 
-        public void OnLevelRestart(Dictionary<string, object> dataObjects)
-        {
-            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, AnalyticNames.Restart, dataObjects);
-        }
+        public void OnResourceReceived(string resourceType, int count, string wayToGet, string receiptSource) => 
+            GameAnalytics.NewResourceEvent(GAResourceFlowType.Source, resourceType, count, wayToGet, receiptSource);
 
-        public void OnSoftSpent(Dictionary<string, object> dataObjects)
-        {
-            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, AnalyticNames.SoftSpent, dataObjects);
-        }
+        public void OnResourceSent(string resourceType, int count, string wayOfSpending, string spentOn) => 
+            GameAnalytics.NewResourceEvent(GAResourceFlowType.Sink, resourceType, count, wayOfSpending, spentOn);
 
-        public void OnRegistrationDayIs(Dictionary<string, object> dataObjects)
-        {
-            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, AnalyticNames.RegistrationDay,
-                dataObjects);
-        }
-
-        public void OnSessionCountIs(Dictionary<string, object> dataObjects)
-        {
-            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, AnalyticNames.SessionCount,
-                dataObjects);
-        }
-
-        public void OnDaysInGameIs(Dictionary<string, object> dataObjects)
-        {
-            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, AnalyticNames.DaysInGame,
-                dataObjects);
-        }
-
-        public void OnCurrentSoftHave(Dictionary<string, object> dataObjects)
-        {
-            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, AnalyticNames.CurrentSoft,
-                dataObjects);
-        }
-
-        public void OnContentIsOver(Dictionary<string, object> dataObjects)
-        {
-            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, AnalyticNames.ContentIsOver, 
-                dataObjects);
-        }
-
-        public void OnEvent(string eventName, Dictionary<string, object> dataObjects)
-        {
-            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, eventName, dataObjects);
-        }
-
-        public void OnEvent(string eventName)
-        {
-            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, eventName);
-        }
+        public void OnInterstitialShown() => 
+            GameAnalytics.NewDesignEvent(AnalyticNames.InterstitialAdd);
     }
 }
 #endif

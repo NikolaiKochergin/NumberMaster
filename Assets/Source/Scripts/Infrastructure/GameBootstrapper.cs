@@ -1,7 +1,10 @@
-﻿using Agava.YandexGames;
-using Source.Scripts.Infrastructure.States;
-using System.Collections;
+﻿using Source.Scripts.Infrastructure.States;
+using GameAnalyticsSDK;
 using UnityEngine;
+#if YANDEX_GAMES
+using System.Collections;
+using Agava.YandexGames;
+#endif
 
 namespace Source.Scripts.Infrastructure
 {
@@ -13,7 +16,7 @@ namespace Source.Scripts.Infrastructure
         private IEnumerator Start()
         {
             yield return YandexGamesSdk.Initialize();
-            //GameAnalytics.Initialize();
+            GameAnalytics.Initialize();
             _game = new Game(this);
             _game.StateMachine.Enter<BootstrapState>();
             
@@ -22,7 +25,7 @@ namespace Source.Scripts.Infrastructure
 #else
         private void Start()
         {
-           //GameAnalytics.Initialize();
+            GameAnalytics.Initialize();
             _game = new Game(this);
             _game.StateMachine.Enter<BootstrapState>();
             DontDestroyOnLoad(this);

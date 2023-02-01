@@ -3,6 +3,7 @@ using Source.Scripts.Infrastructure.Factory;
 using Source.Scripts.InteractiveObjects.Number;
 using Source.Scripts.PlayerLogic;
 using Source.Scripts.Services.Ads;
+using Source.Scripts.Services.Analytics;
 using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.Sound;
 using Source.Scripts.Services.StaticData;
@@ -22,6 +23,7 @@ namespace Source.Scripts.Infrastructure.States
         private readonly IUIFactory _uiFactory;
         private readonly ISoundService _sounds;
         private readonly IAdsService _ads;
+        private readonly IAnalyticService _analytic;
         private readonly IStaticDataService _staticData;
 
         public LoadLevelState(GameStateMachine stateMachine, 
@@ -31,7 +33,8 @@ namespace Source.Scripts.Infrastructure.States
             IStaticDataService staticData, 
             IUIFactory uiFactory,
             ISoundService sounds,
-            IAdsService ads)
+            IAdsService ads,
+            IAnalyticService analytic)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
@@ -41,6 +44,7 @@ namespace Source.Scripts.Infrastructure.States
             _uiFactory = uiFactory;
             _sounds = sounds;
             _ads = ads;
+            _analytic = analytic;
         }
         
         public void Enter(string sceneName)
@@ -51,7 +55,8 @@ namespace Source.Scripts.Infrastructure.States
 
         public void Exit()
         {
-            _ads.ShowInterstitial();
+            _ads.ShowInterstitial(_analytic.SendEventOnInterstitialShown);
+            _analytic.SendEventOnLevelStart(_progressService.Progress.World.DisplayedLevel);
         }
 
         private void OnLoaded()

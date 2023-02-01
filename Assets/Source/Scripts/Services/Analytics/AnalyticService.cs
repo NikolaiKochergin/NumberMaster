@@ -18,131 +18,55 @@ namespace Source.Scripts.Services.Analytics
             _analytics.AddRange(analytics);
         }
 
-        public void AddAnalytic(IAnalytic analytic)
-        {
+        public void AddAnalytic(IAnalytic analytic) => 
             _analytics.Add(analytic);
-        }
-
-        public void SendEventOnGameInitialize(int sessionCount)
-        {
-            var obj = new Dictionary<string, object>
-            {
-                {AnalyticNames.Count, sessionCount}
-            };
-
-            foreach (var analytic in _analytics)
-                analytic.OnGameInitialize(obj);
-        }
 
         public void SendEventOnLevelStart(int levelNumber)
         {
-            var obj = new Dictionary<string, object>
-            {
-                {AnalyticNames.Level, levelNumber}
-            };
-            foreach (var analytic in _analytics)
-                analytic.OnLevelStart(obj);
+            foreach (IAnalytic analytic in _analytics) 
+                analytic.OnLevelStart(levelNumber);
         }
 
         public void SendEventOnLevelComplete(int levelNumber)
         {
-            var obj = new Dictionary<string, object>
-            {
-                {AnalyticNames.Level, levelNumber},
-                {AnalyticNames.TimeSpent, (int) Time.timeSinceLevelLoad}
-            };
-            foreach (var analytic in _analytics)
-                analytic.OnLevelComplete(obj);
+            foreach (IAnalytic analytic in _analytics) 
+                analytic.OnLevelComplete(levelNumber);
         }
 
         public void SendEventOnFail(int levelNumber)
         {
-            var obj = new Dictionary<string, object>
-            {
-                {AnalyticNames.Level, levelNumber},
-                {AnalyticNames.TimeSpent, (int) Time.timeSinceLevelLoad}
-            };
-            foreach (var analytic in _analytics)
-                analytic.OnLevelFail(obj);
+            foreach (IAnalytic analytic in _analytics) 
+                analytic.OnLevelFail(levelNumber);
         }
 
-        public void SendEventOnLevelRestart(int levelNumber)
+        public void SendEventOnOffer(string rewardType)
         {
-            var obj = new Dictionary<string, object>
-            {
-                {AnalyticNames.Level, levelNumber}
-            };
-            foreach (var analytic in _analytics)
-                analytic.OnLevelRestart(obj);
+            foreach (IAnalytic analytic in _analytics) 
+                analytic.OnOffer(rewardType);
         }
 
-        public void SendEventOnSoftSpent(string purchaseType, string storeName, int purchaseAmount, int purchasesCount)
+        public void SendEventOnClick(string rewardType)
         {
-            var obj = new Dictionary<string, object>
-            {
-                {AnalyticNames.Type, purchaseType},
-                {AnalyticNames.Name, storeName},
-                {AnalyticNames.Amount, purchaseAmount},
-                {AnalyticNames.Count, purchasesCount}
-            };
-            foreach (var analytic in _analytics)
-                analytic.OnSoftSpent(obj);
+            foreach (IAnalytic analytic in _analytics) 
+                analytic.OnClick(rewardType);
         }
 
-        public void SendEventOnGameExit(string registrationDate, int sessionCount, int daysInGame)
+        public void SendEventOnResourceReceived(string resourceType, int count, string wayToGet, string receiptSource)
         {
-            var regDayObj = new Dictionary<string, object>
-            {
-                {AnalyticNames.Date, registrationDate}
-            };
-            var sessionCountObj = new Dictionary<string, object>
-            {
-                {AnalyticNames.Count, sessionCount}
-            };
-            var daysInGameObj = new Dictionary<string, object>
-            {
-                {AnalyticNames.Day, daysInGame}
-            };
-            foreach (var analytic in _analytics)
-            {
-                analytic.OnRegistrationDayIs(regDayObj);
-                analytic.OnSessionCountIs(sessionCountObj);
-                analytic.OnDaysInGameIs(daysInGameObj);
-            }
+            foreach (IAnalytic analytic in _analytics)
+                analytic.OnResourceReceived(resourceType, count, wayToGet, receiptSource);
         }
 
-        public void SendEventOnGameExit(string registrationDate, int sessionCount, int daysInGame, int currentSoft)
+        public void SendEventOnResourceSent(string resourceType, int count, string wayOfSpending, string spentOn)
         {
-            var obj = new Dictionary<string, object>
-            {
-                {AnalyticNames.CurrentSoft, currentSoft}
-            };
-            SendEventOnGameExit(registrationDate, sessionCount, daysInGame);
-            foreach (var analytic in _analytics)
-                analytic.OnCurrentSoftHave(obj);
+            foreach (IAnalytic analytic in _analytics)
+                analytic.OnResourceSent(resourceType, count, wayOfSpending, spentOn);
         }
 
-        public void SendEventContentIsOver(int sessionCount, int daysInGame)
+        public void SendEventOnInterstitialShown()
         {
-            var obj = new Dictionary<string, object>
-            {
-                {AnalyticNames.Count, sessionCount},
-                {AnalyticNames.Day, daysInGame}
-            };
-            foreach (var analytic in _analytics)
-                analytic.OnContentIsOver(obj);
-        }
-
-        public void SendEvent(string eventName, Dictionary<string, object> dataObjects)
-        {
-            foreach (var analytic in _analytics)
-                analytic.OnEvent(eventName, dataObjects);
-        }
-
-        public void SendEvent(string eventName)
-        {
-            foreach (var analytic in _analytics)
-                analytic.OnEvent(eventName);
+            foreach (IAnalytic analytic in _analytics) 
+                analytic.OnInterstitialShown();
         }
     }
 }

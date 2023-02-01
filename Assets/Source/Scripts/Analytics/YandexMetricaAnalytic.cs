@@ -1,75 +1,33 @@
 #if YANDEX_METRICA
-using System.Collections.Generic;
 using Agava.YandexMetrica;
 
 namespace Source.Scripts.Analytics
 {
     public class YandexMetricaAnalytic : IAnalytic
     {
-        public void OnGameInitialize(Dictionary<string, object> dataObjects)
-        {
-            YandexMetrica.Send(AnalyticNames.GameStart, dataObjects);
-        }
+        public void OnLevelStart(int levelNumber) => 
+            YandexMetrica.Send($"level{levelNumber}Start");
 
-        public void OnLevelStart(Dictionary<string, object> dataObjects)
-        {
-            YandexMetrica.Send(AnalyticNames.LevelStart, dataObjects);
-        }
+        public void OnLevelComplete(int levelNumber) => 
+            YandexMetrica.Send($"level{levelNumber}Complete");
 
-        public void OnLevelComplete(Dictionary<string, object> dataObjects)
-        {
-            YandexMetrica.Send(AnalyticNames.LevelComplete, dataObjects);
-        }
+        public void OnLevelFail(int levelNumber) => 
+            YandexMetrica.Send($"level{levelNumber}Fail");
 
-        public void OnLevelFail(Dictionary<string, object> dataObjects)
-        {
-            YandexMetrica.Send(AnalyticNames.Fail, dataObjects);
-        }
+        public void OnOffer(string rewardType) => 
+            YandexMetrica.Send($"{rewardType}AddOffer");
 
-        public void OnLevelRestart(Dictionary<string, object> dataObjects)
-        {
-            YandexMetrica.Send(AnalyticNames.RegistrationDay, dataObjects);
-        }
+        public void OnClick(string rewardType) => 
+            YandexMetrica.Send($"{rewardType}OnClick");
 
-        public void OnSoftSpent(Dictionary<string, object> dataObjects)
-        {
-            YandexMetrica.Send(AnalyticNames.SoftSpent, dataObjects);
-        }
+        public void OnResourceReceived(string resourceType, int count, string wayToGet, string receiptSource) => 
+            YandexMetrica.Send($"{resourceType}Received");
 
-        public void OnRegistrationDayIs(Dictionary<string, object> dataObjects)
-        {
-            YandexMetrica.Send(AnalyticNames.RegistrationDay, dataObjects);
-        }
+        public void OnResourceSent(string resourceType, int count, string wayOfSpending, string spentOn) => 
+            YandexMetrica.Send($"{resourceType}Sent");
 
-        public void OnSessionCountIs(Dictionary<string, object> dataObjects)
-        {
-            YandexMetrica.Send(AnalyticNames.SessionCount, dataObjects);
-        }
-
-        public void OnDaysInGameIs(Dictionary<string, object> dataObjects)
-        {
-            YandexMetrica.Send(AnalyticNames.DaysInGame, dataObjects);
-        }
-
-        public void OnCurrentSoftHave(Dictionary<string, object> dataObjects)
-        {
-            YandexMetrica.Send(AnalyticNames.CurrentSoft, dataObjects);
-        }
-
-        public void OnContentIsOver(Dictionary<string, object> dataObjects)
-        {
-            YandexMetrica.Send(AnalyticNames.ContentIsOver, dataObjects);
-        }
-
-        public void OnEvent(string eventName, Dictionary<string, object> dataObjects)
-        {
-            YandexMetrica.Send(eventName, dataObjects);
-        }
-
-        public void OnEvent(string eventName)
-        {
-            YandexMetrica.Send(eventName);
-        }
+        public void OnInterstitialShown() => 
+            YandexMetrica.Send("interstitialAd");
     }
 }
 #endif

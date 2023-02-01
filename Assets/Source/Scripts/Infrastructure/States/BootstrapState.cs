@@ -1,8 +1,11 @@
-﻿using Agava.YandexGames;
+﻿using System.Collections.Generic;
+using Agava.YandexGames;
+using Source.Scripts.Analytics;
 using Source.Scripts.Infrastructure.AssetManagement;
 using Source.Scripts.Infrastructure.Factory;
 using Source.Scripts.Services;
 using Source.Scripts.Services.Ads;
+using Source.Scripts.Services.Analytics;
 using Source.Scripts.Services.Input;
 using Source.Scripts.Services.Pause;
 using Source.Scripts.Services.PersistentProgress;
@@ -50,6 +53,7 @@ namespace Source.Scripts.Infrastructure.States
             RegisterStaticDataService();
             
             _services.RegisterSingle(InputService());
+            _services.RegisterSingle(AnalyticService());
             _services.RegisterSingle<IGamePauseService>(new GamePause());
             _services.RegisterSingle<IAssetProvider>(new AssetProvider());
             _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
@@ -92,6 +96,18 @@ namespace Source.Scripts.Infrastructure.States
 
         private void EnterLoadLevel() => 
             _stateMachine.Enter<LoadProgressState>();
+
+        private IAnalyticService AnalyticService() =>
+            new AnalyticService(new List<IAnalytic>
+            {
+#if GAME_ANALYTICS
+                new GameAnalyticsAnalytic(),
+#endif
+#if YANDEX_METRICA && !UNITY_EDITOR
+                new YandexMetricaAnalytic(),
+#endif
+            });
+
 
 #if UNITY_EDITOR
         private IInputService InputService() =>

@@ -1,21 +1,17 @@
-﻿using System.Collections.Generic;
-using Source.Scripts.Analytics;
+﻿using Source.Scripts.Analytics;
 
 namespace Source.Scripts.Services.Analytics
 {
     public interface IAnalyticService : IService
     {
         void AddAnalytic(IAnalytic analytic);
-        void SendEventOnGameInitialize(int sessionCount);
         void SendEventOnLevelStart(int levelNumber);
         void SendEventOnLevelComplete(int levelNumber);
         void SendEventOnFail(int levelNumber);
-        void SendEventOnLevelRestart(int levelNumber);
-        void SendEventOnSoftSpent(string purchaseType, string storeName, int purchaseAmount, int purchasesCount);
-        void SendEventOnGameExit(string registrationDate, int sessionCount, int daysInGame);
-        void SendEventOnGameExit(string registrationDate, int sessionCount, int daysInGame, int currentSoft);
-        void SendEventContentIsOver(int sessionCount, int daysInGame);
-        void SendEvent(string eventName, Dictionary<string, object> dataObjects);
-        void SendEvent(string eventName);
+        void SendEventOnOffer(string rewardType);
+        void SendEventOnClick(string rewardType);
+        void SendEventOnResourceReceived(string resourceType, int count, string wayToGet, string receiptSource);
+        void SendEventOnResourceSent(string resourceType, int count, string wayOfSpending, string spentOn);
+        void SendEventOnInterstitialShown();
     }
 }
