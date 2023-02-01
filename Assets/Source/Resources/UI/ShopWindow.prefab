@@ -119,8 +119,8 @@ MonoBehaviour:
   _startButton: {fileID: 5686351940195147888}
   _startNumberButton: {fileID: 3217137761128065593}
   _incomeButton: {fileID: 2389916630389771932}
-  _startNumberButtonShowing: {fileID: 2963986812194500655}
-  _incomeButtonShowing: {fileID: 2642789935398868106}
+  _startNumberButtonView: {fileID: 2963986812194500655}
+  _incomeButtonView: {fileID: 2642789935398868106}
 --- !u!1 &8210583923145005465
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,6 +415,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: Income_Button
       objectReference: {fileID: 0}
+    - target: {fileID: 6263658105469628179, guid: b5a63f35127765140a07c180441f56e7, type: 3}
+      propertyPath: _defaultColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263658105469628179, guid: b5a63f35127765140a07c180441f56e7, type: 3}
+      propertyPath: _defaultColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263658105469628179, guid: b5a63f35127765140a07c180441f56e7, type: 3}
+      propertyPath: _defaultColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263658105469628179, guid: b5a63f35127765140a07c180441f56e7, type: 3}
+      propertyPath: _defaultColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263658105469628179, guid: b5a63f35127765140a07c180441f56e7, type: 3}
+      propertyPath: _notEnoughMoneyColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263658105469628179, guid: b5a63f35127765140a07c180441f56e7, type: 3}
+      propertyPath: _notEnoughMoneyColor.b
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263658105469628179, guid: b5a63f35127765140a07c180441f56e7, type: 3}
+      propertyPath: _notEnoughMoneyColor.g
+      value: 0.6039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263658105469628179, guid: b5a63f35127765140a07c180441f56e7, type: 3}
+      propertyPath: _notEnoughMoneyColor.r
+      value: 0.99607843
+      objectReference: {fileID: 0}
     - target: {fileID: 6277011359229808725, guid: b5a63f35127765140a07c180441f56e7, type: 3}
       propertyPath: m_text
       value: x1.1
@@ -677,6 +709,26 @@ PrefabInstance:
     - target: {fileID: 5916196212577986457, guid: b5a63f35127765140a07c180441f56e7, type: 3}
       propertyPath: m_Name
       value: StartNumber_Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263658105469628179, guid: b5a63f35127765140a07c180441f56e7, type: 3}
+      propertyPath: _defaultColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263658105469628179, guid: b5a63f35127765140a07c180441f56e7, type: 3}
+      propertyPath: _defaultColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263658105469628179, guid: b5a63f35127765140a07c180441f56e7, type: 3}
+      propertyPath: _defaultColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263658105469628179, guid: b5a63f35127765140a07c180441f56e7, type: 3}
+      propertyPath: _defaultColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263658105469628179, guid: b5a63f35127765140a07c180441f56e7, type: 3}
+      propertyPath: _notEnoughMoneyColor.r
+      value: 0.99607843
       objectReference: {fileID: 0}
     - target: {fileID: 6891757765427252019, guid: b5a63f35127765140a07c180441f56e7, type: 3}
       propertyPath: m_text

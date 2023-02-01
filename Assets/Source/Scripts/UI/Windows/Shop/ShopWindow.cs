@@ -2,6 +2,7 @@
 using Source.Scripts.Infrastructure.States;
 using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.StaticData;
+using Source.Scripts.UI.Elements;
 using UnityEngine;
 
 namespace Source.Scripts.UI.Windows.Shop
@@ -11,8 +12,8 @@ namespace Source.Scripts.UI.Windows.Shop
         [SerializeField] private ClickedDownButton _startButton;
         [SerializeField] private ClickedDownButton _startNumberButton;
         [SerializeField] private ClickedDownButton _incomeButton;
-        [SerializeField] private ShopButtonShowing _startNumberButtonShowing;
-        [SerializeField] private ShopButtonShowing _incomeButtonShowing;
+        [SerializeField] private ShopButtonView _startNumberButtonView;
+        [SerializeField] private ShopButtonView _incomeButtonView;
         
         private IGameStateMachine _stateMachine;
         private IStaticDataService _staticData;
@@ -77,26 +78,26 @@ namespace Source.Scripts.UI.Windows.Shop
 
         private void UpdateStartNumberButtonShowing()
         {
-            _startNumberButtonShowing.SetPriceText(_staticData.ForStartNumberBasePrice() * Progress.PlayerStats.StartNumber);
-            _startNumberButtonShowing.SetCurrentLevelText(Progress.PlayerStats.StartNumber.ToString());
-            _startNumberButtonShowing.SetNextLevelText((Progress.PlayerStats.StartNumber + 1).ToString());
+            _startNumberButtonView.SetPriceText(_staticData.ForStartNumberBasePrice() * Progress.PlayerStats.StartNumber);
+            _startNumberButtonView.SetCurrentLevelText(Progress.PlayerStats.StartNumber.ToString());
+            _startNumberButtonView.SetNextLevelText((Progress.PlayerStats.StartNumber + 1).ToString());
             
             if(_staticData.ForStartNumberBasePrice() * Progress.PlayerStats.StartNumber > Progress.Soft.Collected)
-                _startNumberButtonShowing.SetNotEnoughMoneyColor();
+                _startNumberButtonView.SetNotEnoughMoneyColor();
             else
-                _startNumberButtonShowing.SetDefaultColor();
+                _startNumberButtonView.SetDefaultColor();
         }
 
         private void UpdateIncomeButtonShowing()
         {
-            _incomeButtonShowing.SetPriceText(_staticData.ForIncomeBasePrice() * Progress.PlayerStats.IncomeLevel);
-            _incomeButtonShowing.SetCurrentLevelText("x" + (1.0f + (Progress.PlayerStats.IncomeLevel - 1) * _staticData.ForIncomeIncrement()).ToString("0.0"));
-            _incomeButtonShowing.SetNextLevelText("x" + (1.0f + (Progress.PlayerStats.IncomeLevel) * _staticData.ForIncomeIncrement()).ToString("0.0"));
+            _incomeButtonView.SetPriceText(_staticData.ForIncomeBasePrice() * Progress.PlayerStats.IncomeLevel);
+            _incomeButtonView.SetCurrentLevelText("x" + (1.0f + (Progress.PlayerStats.IncomeLevel - 1) * _staticData.ForIncomeIncrement()).ToString("0.0"));
+            _incomeButtonView.SetNextLevelText("x" + (1.0f + (Progress.PlayerStats.IncomeLevel) * _staticData.ForIncomeIncrement()).ToString("0.0"));
             
             if(_staticData.ForIncomeBasePrice() * Progress.PlayerStats.IncomeLevel > Progress.Soft.Collected)
-                _incomeButtonShowing.SetNotEnoughMoneyColor();
+                _incomeButtonView.SetNotEnoughMoneyColor();
             else
-                _incomeButtonShowing.SetDefaultColor();
+                _incomeButtonView.SetDefaultColor();
         }
     }
 }
