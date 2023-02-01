@@ -21,31 +21,30 @@ namespace Source.Scripts.Services.Ads
         public void ShowInterstitial(Action onCloseCallback = null)
         {
 #if UNITY_EDITOR
-            onCloseCallback?.Invoke();            
+            Pause();
+            UnPause(onCloseCallback);
 #endif
 #if YANDEX_GAMES && !UNITY_EDITOR
             InterstitialAd.Show(
                 Pause,
-                _ =>
-                {
-                    UnPause();
-                    onCloseCallback?.Invoke();
-                }, 
-                _ => UnPause());
+                _ => UnPause(onCloseCallback), 
+                _ => UnPause(onCloseCallback));
 #endif
         }
 
-        public void ShowRewardedVideo(Action onRewardedCallback = null)
+        public void ShowRewardedVideo(Action onRewardedCallback = null, Action onCloseCallback = null)
         {
 #if UNITY_EDITOR
-            onRewardedCallback?.Invoke();            
+            Pause();
+            onRewardedCallback?.Invoke();
+            UnPause(onCloseCallback);
 #endif
 #if YANDEX_GAMES && !UNITY_EDITOR
             VideoAd.Show(
                 Pause,
                 onRewardedCallback,
-                UnPause,
-                _ => UnPause());
+                () => UnPause(onCloseCallback),
+                _ => UnPause(onCloseCallback));
 #endif
         }
 
@@ -55,10 +54,11 @@ namespace Source.Scripts.Services.Ads
             _soundService.AdsMute();
         }
 
-        private void UnPause()
+        private void UnPause(Action onCloseCallback)
         {
             _gamePause.Off();
             _soundService.AdsUnMute();
+            onCloseCallback?.Invoke();
         }
     }
 }
