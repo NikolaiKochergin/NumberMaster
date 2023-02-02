@@ -39,7 +39,8 @@ namespace Source.Scripts.Infrastructure.States
         public void Enter()
         {
 #if UNITY_EDITOR
-            PlayerPrefs.SetString("SceneToLoad", SceneManager.GetActiveScene().name);
+            if(SceneManager.GetActiveScene().buildIndex != 0)
+                PlayerPrefs.SetInt("SceneToLoad", SceneManager.GetActiveScene().buildIndex);
 #endif
             _sceneLoader.Load(_staticData.ForSceneName(0), onLoaded: EnterLoadLevel);
         }
@@ -82,7 +83,10 @@ namespace Source.Scripts.Infrastructure.States
                 _services.Single<IStaticDataService>(),
                 _services.Single<IPersistentProgressService>(),
                 _services.Single<IGameFactory>(),
-                _services.Single<ISoundService>()));
+                _services.Single<ISoundService>(),
+                _services.Single<IAdsService>(),
+                _services.Single<IAnalyticService>(),
+                _services.Single<ISaveLoadService>()));
 
             _services.RegisterSingle<IWindowService>(new WindowService(_services.Single<IUIFactory>()));
         }

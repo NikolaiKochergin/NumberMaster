@@ -25,17 +25,13 @@ namespace Source.Scripts.Infrastructure
         public void On()
         {
             _isMuted = false;
-            _musicSource.UnPause();
-            AudioListener.pause = false;
-            AudioListener.volume = 1f;
+            UnPause();
         }
 
         public void Off()
         {
             _isMuted = true;
-            _musicSource.Pause();
-            AudioListener.pause = true;
-            AudioListener.volume = 0f;
+            Pause();
         }
 
         private void OnInBackgroundChange(bool inBackground)
@@ -44,9 +40,23 @@ namespace Source.Scripts.Infrastructure
                 return;
 
             if(inBackground)
-                Off();
+                Pause();
             else
-                On();
+                UnPause();
+        }
+
+        private void UnPause()
+        {
+            _musicSource.UnPause();
+            AudioListener.pause = false;
+            AudioListener.volume = 1f;
+        }
+
+        private void Pause()
+        {
+            _musicSource.Pause();
+            AudioListener.pause = true;
+            AudioListener.volume = 0f;
         }
     }
 }

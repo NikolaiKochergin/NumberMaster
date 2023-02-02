@@ -1,5 +1,7 @@
-﻿using Source.Scripts.Infrastructure.Factory;
+﻿using Source.Scripts.Analytics;
+using Source.Scripts.Infrastructure.Factory;
 using Source.Scripts.Infrastructure.States;
+using Source.Scripts.Services.Analytics;
 using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.StaticData;
 using Source.Scripts.UI.Elements;
@@ -18,12 +20,19 @@ namespace Source.Scripts.UI.Windows.Shop
         private IGameStateMachine _stateMachine;
         private IStaticDataService _staticData;
         private IGameFactory _factory;
+        private IAnalyticService _analytic;
 
-        public void Construct(IGameStateMachine stateMachine, IPersistentProgressService progressService, IStaticDataService staticData, IGameFactory factory)
+        public void Construct(
+            IGameStateMachine stateMachine, 
+            IPersistentProgressService progressService, 
+            IStaticDataService staticData, 
+            IGameFactory factory,
+            IAnalyticService analytic)
         {
             _stateMachine = stateMachine;
             _staticData = staticData;
             _factory = factory;
+            _analytic = analytic;
             base.Construct(progressService);
         }
 
@@ -59,10 +68,12 @@ namespace Source.Scripts.UI.Windows.Shop
                 Progress.Soft.Collected) return;
             
             _factory.Player.PlayerNumber.TakeNumber(1);
-            Progress.Soft.Collected -= _staticData.ForStartNumberBasePrice() * Progress.PlayerStats.StartNumber;
+            int price = _staticData.ForStartNumberBasePrice() * Progress.PlayerStats.StartNumber;
+            Progress.Soft.Collected -= price;
             Progress.PlayerStats.StartNumber += 1;
             UpdateStartNumberButtonShowing();
             UpdateIncomeButtonShowing();
+            _analytic.SendEventOnResourceSent(AnalyticNames.Soft, price, AnalyticNames.Shop, AnalyticNames.StartNumber);
         }
 
         private void OnIncomeButtonClicked()
@@ -70,10 +81,12 @@ namespace Source.Scripts.UI.Windows.Shop
             if(_staticData.ForIncomeBasePrice() * Progress.PlayerStats.IncomeLevel > Progress.Soft.Collected)
                 return;
 
-            Progress.Soft.Collected -= _staticData.ForIncomeBasePrice() * Progress.PlayerStats.IncomeLevel;
+            int price = _staticData.ForIncomeBasePrice() * Progress.PlayerStats.IncomeLevel;
+            Progress.Soft.Collected -= price;
             Progress.PlayerStats.IncomeLevel += 1;
             UpdateStartNumberButtonShowing();
             UpdateIncomeButtonShowing();
+            _analytic.SendEventOnResourceSent(AnalyticNames.Soft, price, AnalyticNames.Shop, AnalyticNames.IncomingLevel);
         }
 
         private void UpdateStartNumberButtonShowing()

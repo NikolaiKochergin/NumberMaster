@@ -708,7 +708,7 @@ PlayerSettings:
   webGLDecompressionFallback: 1
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    WebGL: DREAMTECK_SPLINES;YANDEX_GAMES;YANDEX_METRICA
+    WebGL: DREAMTECK_SPLINES;YANDEX_GAMES;YANDEX_METRICA;GAME_ANALYTICS
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

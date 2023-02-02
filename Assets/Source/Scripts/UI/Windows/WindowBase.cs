@@ -1,6 +1,5 @@
 ﻿using Source.Scripts.Data;
 using Source.Scripts.Services.PersistentProgress;
-using Source.Scripts.Services.Sound;
 using UnityEngine;
 
 namespace Source.Scripts.UI.Windows

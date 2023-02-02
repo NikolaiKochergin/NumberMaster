@@ -59,10 +59,13 @@ MonoBehaviour:
   CustomDimensions01: []
   CustomDimensions02: []
   CustomDimensions03: []
-  ResourceItemTypes: []
-  ResourceCurrencies: []
+  ResourceItemTypes:
+  - reward-ad
+  - shop
+  ResourceCurrencies:
+  - soft
   LastCreatedGamePlatform: -1
-  Platforms: 0b000000
+  Platforms: 11000000
   CurrentInspectorState: 1
   ClosedHints: 
   DisplayHints: 0
@@ -82,7 +85,7 @@ MonoBehaviour:
   macIcon: {fileID: 0}
   windowsPhoneIcon: {fileID: 0}
   UsePlayerSettingsBuildNumber: 0
-  SubmitErrors: 1
+  SubmitErrors: 0
   NativeErrorReporting: 0
   MaxErrorCount: 10
   SubmitFpsAverage: 0
@@ -94,5 +97,5 @@ MonoBehaviour:
   CustomDimensions01FoldOut: 0
   CustomDimensions02FoldOut: 0
   CustomDimensions03FoldOut: 0
-  ResourceItemTypesFoldOut: 0
-  ResourceCurrenciesFoldOut: 0
+  ResourceItemTypesFoldOut: 1
+  ResourceCurrenciesFoldOut: 1

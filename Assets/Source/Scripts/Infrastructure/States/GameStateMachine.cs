@@ -43,11 +43,13 @@ namespace Source.Scripts.Infrastructure.States
                     services.Single<IPersistentProgressService>(),
                     services.Single<IStaticDataService>(),
                     services.Single<ISaveLoadService>(),
-                    services.Single<IGameFactory>()),
+                    services.Single<IGameFactory>(),
+                    services.Single<IAnalyticService>()),
                 [typeof(FailState)] = new FailState(this,
                     sceneLoader,
                     services.Single<IPersistentProgressService>(),
-                    services.Single<IStaticDataService>())
+                    services.Single<IStaticDataService>(),
+                    services.Single<IAnalyticService>())
             };
         }
 

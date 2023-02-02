@@ -26,12 +26,9 @@ namespace Source.Scripts.Infrastructure.States
         {
             LoadProgressOrInitNew();
 #if UNITY_EDITOR
-            if(PlayerPrefs.GetString("SceneToLoad") != _staticDataService.ForSceneName(_progressService.Progress.World.CurrentLevel) &&
-               PlayerPrefs.GetString("SceneToLoad") != _staticDataService.ForSceneName(0))
-                _stateMachine.Enter<LoadLevelState, string>(PlayerPrefs.GetString("SceneToLoad"));
-            else
+            _progressService.Progress.World.CurrentLevel = PlayerPrefs.GetInt("SceneToLoad");
 #endif
-                _stateMachine.Enter<LoadLevelState, string>(_staticDataService.ForSceneName(_progressService.Progress.World.CurrentLevel));
+            _stateMachine.Enter<LoadLevelState, string>(_staticDataService.ForSceneName(_progressService.Progress.World.CurrentLevel));
         }
 
         public void Exit()

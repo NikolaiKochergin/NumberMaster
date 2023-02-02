@@ -9,6 +9,7 @@ namespace Source.Scripts.InteractiveObjects.Number
         [SerializeField] private EnemyNumberView _enemyNumberView;
 
         private int _value;
+        private bool _isTaken;
 
         private void Awake() => 
             _trigger.TriggerEnter += AffectPlayer;
@@ -30,8 +31,14 @@ namespace Source.Scripts.InteractiveObjects.Number
 
         private void AffectPlayer(Collider other)
         {
+            if(_isTaken)
+                return;
+            
             if (other.attachedRigidbody.TryGetComponent(out PlayerNumber playerNumber))
             {
+                _isTaken = true;
+                _trigger.gameObject.SetActive(false);
+                
                 playerNumber.TakeNumber(_value);
                 if (playerNumber.Current >= _value)
                     Die();
