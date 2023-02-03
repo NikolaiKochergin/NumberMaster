@@ -2,6 +2,7 @@
 using Source.Scripts.Infrastructure.States;
 using Source.Scripts.Services.Ads;
 using Source.Scripts.Services.Analytics;
+using Source.Scripts.Services.IAP;
 using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.SaveLoad;
 using Source.Scripts.Services.Sound;
@@ -20,31 +21,31 @@ namespace Source.Scripts.UI.Services.Factory
         private readonly IGameStateMachine _stateMachine;
         private readonly IStaticDataService _staticData;
         private readonly IPersistentProgressService _progressService;
-        private readonly IGameFactory _factory;
         private readonly ISoundService _sounds;
         private readonly IAdsService _adsService;
         private readonly IAnalyticService _analytic;
+        private readonly IIAPService _iapService;
 
         private Transform _uiRoot;
         private ISaveLoadService _saveLoad;
 
         public UIFactory(IGameStateMachine stateMachine, 
             IStaticDataService staticData, 
-            IPersistentProgressService progressService, 
-            IGameFactory factory, 
+            IPersistentProgressService progressService,
             ISoundService sounds,
             IAdsService adsService,
             IAnalyticService analytic,
-            ISaveLoadService saveLoad)
+            ISaveLoadService saveLoad,
+            IIAPService iapService)
         {
             _stateMachine = stateMachine;
             _staticData = staticData;
             _progressService = progressService;
-            _factory = factory;
             _sounds = sounds;
             _adsService = adsService;
             _analytic = analytic;
             _saveLoad = saveLoad;
+            _iapService = iapService;
         }
 
         public void InitUIRoot() => 
@@ -55,7 +56,7 @@ namespace Source.Scripts.UI.Services.Factory
             WindowConfig config = _staticData.ForWindow(WindowId.Shop);
             ShopWindow window = Object.Instantiate(config.Template, _uiRoot) as ShopWindow;
             window.transform.SetAsFirstSibling();
-            window.Construct(_stateMachine, _progressService, _staticData, _factory, _analytic);
+            window.Construct(_stateMachine, _progressService, _iapService);
         }
 
         public void CreateGameLoopWindow()

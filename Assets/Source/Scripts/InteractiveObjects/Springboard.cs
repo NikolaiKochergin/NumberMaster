@@ -9,7 +9,7 @@ namespace Source.Scripts.InteractiveObjects
         [SerializeField] private TriggerObserver _triggerObserver;
         [SerializeField] private AnimationCurve _jumpCurve;
         [SerializeField][Min(0)] private float _duration = 1;
-        [SerializeField] private float _jumpForse;
+        [SerializeField] private float _jumpForce = 1.5f;
 
         private void OnEnable() => 
             _triggerObserver.TriggerEnter += MovePlayer;
@@ -31,7 +31,7 @@ namespace Source.Scripts.InteractiveObjects
             player.ActorFall.Disable();
             
             player.transform
-                .DOMoveY(_jumpForse, _duration)
+                .DOMoveY(_jumpForce, _duration)
                 .SetEase(_jumpCurve)
                 .OnComplete(() =>
                 {

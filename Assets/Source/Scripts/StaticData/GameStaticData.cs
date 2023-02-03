@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Source.Scripts.Services.IAP;
 using UnityEngine;
 
 namespace Source.Scripts.StaticData
@@ -9,11 +10,9 @@ namespace Source.Scripts.StaticData
         [Header("Player Stats")]
         [Min(0)] public float PlayerSpeed = 3;
 
-        [Space]
-        [Header("Shop Settings")]
-        [Min(0)] public int StartNumberBasePrice = 200;
-        [Min(0)] public int IncomeBasePrice = 500;
-        [Min(0)] public float IncomeIncrement = 0.1f;
+        [Space] 
+        [Header("Shop Settings")] 
+        public List<PurchaseConfig> Purchases;
 
         [Space] 
         [Header("Input Settings")] 

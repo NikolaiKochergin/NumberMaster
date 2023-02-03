@@ -1,4 +1,5 @@
-﻿using Source.Scripts.StaticData;
+﻿using Source.Scripts.Services.IAP;
+using Source.Scripts.StaticData;
 using Source.Scripts.StaticData.Windows;
 using Source.Scripts.UI.Services.Windows;
 
@@ -13,9 +14,7 @@ namespace Source.Scripts.Services.StaticData
         WindowConfig ForWindow(WindowId windowId);
         string ForSceneName(int index);
         int ForRepeatLevelNumber();
-        int ForStartNumberBasePrice();
-        int ForIncomeBasePrice();
-        float ForIncomeIncrement();
         LevelStaticData ForLevel(string sceneKey);
+        PurchaseConfig ForPurchase(PurchaseType type);
     }
 }

@@ -6,6 +6,6 @@ namespace Source.Scripts.Data
     public class Stats
     {
         public int StartNumber = 1;
-        public int IncomeLevel = 1;
+        public float Income = 1.0f;
     }
 }

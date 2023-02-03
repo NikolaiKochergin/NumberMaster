@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Source.Scripts.Services.IAP;
 using Source.Scripts.StaticData;
 using Source.Scripts.StaticData.Windows;
 using Source.Scripts.UI.Services.Windows;
@@ -16,11 +17,14 @@ namespace Source.Scripts.Services.StaticData
         private GameStaticData _gameData;
         private Dictionary<WindowId, WindowConfig> _windowConfigs;
         private Dictionary<string, LevelStaticData> _levels;
+        private Dictionary<PurchaseType, PurchaseConfig> _purchases;
 
         public void Load()
         {
             _gameData = Resources
                 .Load<GameStaticData>(GameDataPath);
+
+            _purchases = _gameData.Purchases.ToDictionary(x => x.Type, x => x);
 
             _windowConfigs = Resources
                 .Load<WindowStaticData>(StaticDataWindowPath)
@@ -31,7 +35,6 @@ namespace Source.Scripts.Services.StaticData
                 .LoadAll<LevelStaticData>(LevelDataPath)
                 .ToDictionary(x => x.LevelKey, x => x);
         }
-
 
         public float ForPlayerSpeed() => 
             _gameData.PlayerSpeed;
@@ -60,13 +63,9 @@ namespace Source.Scripts.Services.StaticData
         public int ForRepeatLevelNumber() =>
             _gameData.RepeatLevelNumber;
 
-        public int ForStartNumberBasePrice() =>
-            _gameData.StartNumberBasePrice;
-
-        public int ForIncomeBasePrice() => 
-            _gameData.IncomeBasePrice;
-
-        public float ForIncomeIncrement() =>
-            _gameData.IncomeIncrement;
+        public PurchaseConfig ForPurchase(PurchaseType type) =>
+            _purchases.TryGetValue(type, out PurchaseConfig purchaseConfig)
+                ? purchaseConfig
+                : null;
     }
 }

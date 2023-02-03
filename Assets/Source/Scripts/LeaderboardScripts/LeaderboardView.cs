@@ -142,22 +142,13 @@ namespace Source.Scripts.LeaderboardScripts
             }
 #endif
         }
-        private string TranslateIntoLocalLanguage()
-        {
-            if (YandexGamesSdk.Environment.i18n.lang == "tr")
+        private string TranslateIntoLocalLanguage() =>
+            YandexGamesSdk.Environment.i18n.lang switch
             {
-                return UnknownPlayerNameTr;
-            }
-            else if (YandexGamesSdk.Environment.i18n.lang == "ru")
-            {
-                return UnknownPlayerNameRu;
-            }
-            else if(YandexGamesSdk.Environment.i18n.lang == "en")
-            {
-                return UnknownPlayerNameEn;
-            }
-
-            return null;
-        }
+                "tr" => UnknownPlayerNameTr,
+                "ru" => UnknownPlayerNameRu,
+                "en" => UnknownPlayerNameEn,
+                _ => null
+            };
     }
 }

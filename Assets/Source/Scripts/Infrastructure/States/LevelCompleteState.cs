@@ -47,13 +47,8 @@ namespace Source.Scripts.Infrastructure.States
         {
         }
 
-        private float CalculateCollected()
-        {
-            return _factory.Player.PlayerNumber.Current * (1.0f +
-                                                           (_progressService.Progress.PlayerStats
-                                                               .IncomeLevel - 1) * _staticDataService
-                                                               .ForIncomeIncrement());
-        }
+        private float CalculateCollected() => 
+            _factory.Player.PlayerNumber.Current * _progressService.Progress.PlayerStats.Income;
 
         private void SendAnalytics(float collected)
         {

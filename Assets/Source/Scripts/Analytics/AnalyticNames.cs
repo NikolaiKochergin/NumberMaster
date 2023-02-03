@@ -11,6 +11,6 @@ namespace Source.Scripts.Analytics
         public const string LevelComplete = "level-complete";
         public const string Shop = "shop";
         public const string StartNumber = "start-number";
-        public const string IncomingLevel = "incoming-level";
+        public const string Incoming = "incoming-level";
     }
 }

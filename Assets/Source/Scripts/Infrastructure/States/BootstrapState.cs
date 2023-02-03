@@ -6,6 +6,7 @@ using Source.Scripts.Infrastructure.Factory;
 using Source.Scripts.Services;
 using Source.Scripts.Services.Ads;
 using Source.Scripts.Services.Analytics;
+using Source.Scripts.Services.IAP;
 using Source.Scripts.Services.Input;
 using Source.Scripts.Services.Pause;
 using Source.Scripts.Services.PersistentProgress;
@@ -59,6 +60,10 @@ namespace Source.Scripts.Infrastructure.States
             _services.RegisterSingle<IAssetProvider>(new AssetProvider());
             _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
             _services.RegisterSingle<IGameStateMachine>(_stateMachine);
+            _services.RegisterSingle<IIAPService>(new IAPService(
+                _services.Single<IStaticDataService>(),
+                _services.Single<IPersistentProgressService>(),
+                _services.Single<IAnalyticService>()));
 
             _services.RegisterSingle<IGameFactory>(new GameFactory(
                 _services.Single<IGameStateMachine>(),
@@ -82,11 +87,11 @@ namespace Source.Scripts.Infrastructure.States
                 _services.Single<IGameStateMachine>(),
                 _services.Single<IStaticDataService>(),
                 _services.Single<IPersistentProgressService>(),
-                _services.Single<IGameFactory>(),
                 _services.Single<ISoundService>(),
                 _services.Single<IAdsService>(),
                 _services.Single<IAnalyticService>(),
-                _services.Single<ISaveLoadService>()));
+                _services.Single<ISaveLoadService>(),
+                _services.Single<IIAPService>()));
 
             _services.RegisterSingle<IWindowService>(new WindowService(_services.Single<IUIFactory>()));
         }

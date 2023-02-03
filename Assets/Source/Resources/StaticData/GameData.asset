@@ -13,9 +13,17 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: 
   PlayerSpeed: 6
-  StartNumberBasePrice: 200
-  IncomeBasePrice: 500
-  IncomeIncrement: 0.1
+  Purchases:
+  - _type: 1
+    _basePrice: 200
+    _salableValue: 1
+    _icon: {fileID: 0}
+    _description: 
+  - _type: 2
+    _basePrice: 500
+    _salableValue: 0.1
+    _icon: {fileID: 0}
+    _description: 
   MouseSensitivity: 0.2
   KeyboardSensitivity: 0.03
   RepeatLevelNumber: 1

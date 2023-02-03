@@ -10,6 +10,7 @@ namespace Source.Scripts.Data
         public Soft Soft;
         public World World;
         public GameSettings GameSettings;
+        public PurchaseData PurchaseData;
 
         public PlayerProgress()
         {
@@ -18,6 +19,7 @@ namespace Source.Scripts.Data
             Soft = new Soft();
             World = new World();
             GameSettings = new GameSettings();
+            PurchaseData = new PurchaseData();
         }
     }
 }

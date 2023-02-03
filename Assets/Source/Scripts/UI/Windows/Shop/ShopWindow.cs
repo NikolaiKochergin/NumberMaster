@@ -1,9 +1,6 @@
-﻿using Source.Scripts.Analytics;
-using Source.Scripts.Infrastructure.Factory;
-using Source.Scripts.Infrastructure.States;
-using Source.Scripts.Services.Analytics;
+﻿using Source.Scripts.Infrastructure.States;
+using Source.Scripts.Services.IAP;
 using Source.Scripts.Services.PersistentProgress;
-using Source.Scripts.Services.StaticData;
 using Source.Scripts.UI.Elements;
 using UnityEngine;
 
@@ -18,21 +15,15 @@ namespace Source.Scripts.UI.Windows.Shop
         [SerializeField] private ShopButtonView _incomeButtonView;
         
         private IGameStateMachine _stateMachine;
-        private IStaticDataService _staticData;
-        private IGameFactory _factory;
-        private IAnalyticService _analytic;
+        private IIAPService _iapService;
 
         public void Construct(
             IGameStateMachine stateMachine, 
-            IPersistentProgressService progressService, 
-            IStaticDataService staticData, 
-            IGameFactory factory,
-            IAnalyticService analytic)
+            IPersistentProgressService progressService,
+            IIAPService iapService)
         {
             _stateMachine = stateMachine;
-            _staticData = staticData;
-            _factory = factory;
-            _analytic = analytic;
+            _iapService = iapService;
             base.Construct(progressService);
         }
 
@@ -64,38 +55,26 @@ namespace Source.Scripts.UI.Windows.Shop
 
         private void OnStartNumberButtonClicked()
         {
-            if (_staticData.ForStartNumberBasePrice() * Progress.PlayerStats.StartNumber >
-                Progress.Soft.Collected) return;
-            
-            _factory.Player.PlayerNumber.TakeNumber(1);
-            int price = _staticData.ForStartNumberBasePrice() * Progress.PlayerStats.StartNumber;
-            Progress.Soft.Collected -= price;
-            Progress.PlayerStats.StartNumber += 1;
+            _iapService.Buy(PurchaseType.StartLevel);
             UpdateStartNumberButtonShowing();
             UpdateIncomeButtonShowing();
-            _analytic.SendEventOnResourceSent(AnalyticNames.Soft, price, AnalyticNames.Shop, AnalyticNames.StartNumber);
         }
 
         private void OnIncomeButtonClicked()
         {
-            if(_staticData.ForIncomeBasePrice() * Progress.PlayerStats.IncomeLevel > Progress.Soft.Collected)
-                return;
-
-            int price = _staticData.ForIncomeBasePrice() * Progress.PlayerStats.IncomeLevel;
-            Progress.Soft.Collected -= price;
-            Progress.PlayerStats.IncomeLevel += 1;
+            _iapService.Buy(PurchaseType.Incoming);
             UpdateStartNumberButtonShowing();
             UpdateIncomeButtonShowing();
-            _analytic.SendEventOnResourceSent(AnalyticNames.Soft, price, AnalyticNames.Shop, AnalyticNames.IncomingLevel);
         }
 
         private void UpdateStartNumberButtonShowing()
         {
-            _startNumberButtonView.SetPriceText(_staticData.ForStartNumberBasePrice() * Progress.PlayerStats.StartNumber);
+            int price = _iapService.GetPriceOf(PurchaseType.StartLevel);
+            _startNumberButtonView.SetPriceText(price);
             _startNumberButtonView.SetCurrentLevelText(Progress.PlayerStats.StartNumber.ToString());
-            _startNumberButtonView.SetNextLevelText((Progress.PlayerStats.StartNumber + 1).ToString());
+            _startNumberButtonView.SetNextLevelText((Progress.PlayerStats.StartNumber + _iapService.GetConfigOf(PurchaseType.StartLevel).SalableValue).ToString());
             
-            if(_staticData.ForStartNumberBasePrice() * Progress.PlayerStats.StartNumber > Progress.Soft.Collected)
+            if(price > Progress.Soft.Collected)
                 _startNumberButtonView.SetNotEnoughMoneyColor();
             else
                 _startNumberButtonView.SetDefaultColor();
@@ -103,11 +82,13 @@ namespace Source.Scripts.UI.Windows.Shop
 
         private void UpdateIncomeButtonShowing()
         {
-            _incomeButtonView.SetPriceText(_staticData.ForIncomeBasePrice() * Progress.PlayerStats.IncomeLevel);
-            _incomeButtonView.SetCurrentLevelText("x" + (1.0f + (Progress.PlayerStats.IncomeLevel - 1) * _staticData.ForIncomeIncrement()).ToString("0.0"));
-            _incomeButtonView.SetNextLevelText("x" + (1.0f + (Progress.PlayerStats.IncomeLevel) * _staticData.ForIncomeIncrement()).ToString("0.0"));
+            int price = _iapService.GetPriceOf(PurchaseType.Incoming);
             
-            if(_staticData.ForIncomeBasePrice() * Progress.PlayerStats.IncomeLevel > Progress.Soft.Collected)
+            _incomeButtonView.SetPriceText(price);
+            _incomeButtonView.SetCurrentLevelText("x" + Progress.PlayerStats.Income.ToString("0.0"));
+            _incomeButtonView.SetNextLevelText("x" + (Progress.PlayerStats.Income + _iapService.GetConfigOf(PurchaseType.Incoming).SalableValue).ToString("0.0"));
+            
+            if(price > Progress.Soft.Collected)
                 _incomeButtonView.SetNotEnoughMoneyColor();
             else
                 _incomeButtonView.SetDefaultColor();
