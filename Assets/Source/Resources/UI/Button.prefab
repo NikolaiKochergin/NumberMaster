@@ -1001,6 +1001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b347d40cdd641b49a6900a525d50f3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _icon: {fileID: 5810328511787352751}
   _currentLevelText: {fileID: 2083812998302035660}
   _nextLevelText: {fileID: 6277011359229808725}
   _priceText: {fileID: 1390847592367512528}

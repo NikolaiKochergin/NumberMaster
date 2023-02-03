@@ -29,6 +29,8 @@ namespace Source.Scripts.UI.Windows.Shop
 
         protected override void Initialize()
         {
+            _startNumberButtonView.SetIcon(_iapService.GetConfigOf(PurchaseType.StartLevel).Icon);
+            _incomeButtonView.SetIcon(_iapService.GetConfigOf(PurchaseType.Incoming).Icon);
             UpdateStartNumberButtonShowing();
             UpdateIncomeButtonShowing();
         }
@@ -38,6 +40,8 @@ namespace Source.Scripts.UI.Windows.Shop
             _startButton.ClickedDown += OnClickedDown;
             _startNumberButton.ClickedDown += OnStartNumberButtonClicked;
             _incomeButton.ClickedDown += OnIncomeButtonClicked;
+            Progress.Soft.Changed += UpdateStartNumberButtonShowing;
+            Progress.Soft.Changed += UpdateIncomeButtonShowing;
         }
 
         protected override void Cleanup()
@@ -45,6 +49,8 @@ namespace Source.Scripts.UI.Windows.Shop
             _startButton.ClickedDown -= OnClickedDown;
             _startNumberButton.ClickedDown -= OnStartNumberButtonClicked;
             _incomeButton.ClickedDown -= OnIncomeButtonClicked;
+            Progress.Soft.Changed -= UpdateStartNumberButtonShowing;
+            Progress.Soft.Changed -= UpdateIncomeButtonShowing;
         }
 
         private void OnClickedDown()

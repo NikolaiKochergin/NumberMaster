@@ -1,10 +1,12 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Source.Scripts.UI.Windows.Shop
 {
     public class ShopButtonView : MonoBehaviour
     {
+        [SerializeField] private Image _icon;
         [SerializeField] private TextMeshProUGUI _currentLevelText;
         [SerializeField] private TextMeshProUGUI _nextLevelText;
         [SerializeField] private TextMeshProUGUI _priceText;
@@ -25,5 +27,8 @@ namespace Source.Scripts.UI.Windows.Shop
 
         public void SetNotEnoughMoneyColor() =>
             _priceText.color = _notEnoughMoneyColor;
+
+        public void SetIcon(Sprite icon) => 
+            _icon.sprite = icon;
     }
 }
