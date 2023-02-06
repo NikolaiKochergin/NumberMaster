@@ -1,25 +1,23 @@
 using System.Collections;
-using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
-using UnityEngine;
+using Source.Scripts.Data;
 using UnityEngine.TestTools;
 
-public class FIrstTest
+namespace Tests
 {
-    // A Test behaves as an ordinary method
-    [Test]
-    public void FIrstTestSimplePasses()
+    public class FirstTest
     {
-        // Use the Assert class to test conditions
-    }
+        [Test]
+        public void WhenIAPService_AndAddIncomingPurchase_ThenIncomingShouldBe1()
+        {
+            // Arrange.
 
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
-    [UnityTest]
-    public IEnumerator FIrstTestWithEnumeratorPasses()
-    {
-        // Use the Assert class to test conditions.
-        // Use yield to skip a frame.
-        yield return null;
+            // Act.
+
+            // Assert.
+            PlayerProgress playerProgress = null;
+            playerProgress.PurchaseData.IncomeLevelCount.Should().Be(1);
+        }
     }
 }
