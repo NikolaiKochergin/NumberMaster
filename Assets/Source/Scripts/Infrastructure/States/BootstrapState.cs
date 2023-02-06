@@ -60,10 +60,6 @@ namespace Source.Scripts.Infrastructure.States
             _services.RegisterSingle<IAssetProvider>(new AssetProvider());
             _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
             _services.RegisterSingle<IGameStateMachine>(_stateMachine);
-            _services.RegisterSingle<IIAPService>(new IAPService(
-                _services.Single<IStaticDataService>(),
-                _services.Single<IPersistentProgressService>(),
-                _services.Single<IAnalyticService>()));
 
             _services.RegisterSingle<IGameFactory>(new GameFactory(
                 _services.Single<IGameStateMachine>(),
@@ -71,6 +67,12 @@ namespace Source.Scripts.Infrastructure.States
                 _services.Single<IAssetProvider>(),
                 _services.Single<IStaticDataService>()));
             
+            _services.RegisterSingle<IIAPService>(new IAPService(
+                _services.Single<IStaticDataService>(),
+                _services.Single<IPersistentProgressService>(),
+                _services.Single<IGameFactory>(),
+                _services.Single<IAnalyticService>()));
+
             _services.RegisterSingle<ISoundService>(new SoundService(
                 _services.Single<IGameFactory>(),
                 _services.Single<IPersistentProgressService>()));

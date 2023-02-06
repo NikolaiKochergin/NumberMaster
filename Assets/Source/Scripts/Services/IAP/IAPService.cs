@@ -1,5 +1,6 @@
 using System;
 using Source.Scripts.Analytics;
+using Source.Scripts.Infrastructure.Factory;
 using Source.Scripts.Services.Analytics;
 using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.StaticData;
@@ -10,12 +11,14 @@ namespace Source.Scripts.Services.IAP
     {
         private readonly IStaticDataService _staticData;
         private readonly IPersistentProgressService _progressService;
+        private readonly IGameFactory _factory;
         private readonly IAnalyticService _analytic;
 
-        public IAPService(IStaticDataService staticData, IPersistentProgressService progressService, IAnalyticService analytic)
+        public IAPService(IStaticDataService staticData, IPersistentProgressService progressService, IGameFactory factory, IAnalyticService analytic)
         {
             _staticData = staticData;
             _progressService = progressService;
+            _factory = factory;
             _analytic = analytic;
         }
 
@@ -35,6 +38,7 @@ namespace Source.Scripts.Services.IAP
                 case PurchaseType.StartLevel:
                     _progressService.Progress.PlayerStats.StartNumber += (int)purchase.SalableValue;
                     _progressService.Progress.PurchaseData.StartNumberCount++;
+                    _factory.Player.PlayerNumber.TakeNumber((int)purchase.SalableValue);
                     _analytic.SendEventOnResourceSent(
                         AnalyticNames.Soft, 
                         price, 
