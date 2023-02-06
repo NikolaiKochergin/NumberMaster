@@ -7,9 +7,10 @@ namespace Source.Scripts.InteractiveObjects.Number
     {
         [SerializeField] private TriggerObserver _trigger;
         [SerializeField] private EnemyNumberView _enemyNumberView;
-
-        private int _value;
         private bool _isTaken;
+
+        private PlayerNumber _playerNumber;
+        private int _value;
 
         private void Awake() => 
             _trigger.TriggerEnter += AffectPlayer;
@@ -20,8 +21,11 @@ namespace Source.Scripts.InteractiveObjects.Number
                 _trigger.TriggerEnter -= AffectPlayer;
         }
 
-        public void Construct(PlayerNumber playerNumber) =>
+        public void Construct(PlayerNumber playerNumber)
+        {
+            _playerNumber = playerNumber;
             _enemyNumberView.Construct(playerNumber);
+        }
 
         public void Initialize(int value)
         {
@@ -31,18 +35,15 @@ namespace Source.Scripts.InteractiveObjects.Number
 
         private void AffectPlayer(Collider other)
         {
-            if(_isTaken)
+            if (_isTaken)
                 return;
             
-            if (other.attachedRigidbody.TryGetComponent(out PlayerNumber playerNumber))
-            {
-                _isTaken = true;
-                _trigger.gameObject.SetActive(false);
-                
-                playerNumber.TakeNumber(_value);
-                if (playerNumber.Current >= _value)
-                    Die();
-            }
+            _isTaken = true;
+            _trigger.gameObject.SetActive(false);
+
+            _playerNumber.TakeNumber(_value);
+            if (_playerNumber.Current >= _value)
+                Die();
         }
 
         private void Die() => 

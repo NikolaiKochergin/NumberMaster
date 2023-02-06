@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5634376345201450152}
   - component: {fileID: 6921355945742522353}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemieNumber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 5634376345670553916}
   - component: {fileID: 5634376345670553918}
   - component: {fileID: 5634376345670553919}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5634376346213020243}
   - component: {fileID: 847960098138866457}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 5634376346243327829}
   - component: {fileID: 5634376346243327831}
   - component: {fileID: 5634376346243327828}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 5634376346446901672}
   - component: {fileID: 5634376346446901674}
   - component: {fileID: 5634376346446901675}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 5634376346789786226}
   - component: {fileID: 5634376346789786227}
   - component: {fileID: 5634376346789786224}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
