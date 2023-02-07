@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9bb7f1fd1224dab8ebf6fef42653c58, type: 3}
+  m_Name: 003_LevelData
+  m_EditorClassIdentifier: 
+  LevelKey: 003_Level_3
+  EnemyNumbers:
+  - Id: 003_Level_3_14d34fc7-b127-4f52-a73e-05c96fa817b7
+    NumberValue: 10
+    Position: {x: 3.44, y: 0, z: 15.14}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+  - Id: 003_Level_3_53881ffd-7510-4d2e-9c14-2287675f5315
+    NumberValue: 100
+    Position: {x: -1.93, y: 0, z: 53.66}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+  - Id: 003_Level_3_dce0708c-ee6d-4e37-9c65-d87172c911c5
+    NumberValue: 1000
+    Position: {x: 1.36, y: 0, z: 129.14}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+  - Id: 003_Level_3_136b2f06-3904-404d-b42f-bfaeaa80408b
+    NumberValue: 7
+    Position: {x: -1.93, y: 0, z: 37.49}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+  - Id: 003_Level_3_e3f11fd0-f3a8-4984-8b6b-a0cb450a2d33
+    NumberValue: 1000
+    Position: {x: -2.44, y: 0, z: 149.66}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+  - Id: 003_Level_3_c8ee1db5-3bea-4f13-9ad1-3a9bd47f0230
+    NumberValue: 1000
+    Position: {x: -0.29, y: 0, z: 142.87}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+  - Id: 003_Level_3_16867439-e8cf-4b24-a3f4-cf9f32b32faf
+    NumberValue: 5
+    Position: {x: -1.93, y: 0, z: 32.3}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+  - Id: 003_Level_3_c33dbc9a-cb56-4c25-ae98-6fcb65bf5a8f
+    NumberValue: 300
+    Position: {x: -1.93, y: 0, z: 83.45}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+  - Id: 003_Level_3_ed71e890-e564-4d05-9f9c-59c81a2981a6
+    NumberValue: 1000
+    Position: {x: -0.27, y: 0, z: 119.36}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+  - Id: 003_Level_3_b2d8266a-f499-4fc7-9bc1-560a025d70e5
+    NumberValue: 6
+    Position: {x: -1.93, y: 0, z: 34.34}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+  - Id: 003_Level_3_4d880360-0cf9-4836-9d8b-0993d288a396
+    NumberValue: 300
+    Position: {x: -1.93, y: 0, z: 92.8}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+  - Id: 003_Level_3_7d595cf9-9f1c-405a-ae96-a1cacd8b2b70
+    NumberValue: 1
+    Position: {x: -3.68, y: 0, z: 10.76}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+  - Id: 003_Level_3_e3660b37-343d-446c-bbb7-de61d8979ad7
+    NumberValue: 250
+    Position: {x: -1.93, y: 0, z: 68.55}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+  - Id: 003_Level_3_3a849be8-ea74-4495-9e60-2d635fb99a8e
+    NumberValue: 3
+    Position: {x: -3.33, y: 0, z: 20.57}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+  - Id: 003_Level_3_d9617380-1e22-4f9d-86e5-a8e5291ff174
+    NumberValue: 8
+    Position: {x: -1.93, y: 0, z: 40.64}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+  - Id: 003_Level_3_06b3c53c-5f72-424a-b9c2-05c475c3499b
+    NumberValue: 60
+    Position: {x: -1.93, y: 0, z: 48.34}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+  - Id: 003_Level_3_df46cad5-2ba2-4e56-95b2-e0d10cbd9856
+    NumberValue: 300
+    Position: {x: -1.93, y: 0, z: 108.98}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+  - Id: 003_Level_3_88e12e9e-2c92-4478-b03c-8b12f3b34e15
+    NumberValue: 1000
+    Position: {x: 1.74, y: 0, z: 159}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+  - Id: 003_Level_3_6b721681-8624-47ad-9c08-e2b6512f1cb6
+    NumberValue: 1000
+    Position: {x: -2.66, y: 0, z: 166.57}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+  - Id: 003_Level_3_70fe10b1-e8c9-4019-ba21-36d2433adaec
+    NumberValue: 300
+    Position: {x: -1.93, y: 0, z: 88.05}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+  - Id: 003_Level_3_3e741807-8c46-486e-9089-342d42c839d4
+    NumberValue: 200
+    Position: {x: -1.93, y: 0, z: 62.11}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+  - Id: 003_Level_3_e6e13055-2532-4133-8ab1-11f6ebe10cf4
+    NumberValue: 4
+    Position: {x: -1.93, y: 0, z: 30.27}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+  - Id: 003_Level_3_14a9c39a-4bd7-4202-b6af-aadf577700f0
+    NumberValue: 300
+    Position: {x: -1.93, y: 0, z: 78.38}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+  - Id: 003_Level_3_a6631918-06d9-46d6-9198-018eb0adb7fb
+    NumberValue: 2
+    Position: {x: -3.49, y: 0, z: 17.26}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+  - Id: 003_Level_3_c7321627-2d79-41ea-9bd5-5d32f7b49ee0
+    NumberValue: 30
+    Position: {x: -1.93, y: 0, z: 43.9}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+  - Id: 003_Level_3_bd48a269-5183-47d6-87c1-5bf50f32e55b
+    NumberValue: 300
+    Position: {x: -1.93, y: 0, z: 100.37}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
