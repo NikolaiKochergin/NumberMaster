@@ -5,21 +5,21 @@ on: workflow_dispatch
 jobs:
   build:
     name: Build my project ✨
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       # Checkout
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          lfs: true
+  #    - name: Checkout repository
+   #     uses: actions/checkout@v2
+    #    with:
+     #     lfs: true
 
       # Cache
-      - uses: actions/cache@v2
-        with:
-          path: Library
-          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
-          restore-keys: |
-            Library-
+  #    - uses: actions/cache@v2
+   #     with:
+    #      path: Library
+     #     key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+      #    restore-keys: |
+       #     Library-
       # Test
     #  - name: Run tests
     #    uses: game-ci/unity-test-runner@v2
