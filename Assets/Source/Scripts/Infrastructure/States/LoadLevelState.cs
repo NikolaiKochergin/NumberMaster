@@ -93,6 +93,7 @@ namespace Source.Scripts.Infrastructure.States
             else
                 _sounds.Mute();
 
+            Resources.UnloadUnusedAssets();
         }
 
         private void InitEnemies()
