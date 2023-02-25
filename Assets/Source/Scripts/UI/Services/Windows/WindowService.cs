@@ -1,4 +1,5 @@
-﻿using Source.Scripts.UI.Services.Factory;
+﻿using System;
+using Source.Scripts.UI.Services.Factory;
 
 namespace Source.Scripts.UI.Services.Windows
 {
@@ -21,6 +22,11 @@ namespace Source.Scripts.UI.Services.Windows
                 case WindowId.GameMenu:
                     _uiFactory.CreateGameLoopWindow();
                     break;
+                case WindowId.Leaderboard:
+                    _uiFactory.CreateLeaderboardWindow();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(windowId), windowId, null);
             }
         }
     }

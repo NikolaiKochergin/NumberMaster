@@ -4,6 +4,7 @@ namespace Source.Scripts.UI.Services.Windows
     {
         None = 0,
         Shop = 1,
-        GameMenu = 2
+        GameMenu = 2,
+        Leaderboard = 3,
     }
 }

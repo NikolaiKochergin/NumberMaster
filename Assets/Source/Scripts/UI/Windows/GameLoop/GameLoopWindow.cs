@@ -5,6 +5,7 @@ using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.SaveLoad;
 using Source.Scripts.Services.Sound;
 using Source.Scripts.UI.Elements;
+using Source.Scripts.UI.Services.Windows;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,23 +18,25 @@ namespace Source.Scripts.UI.Windows.GameLoop
         [SerializeField] private SoundButton _soundButton;
         [SerializeField] private Button _rewardButton;
         [SerializeField] private Button _rewardOfferButton;
+        [SerializeField] private OpenWindowButton _leaderboardButton;
 
         private ISoundService _sounds;
         private IAdsService _adsService;
         private IAnalyticService _analytic;
         private ISaveLoadService _saveLoadService;
         
-        public void Construct(
-            ISoundService sounds, 
-            IPersistentProgressService progressService, 
-            IAdsService adsService, 
-            IAnalyticService analytic, 
-            ISaveLoadService saveLoadService)
+        public void Construct(ISoundService sounds,
+            IPersistentProgressService progressService,
+            IAdsService adsService,
+            IAnalyticService analytic,
+            ISaveLoadService saveLoadService, 
+            IWindowService windowService)
         {
             _sounds = sounds;
             _adsService = adsService;
             _analytic = analytic;
             _saveLoadService = saveLoadService;
+            _leaderboardButton.Construct(windowService);
             base.Construct(progressService);
         }
         
