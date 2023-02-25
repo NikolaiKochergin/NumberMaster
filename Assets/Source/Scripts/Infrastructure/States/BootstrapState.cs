@@ -84,7 +84,7 @@ namespace Source.Scripts.Infrastructure.States
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(
                 _services.Single<IPersistentProgressService>(),
                 _services.Single<IGameFactory>()));
-            
+
             _services.RegisterSingle<IUIFactory>(new UIFactory(
                 _services.Single<IGameStateMachine>(),
                 _services.Single<IStaticDataService>(),
@@ -93,8 +93,9 @@ namespace Source.Scripts.Infrastructure.States
                 _services.Single<IAdsService>(),
                 _services.Single<IAnalyticService>(),
                 _services.Single<ISaveLoadService>(),
-                _services.Single<IIAPService>()));
-
+                _services.Single<IIAPService>(),
+                _services.Single<IWindowService>()));
+            
             _services.RegisterSingle<IWindowService>(new WindowService(_services.Single<IUIFactory>()));
         }
 

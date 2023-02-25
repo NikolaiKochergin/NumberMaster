@@ -17,7 +17,7 @@ namespace Source.Scripts.Editor
 
             LevelStaticData levelData = (LevelStaticData) target;
 
-            if (GUILayout.Button("Collect"))
+            if (GUILayout.Button("CollectMarkers"))
             {
                 levelData.EnemyNumbers = FindObjectsOfType<SpawnMarker>()
                     .Select(x => new EnemyNumbersStaticData(x.GetComponent<UniqueId>().Id, x.NumberValue, x.transform.position, x.transform.rotation))
