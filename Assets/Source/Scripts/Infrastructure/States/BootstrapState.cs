@@ -94,9 +94,9 @@ namespace Source.Scripts.Infrastructure.States
                 _services.Single<IAnalyticService>(),
                 _services.Single<ISaveLoadService>(),
                 _services.Single<IIAPService>(),
-                _services.Single<IWindowService>()));
+                out IWindowService windowService));
             
-            _services.RegisterSingle<IWindowService>(new WindowService(_services.Single<IUIFactory>()));
+            _services.RegisterSingle<IWindowService>(windowService);
         }
 
         private void RegisterStaticDataService()

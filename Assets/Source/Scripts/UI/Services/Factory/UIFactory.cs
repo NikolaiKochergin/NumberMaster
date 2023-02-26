@@ -39,7 +39,7 @@ namespace Source.Scripts.UI.Services.Factory
             IAnalyticService analytic,
             ISaveLoadService saveLoad,
             IIAPService iapService,
-            IWindowService windowService)
+            out IWindowService windowService)
         {
             _stateMachine = stateMachine;
             _staticData = staticData;
@@ -48,7 +48,8 @@ namespace Source.Scripts.UI.Services.Factory
             _adsService = adsService;
             _analytic = analytic;
             _saveLoad = saveLoad;
-            _iapService = iapService; 
+            _iapService = iapService;
+            windowService = new WindowService(this);
             _windowService = windowService;
         }
 
