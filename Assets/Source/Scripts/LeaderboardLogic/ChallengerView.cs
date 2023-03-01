@@ -10,6 +10,9 @@ namespace Source.Scripts.LeaderboardLogic
         [SerializeField] private Image _image;
         [SerializeField] private TextMeshProUGUI _name;
         [SerializeField] private TextMeshProUGUI _scores;
+        [SerializeField] private Image _backgroundImage;
+        [SerializeField] private Sprite _highlightSprite;
+        
 
         public void SetRank(int rank) => 
             _rank.text = rank.ToString();
@@ -22,5 +25,8 @@ namespace Source.Scripts.LeaderboardLogic
 
         public void SetScores(int scores) => 
             _scores.text = scores.ToString();
+
+        public void MakeHighlight() => 
+            _backgroundImage.sprite = _highlightSprite;
     }
 }

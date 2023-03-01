@@ -37,9 +37,9 @@ namespace Source.Scripts.UI.Windows.Leaderboard
             _leaderboardService.GetLeaderboardEntryResponses(CreateChallengersViews, _cts.Token);
         }
 
-        private void CreateChallengersViews(LeaderboardGetEntriesResponse entries)
+        private void CreateChallengersViews(LeaderboardGetEntriesResponse response)
         {
-            foreach (LeaderboardEntryResponse entry in entries.entries)
+            foreach (LeaderboardEntryResponse entry in response.entries)
             {
                 ChallengerView newChallengerView = Instantiate(_challengerViewPrefab, _challangerViewContainer);
                 
@@ -47,8 +47,13 @@ namespace Source.Scripts.UI.Windows.Leaderboard
                 //newChallengerView.SetAvatar(entry.player.scopePermissions.avatar);
                 newChallengerView.SetName(entry.player.publicName);
                 newChallengerView.SetScores(entry.score);
+                if(entry.rank == response.userRank)
+                    newChallengerView.MakeHighlight();
             }
             _loadingImage.SetActive(false);
+            
+            
+            
         }
     }
 }
