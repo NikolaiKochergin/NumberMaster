@@ -8,6 +8,7 @@ using Source.Scripts.Services.Ads;
 using Source.Scripts.Services.Analytics;
 using Source.Scripts.Services.IAP;
 using Source.Scripts.Services.Input;
+using Source.Scripts.Services.Leaderboard;
 using Source.Scripts.Services.Pause;
 using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.SaveLoad;
@@ -58,6 +59,7 @@ namespace Source.Scripts.Infrastructure.States
             _services.RegisterSingle(AnalyticService());
             _services.RegisterSingle<IGamePauseService>(new GamePause());
             _services.RegisterSingle<IAssetProvider>(new AssetProvider());
+            _services.RegisterSingle<ILeaderboardService>(new LeaderboardService());
             _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
             _services.RegisterSingle<IGameStateMachine>(_stateMachine);
 
@@ -94,6 +96,7 @@ namespace Source.Scripts.Infrastructure.States
                 _services.Single<IAnalyticService>(),
                 _services.Single<ISaveLoadService>(),
                 _services.Single<IIAPService>(),
+                _services.Single<ILeaderboardService>(),
                 out IWindowService windowService));
             
             _services.RegisterSingle<IWindowService>(windowService);

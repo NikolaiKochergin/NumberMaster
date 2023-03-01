@@ -1,5 +1,6 @@
 using Agava.YandexGames;
 using System.Collections;
+using Source.Scripts.LeaderboardLogic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -88,12 +89,12 @@ namespace Source.Scripts.LeaderboardScripts
 
         public void AddChallengers()
         {
-#if UNITY_WEBGL && !UNITY_EDITOR
+#if UNITY_WEBGL && UNITY_EDITOR
             GetPlayerInfo();
 
             Leaderboard.GetEntries(LeaderboardName.Name, (result) =>
             {
-                foreach (var entry in result.entries)
+                foreach (LeaderboardEntryResponse entry in result.entries)
                 {
                     var view = Instantiate(_template, _container.transform);
 
@@ -105,7 +106,7 @@ namespace Source.Scripts.LeaderboardScripts
                     else
                         view.SetName(entry.player.publicName);
 
-                    view.SetScore(entry.score);
+                    //view.SetScore(entry.score);
                 }
             });
 #endif
@@ -130,7 +131,7 @@ namespace Source.Scripts.LeaderboardScripts
 
         public void TryShowChallengers()
         {
-#if (!UNITY_EDITOR && UNITY_WEBGL)
+#if (UNITY_EDITOR && UNITY_WEBGL)
             if (PlayerAccount.IsAuthorized)
             {
                 _request.gameObject.SetActive(false);

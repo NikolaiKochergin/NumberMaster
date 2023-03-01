@@ -1,8 +1,8 @@
-﻿using Source.Scripts.Infrastructure.Factory;
-using Source.Scripts.Infrastructure.States;
+﻿using Source.Scripts.Infrastructure.States;
 using Source.Scripts.Services.Ads;
 using Source.Scripts.Services.Analytics;
 using Source.Scripts.Services.IAP;
+using Source.Scripts.Services.Leaderboard;
 using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.SaveLoad;
 using Source.Scripts.Services.Sound;
@@ -26,19 +26,21 @@ namespace Source.Scripts.UI.Services.Factory
         private readonly IAdsService _adsService;
         private readonly IAnalyticService _analytic;
         private readonly IIAPService _iapService;
+        private readonly ILeaderboardService _leaderboardService;
 
         private Transform _uiRoot;
         private ISaveLoadService _saveLoad;
         private IWindowService _windowService;
 
-        public UIFactory(IGameStateMachine stateMachine, 
-            IStaticDataService staticData, 
+        public UIFactory(IGameStateMachine stateMachine,
+            IStaticDataService staticData,
             IPersistentProgressService progressService,
             ISoundService sounds,
             IAdsService adsService,
             IAnalyticService analytic,
             ISaveLoadService saveLoad,
             IIAPService iapService,
+            ILeaderboardService leaderboardService,
             out IWindowService windowService)
         {
             _stateMachine = stateMachine;
@@ -49,6 +51,7 @@ namespace Source.Scripts.UI.Services.Factory
             _analytic = analytic;
             _saveLoad = saveLoad;
             _iapService = iapService;
+            _leaderboardService = leaderboardService;
             windowService = new WindowService(this);
             _windowService = windowService;
         }
@@ -75,6 +78,7 @@ namespace Source.Scripts.UI.Services.Factory
         {
             WindowConfig config = _staticData.ForWindow(WindowId.Leaderboard);
             LeaderboardWindow window = Object.Instantiate(config.Template, _uiRoot) as LeaderboardWindow;
+            window.Construct(_leaderboardService);
         }
     }
 }
