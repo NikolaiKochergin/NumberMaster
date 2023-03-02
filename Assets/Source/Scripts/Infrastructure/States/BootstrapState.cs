@@ -59,7 +59,8 @@ namespace Source.Scripts.Infrastructure.States
             _services.RegisterSingle(AnalyticService());
             _services.RegisterSingle<IGamePauseService>(new GamePause());
             _services.RegisterSingle<IAssetProvider>(new AssetProvider());
-            _services.RegisterSingle<ILeaderboardService>(new LeaderboardService());
+            _services.RegisterSingle<ILeaderboardService>(new LeaderboardService(
+                _services.Single<IStaticDataService>().ForLeaderboardName()));
             _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
             _services.RegisterSingle<IGameStateMachine>(_stateMachine);
 

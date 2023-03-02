@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df756f277b5a434ea8d89f53695462be, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
+  LeaderboardName: NumberMaster
   PlayerSpeed: 6
   Purchases:
   - _type: 1

@@ -16,5 +16,6 @@ namespace Source.Scripts.Services.StaticData
         int ForRepeatLevelNumber();
         LevelStaticData ForLevel(string sceneKey);
         PurchaseConfig ForPurchase(PurchaseType type);
+        string ForLeaderboardName();
     }
 }

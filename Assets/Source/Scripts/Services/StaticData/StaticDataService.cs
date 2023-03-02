@@ -67,5 +67,8 @@ namespace Source.Scripts.Services.StaticData
             _purchases.TryGetValue(type, out PurchaseConfig purchaseConfig)
                 ? purchaseConfig
                 : null;
+
+        public string ForLeaderboardName() => 
+            _gameData.LeaderboardName;
     }
 }

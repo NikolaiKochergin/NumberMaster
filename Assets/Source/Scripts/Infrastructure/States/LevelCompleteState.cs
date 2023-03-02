@@ -41,6 +41,7 @@ namespace Source.Scripts.Infrastructure.States
             int collected = Mathf.FloorToInt(CalculateCollected());
             _progressService.Progress.Soft.Collected += collected;
             _leaderboardService.SetScore(_progressService.Progress.World.DisplayedLevel);
+            _leaderboardService.UpdateLeaderboardEntries();
             
             SendAnalytics(collected);
             SetNextLevelIndex();

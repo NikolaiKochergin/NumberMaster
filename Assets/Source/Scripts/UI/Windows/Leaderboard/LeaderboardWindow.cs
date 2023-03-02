@@ -10,7 +10,6 @@ namespace Source.Scripts.UI.Windows.Leaderboard
         [SerializeField] private Button _closeButton;
         [SerializeField] private ChallengerView _challengerViewPrefab;
         [SerializeField] private Transform _challengerViewContainer;
-        [SerializeField] private GameObject _loadingImage;
         [SerializeField] private AuthorizationMenu _authorizationMenu;
 
         private ILeaderboardService _leaderboardService;
@@ -41,8 +40,9 @@ namespace Source.Scripts.UI.Windows.Leaderboard
 
         private void ShowChallengers()
         {
-            _loadingImage.SetActive(true);
-            _leaderboardService.GetLeaderboardEntryResponses(CreateChallengersViews);
+            LeaderboardGetEntriesResponse entries = _leaderboardService.LeaderboardEntries;
+            if (entries != null) 
+                CreateChallengersViews(entries);
         }
 
         private void PlayerAuthorized()
@@ -54,9 +54,6 @@ namespace Source.Scripts.UI.Windows.Leaderboard
 
         private void CreateChallengersViews(LeaderboardGetEntriesResponse result)
         {
-            if(this == null)
-                return;
-            
             foreach (LeaderboardEntryResponse entry in result.entries)
             {
                 ChallengerView newChallengerView = Instantiate(_challengerViewPrefab, _challengerViewContainer);
@@ -68,7 +65,6 @@ namespace Source.Scripts.UI.Windows.Leaderboard
                 if(entry.rank == result.userRank)
                     newChallengerView.MakeHighlight();
             }
-            _loadingImage.SetActive(false);
         }
     }
 }

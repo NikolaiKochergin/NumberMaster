@@ -1,27 +1,31 @@
-﻿using System;
-using System.Threading.Tasks;
-using Agava.YandexGames;
+﻿using Agava.YandexGames;
 using UnityEngine;
 
 namespace Source.Scripts.Services.Leaderboard
 {
     public class LeaderboardService : ILeaderboardService
     {
-        private const string LeaderboardName = "NumberMaster";
+        private readonly string _leaderboardName;
+        public LeaderboardGetEntriesResponse LeaderboardEntries { get; private set; }
 
-        public void GetPlayerInfo(Action<PlayerAccountProfileDataResponse> playerAccountProfileData) => 
-            PlayerAccount.GetProfileData(playerAccountProfileData);
-
-        public void GetLeaderboardEntryResponses(Action<LeaderboardGetEntriesResponse> result)
+        public LeaderboardService(string leaderboardName)
         {
+            _leaderboardName = leaderboardName;
+            UpdateLeaderboardEntries();
+        }
+
+        public void UpdateLeaderboardEntries()
+        { 
 #if YANDEX_GAMES && !UNITY_EDITOR
-            Agava.YandexGames.Leaderboard.GetEntries(LeaderboardName, result);
+            Agava.YandexGames.Leaderboard.GetEntries(_leaderboardName, 
+                result => LeaderboardEntries = result);
 #elif UNITY_EDITOR
-            // Mockup for editor
-            result?.Invoke(new LeaderboardGetEntriesResponse()
+            #region Mockup leaderboard for editor
+
+            LeaderboardEntries = new LeaderboardGetEntriesResponse()
             {
                 userRank = 2,
-                entries = new []
+                entries = new[]
                 {
                     new LeaderboardEntryResponse()
                     {
@@ -72,20 +76,18 @@ namespace Source.Scripts.Services.Leaderboard
                         }
                     }
                 }
-            });
+            };
+
+            #endregion
 #endif
         }
-
         public void SetScore(int value)
         {
 #if YANDEX_GAMES && !UNITY_EDITOR
             if (PlayerAccount.IsAuthorized)
-            {
-                Agava.YandexGames.Leaderboard.SetScore(LeaderboardName, value);
-                Debug.Log($"Player scores: {value} sent to leaderboard named: {LeaderboardName}");
-            }
+                Agava.YandexGames.Leaderboard.SetScore(_leaderboardName, value);
 #elif UNITY_EDITOR
-            Debug.Log($"Player scores: {value} sent to leaderboard named: {LeaderboardName}");
+            Debug.Log($"Player scores: {value} sent to leaderboard named: {_leaderboardName}");
 #endif
         }
     }
