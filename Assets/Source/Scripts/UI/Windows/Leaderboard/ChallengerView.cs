@@ -22,7 +22,7 @@ namespace Source.Scripts.UI.Windows.Leaderboard
             _rank.text = rank.ToString();
 
         public void SetAvatar(string avatar) =>
-            Debug.Log(avatar);
+            Debug.Log("Avatar Url: " + avatar);
             //_image.sprite = avatar;
 
         public void SetName(string name) => 

@@ -1,4 +1,3 @@
-using System.Threading;
 using Agava.YandexGames;
 using Source.Scripts.Services.Leaderboard;
 using UnityEngine;
@@ -14,7 +13,6 @@ namespace Source.Scripts.UI.Windows.Leaderboard
         [SerializeField] private GameObject _loadingImage;
         [SerializeField] private AuthorizationMenu _authorizationMenu;
 
-        private readonly CancellationTokenSource _cts = new CancellationTokenSource();
         private ILeaderboardService _leaderboardService;
         
         public void Construct(ILeaderboardService leaderboardService) => 
@@ -41,13 +39,10 @@ namespace Source.Scripts.UI.Windows.Leaderboard
             _closeButton.onClick.AddListener(Close);
         }
 
-        protected override void Cleanup() => 
-            _cts.Cancel();
-
         private void ShowChallengers()
         {
             _loadingImage.SetActive(true);
-            _leaderboardService.GetLeaderboardEntryResponses(CreateChallengersViews, _cts.Token);
+            _leaderboardService.GetLeaderboardEntryResponses(CreateChallengersViews);
         }
 
         private void PlayerAuthorized()
@@ -59,9 +54,6 @@ namespace Source.Scripts.UI.Windows.Leaderboard
 
         private void CreateChallengersViews(LeaderboardGetEntriesResponse result)
         {
-            Debug.Log("-------------IN BEGINNING OF CREATING CHALENGERS VIEWS");
-            Debug.Log($"RESULT INFO   Length: {result.entries.Length}  {result}  " );
-            
             if(this == null)
                 return;
             
@@ -70,7 +62,7 @@ namespace Source.Scripts.UI.Windows.Leaderboard
                 ChallengerView newChallengerView = Instantiate(_challengerViewPrefab, _challengerViewContainer);
                 
                 newChallengerView.SetRank(entry.rank);
-                newChallengerView.SetAvatar(entry.player.scopePermissions.avatar);
+                newChallengerView.SetAvatar(entry.extraData);
                 newChallengerView.SetName(entry.player.publicName);
                 newChallengerView.SetScores(entry.score);
                 if(entry.rank == result.userRank)

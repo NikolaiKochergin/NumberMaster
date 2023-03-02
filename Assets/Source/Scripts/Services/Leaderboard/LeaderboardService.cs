@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using System.Threading.Tasks;
 using Agava.YandexGames;
 using UnityEngine;
@@ -13,23 +12,10 @@ namespace Source.Scripts.Services.Leaderboard
         public void GetPlayerInfo(Action<PlayerAccountProfileDataResponse> playerAccountProfileData) => 
             PlayerAccount.GetProfileData(playerAccountProfileData);
 
-        public async void GetLeaderboardEntryResponses(Action<LeaderboardGetEntriesResponse> result, CancellationToken token)
+        public void GetLeaderboardEntryResponses(Action<LeaderboardGetEntriesResponse> result)
         {
-            Debug.Log("----------------------IN SERVICE--------------------");
-            try
-            {
-                await Task.Delay(1000, token);
-            }
-            catch (Exception)
-            {
-                return;
-            }
 #if YANDEX_GAMES && !UNITY_EDITOR
-            Agava.YandexGames.Leaderboard.GetEntries(LeaderboardName, entries =>
-            {
-                Debug.Log("-----------------------IN SERVICE CALLBACK-----------------");
-                result?.Invoke(entries);
-            });
+            Agava.YandexGames.Leaderboard.GetEntries(LeaderboardName, result);
 #elif UNITY_EDITOR
             // Mockup for editor
             result?.Invoke(new LeaderboardGetEntriesResponse()
