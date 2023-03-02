@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: 
   LeaderboardName: NumberMaster
+  RepeatLevelNumber: 1
   PlayerSpeed: 6
   Purchases:
   - _type: 1
@@ -27,7 +28,6 @@ MonoBehaviour:
     _description: 
   MouseSensitivity: 0.2
   KeyboardSensitivity: 0.03
-  RepeatLevelNumber: 1
   LevelSceneNames:
   - Initial
   - 001_Level_1

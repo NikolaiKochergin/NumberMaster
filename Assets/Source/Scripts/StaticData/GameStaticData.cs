@@ -9,6 +9,7 @@ namespace Source.Scripts.StaticData
     {
         [Header("Game Config")]
         public string LeaderboardName;
+        [Min(1)] public int RepeatLevelNumber = 1;
 
         [Header("Player Stats")]
         [Min(0)] public float PlayerSpeed = 3;
@@ -25,9 +26,7 @@ namespace Source.Scripts.StaticData
 
 
         [Space] 
-        [Header("Levels Settings")] 
-        [Min(1)] public int RepeatLevelNumber = 1;
-
+        [Header("Levels Settings")]
         public List<string> LevelSceneNames;
     }
 }

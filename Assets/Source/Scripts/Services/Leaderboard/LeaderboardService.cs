@@ -85,7 +85,7 @@ namespace Source.Scripts.Services.Leaderboard
         {
 #if YANDEX_GAMES && !UNITY_EDITOR
             if (PlayerAccount.IsAuthorized)
-                Agava.YandexGames.Leaderboard.SetScore(_leaderboardName, value);
+                Agava.YandexGames.Leaderboard.SetScore(_leaderboardName, value, UpdateLeaderboardEntries);
 #elif UNITY_EDITOR
             Debug.Log($"Player scores: {value} sent to leaderboard named: {_leaderboardName}");
 #endif

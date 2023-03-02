@@ -1,7 +1,5 @@
-using System;
 using Agava.YandexGames;
 using Lean.Localization;
-using TMPro;
 using UnityEngine;
 
 namespace Source.Scripts.LeaderboardScripts
@@ -19,13 +17,9 @@ namespace Source.Scripts.LeaderboardScripts
         private const string Russian = "Russian";
         private const string Turkish = "Turkish";
 
-        public string RusLang => RussianTranslationCode;
-
-        //public event Action<string> LanguageDetected;
-
         private void Start()
         {
-#if !UNITY_EDITOR && UNITY_WEBGL
+#if YANDEX_GAMES && !UNITY_EDITOR
             _language = GetLanguage();
 
             switch (_language)
@@ -46,9 +40,7 @@ namespace Source.Scripts.LeaderboardScripts
 #endif
         }
 
-        private string GetLanguage()
-        {
-            return YandexGamesSdk.Environment.i18n.lang;
-        }
+        private string GetLanguage() => 
+            YandexGamesSdk.Environment.i18n.lang;
     }
 }
