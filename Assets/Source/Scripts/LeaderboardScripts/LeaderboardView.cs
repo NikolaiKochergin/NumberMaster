@@ -1,6 +1,6 @@
 using Agava.YandexGames;
 using System.Collections;
-using Source.Scripts.LeaderboardLogic;
+using Source.Scripts.UI.Windows.Leaderboard;
 using UnityEngine;
 using UnityEngine.UI;
 

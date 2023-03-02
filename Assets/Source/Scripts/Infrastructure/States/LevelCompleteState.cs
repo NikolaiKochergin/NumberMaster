@@ -1,6 +1,7 @@
 ﻿using Source.Scripts.Analytics;
 using Source.Scripts.Infrastructure.Factory;
 using Source.Scripts.Services.Analytics;
+using Source.Scripts.Services.Leaderboard;
 using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.SaveLoad;
 using Source.Scripts.Services.StaticData;
@@ -16,13 +17,15 @@ namespace Source.Scripts.Infrastructure.States
         private readonly ISaveLoadService _saveLoadService;
         private readonly IGameFactory _factory;
         private readonly IAnalyticService _analytic;
+        private readonly ILeaderboardService _leaderboardService;
 
         public LevelCompleteState(GameStateMachine stateMachine, 
             IPersistentProgressService progressService, 
             IStaticDataService staticDataService,
             ISaveLoadService saveLoadService,
             IGameFactory factory,
-            IAnalyticService analytic)
+            IAnalyticService analytic,
+            ILeaderboardService leaderboardService)
         {
             _stateMachine = stateMachine;
             _progressService = progressService;
@@ -30,12 +33,14 @@ namespace Source.Scripts.Infrastructure.States
             _saveLoadService = saveLoadService;
             _factory = factory;
             _analytic = analytic;
+            _leaderboardService = leaderboardService;
         }
 
         public void Enter()
         {
             int collected = Mathf.FloorToInt(CalculateCollected());
             _progressService.Progress.Soft.Collected += collected;
+            _leaderboardService.SetScore(_progressService.Progress.World.DisplayedLevel);
             
             SendAnalytics(collected);
             SetNextLevelIndex();

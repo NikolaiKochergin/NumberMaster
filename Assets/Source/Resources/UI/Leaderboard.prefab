@@ -52,8 +52,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _closeButton: {fileID: 4580072553249721977}
   _challengerViewPrefab: {fileID: 4713135251902675799, guid: 9492554823197de4a9b07d8f8b58c66c, type: 3}
-  _challangerViewContainer: {fileID: 3213554712444152042}
+  _challengerViewContainer: {fileID: 3213554712444152042}
   _loadingImage: {fileID: 4901417560433518977}
+  _authorizationMenu: {fileID: 2110678020439098164}
 --- !u!1 &2233294943994914007
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,6 +144,7 @@ GameObject:
   - component: {fileID: 5335746073970679630}
   - component: {fileID: 2953031945485431434}
   - component: {fileID: 3470317373981474151}
+  - component: {fileID: 509315834867593214}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -208,6 +210,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &509315834867593214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2983891013494260188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b26b145cf0cb26c4caff8ab0526c126d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: -180
 --- !u!1 &2996900379959139184
 GameObject:
   m_ObjectHideFlags: 0
@@ -1114,7 +1129,6 @@ GameObject:
   - component: {fileID: 4580072553375100215}
   - component: {fileID: 4580072553375100208}
   - component: {fileID: 4580072553375100209}
-  - component: {fileID: 3816220308743169550}
   m_Layer: 5
   m_Name: AuthorizationButton
   m_TagString: Untagged
@@ -1225,18 +1239,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3816220308743169550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4580072553375100220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd1f55868a2a7464d820fda1057f563b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4580072554344802370
 GameObject:
   m_ObjectHideFlags: 0
@@ -1246,14 +1248,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4580072554344802369}
-  - component: {fileID: 8139400478841998369}
+  - component: {fileID: 2110678020439098164}
   m_Layer: 5
-  m_Name: AutorizationRequest
+  m_Name: AutorizationMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4580072554344802369
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1276,7 +1278,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 405}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8139400478841998369
+--- !u!114 &2110678020439098164
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1285,9 +1287,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4580072554344802370}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41fa0e9f65343fb48bb09551994951bd, type: 3}
+  m_Script: {fileID: 11500000, guid: a361874d6b596bc45b0d27484dc06116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _authorizationButton: {fileID: 4580072553375100209}
 --- !u!1 &4710010298225745860
 GameObject:
   m_ObjectHideFlags: 0
