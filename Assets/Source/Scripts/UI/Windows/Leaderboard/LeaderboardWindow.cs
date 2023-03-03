@@ -1,4 +1,5 @@
 using Agava.YandexGames;
+using Source.Scripts.Services.Authorization;
 using Source.Scripts.Services.Leaderboard;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,30 +14,30 @@ namespace Source.Scripts.UI.Windows.Leaderboard
         [SerializeField] private AuthorizationMenu _authorizationMenu;
 
         private ILeaderboardService _leaderboardService;
+        private IAuthorizationService _authorization;
         
-        public void Construct(ILeaderboardService leaderboardService) => 
+        public void Construct(ILeaderboardService leaderboardService, IAuthorizationService authorization)
+        {
             _leaderboardService = leaderboardService;
+            _authorization = authorization;
+        }
 
         protected override void Initialize()
         {
-#if YANDEX_GAMES && !UNITY_EDITOR
-            if (PlayerAccount.IsAuthorized)
+            if (_authorization.IsPlayerAuthorized)
                 ShowChallengers();
             else
-#endif
                 ShowAuthorizationMenu();
         }
 
         private void ShowAuthorizationMenu()
         {
             _authorizationMenu.Show();
-            _authorizationMenu.PlayerAuthorized += PlayerAuthorized;
+            _authorizationMenu.AuthorizationButton.onClick.AddListener(OnAuthorizationButtonClicked);
         }
 
-        protected override void SubscribeUpdates()
-        {
+        protected override void SubscribeUpdates() => 
             _closeButton.onClick.AddListener(Close);
-        }
 
         private void ShowChallengers()
         {
@@ -45,11 +46,14 @@ namespace Source.Scripts.UI.Windows.Leaderboard
                 CreateChallengersViews(entries);
         }
 
-        private void PlayerAuthorized()
+        private void OnAuthorizationButtonClicked()
         {
-            _authorizationMenu.PlayerAuthorized -= PlayerAuthorized;
-            _authorizationMenu.Hide();
-            ShowChallengers();
+            _authorization.Authorize(() =>
+            {
+                _authorizationMenu.AuthorizationButton.onClick.RemoveListener(OnAuthorizationButtonClicked);
+                _authorizationMenu.Hide();
+                ShowChallengers();
+            });
         }
 
         private void CreateChallengersViews(LeaderboardGetEntriesResponse result)

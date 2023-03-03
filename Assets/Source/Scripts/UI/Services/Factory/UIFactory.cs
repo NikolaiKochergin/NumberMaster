@@ -1,6 +1,7 @@
 ﻿using Source.Scripts.Infrastructure.States;
 using Source.Scripts.Services.Ads;
 using Source.Scripts.Services.Analytics;
+using Source.Scripts.Services.Authorization;
 using Source.Scripts.Services.IAP;
 using Source.Scripts.Services.Leaderboard;
 using Source.Scripts.Services.PersistentProgress;
@@ -27,10 +28,11 @@ namespace Source.Scripts.UI.Services.Factory
         private readonly IAnalyticService _analytic;
         private readonly IIAPService _iapService;
         private readonly ILeaderboardService _leaderboardService;
+        private readonly ISaveLoadService _saveLoad;
+        private readonly IAuthorizationService _authorization;
+        private readonly IWindowService _windowService;
 
         private Transform _uiRoot;
-        private ISaveLoadService _saveLoad;
-        private IWindowService _windowService;
 
         public UIFactory(IGameStateMachine stateMachine,
             IStaticDataService staticData,
@@ -41,6 +43,7 @@ namespace Source.Scripts.UI.Services.Factory
             ISaveLoadService saveLoad,
             IIAPService iapService,
             ILeaderboardService leaderboardService,
+            IAuthorizationService authorization,
             out IWindowService windowService)
         {
             _stateMachine = stateMachine;
@@ -52,6 +55,7 @@ namespace Source.Scripts.UI.Services.Factory
             _saveLoad = saveLoad;
             _iapService = iapService;
             _leaderboardService = leaderboardService;
+            _authorization = authorization;
             windowService = new WindowService(this);
             _windowService = windowService;
         }
@@ -78,7 +82,7 @@ namespace Source.Scripts.UI.Services.Factory
         {
             WindowConfig config = _staticData.ForWindow(WindowId.Leaderboard);
             LeaderboardWindow window = Object.Instantiate(config.Template, _uiRoot) as LeaderboardWindow;
-            window.Construct(_leaderboardService);
+            window.Construct(_leaderboardService, _authorization);
         }
     }
 }

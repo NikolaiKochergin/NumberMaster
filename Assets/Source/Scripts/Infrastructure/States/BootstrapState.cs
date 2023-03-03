@@ -6,6 +6,7 @@ using Source.Scripts.Infrastructure.Factory;
 using Source.Scripts.Services;
 using Source.Scripts.Services.Ads;
 using Source.Scripts.Services.Analytics;
+using Source.Scripts.Services.Authorization;
 using Source.Scripts.Services.IAP;
 using Source.Scripts.Services.Input;
 using Source.Scripts.Services.Leaderboard;
@@ -57,12 +58,16 @@ namespace Source.Scripts.Infrastructure.States
             
             _services.RegisterSingle(InputService());
             _services.RegisterSingle(AnalyticService());
+            _services.RegisterSingle<IGameStateMachine>(_stateMachine);
             _services.RegisterSingle<IGamePauseService>(new GamePause());
             _services.RegisterSingle<IAssetProvider>(new AssetProvider());
-            _services.RegisterSingle<ILeaderboardService>(new LeaderboardService(
-                _services.Single<IStaticDataService>().ForLeaderboardName()));
             _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
-            _services.RegisterSingle<IGameStateMachine>(_stateMachine);
+            _services.RegisterSingle<IAuthorizationService>(new AuthorizationService());
+            
+            _services.RegisterSingle<ILeaderboardService>(new LeaderboardService(
+                _services.Single<IStaticDataService>().ForLeaderboardName(),
+                _services.Single<IAuthorizationService>()));
+            
 
             _services.RegisterSingle<IGameFactory>(new GameFactory(
                 _services.Single<IGameStateMachine>(),
@@ -98,6 +103,7 @@ namespace Source.Scripts.Infrastructure.States
                 _services.Single<ISaveLoadService>(),
                 _services.Single<IIAPService>(),
                 _services.Single<ILeaderboardService>(),
+                _services.Single<IAuthorizationService>(),
                 out IWindowService windowService));
             
             _services.RegisterSingle<IWindowService>(windowService);

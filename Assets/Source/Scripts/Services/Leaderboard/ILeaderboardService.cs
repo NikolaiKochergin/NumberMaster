@@ -7,5 +7,6 @@ namespace Source.Scripts.Services.Leaderboard
         void SetScore(int value);
         void UpdateLeaderboardEntries();
         LeaderboardGetEntriesResponse LeaderboardEntries { get; }
+        LeaderboardEntryResponse PlayerEntry { get; }
     }
 }
