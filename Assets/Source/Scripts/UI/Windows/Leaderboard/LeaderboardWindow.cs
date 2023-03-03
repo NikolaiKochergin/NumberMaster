@@ -13,12 +13,12 @@ namespace Source.Scripts.UI.Windows.Leaderboard
         [SerializeField] private Transform _challengerViewContainer;
         [SerializeField] private AuthorizationMenu _authorizationMenu;
 
-        private ILeaderboardService _leaderboardService;
+        private ILeaderboardService _leaderboard;
         private IAuthorizationService _authorization;
         
-        public void Construct(ILeaderboardService leaderboardService, IAuthorizationService authorization)
+        public void Construct(ILeaderboardService leaderboard, IAuthorizationService authorization)
         {
-            _leaderboardService = leaderboardService;
+            _leaderboard = leaderboard;
             _authorization = authorization;
         }
 
@@ -41,7 +41,7 @@ namespace Source.Scripts.UI.Windows.Leaderboard
 
         private void ShowChallengers()
         {
-            LeaderboardGetEntriesResponse entries = _leaderboardService.LeaderboardEntries;
+            LeaderboardGetEntriesResponse entries = _leaderboard.Entries;
             if (entries != null) 
                 CreateChallengersViews(entries);
         }
@@ -63,7 +63,6 @@ namespace Source.Scripts.UI.Windows.Leaderboard
                 ChallengerView newChallengerView = Instantiate(_challengerViewPrefab, _challengerViewContainer);
                 
                 newChallengerView.SetRank(entry.rank);
-                newChallengerView.SetAvatar(entry.extraData);
                 newChallengerView.SetName(entry.player.publicName);
                 newChallengerView.SetScores(entry.score);
                 if(entry.rank == result.userRank)

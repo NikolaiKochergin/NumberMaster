@@ -17,29 +17,23 @@ namespace Source.Scripts.Services.Authorization
         public void Authorize(Action onAuthorizationCallback)
         {
 #if UNITY_EDITOR
-            IsPlayerAuthorized = true;
-            onAuthorizationCallback?.Invoke();
-            return;
-#endif
+             IsPlayerAuthorized = true;
+             onAuthorizationCallback?.Invoke();
+#elif YANDEX_GAMES
             if (IsPlayerAuthorized)
-            {
                 onAuthorizationCallback?.Invoke();
-            }
             else
-            {
-                if(_isNeedPersonalProfileDataPermission)
-                    PlayerAccount.Authorize(()=>
-                        RequestPersonalProfileDataPermission(onAuthorizationCallback));
-                else
-                    PlayerAccount.Authorize(onAuthorizationCallback);
-            }
-        }
+                PlayerAccount.Authorize(_isNeedPersonalProfileDataPermission
+                    ? RequestPersonalProfileDataPermission
+                    : onAuthorizationCallback);
 
-        private void RequestPersonalProfileDataPermission(Action onAuthorizationCallback)
-        {
-            if(IsPlayerAuthorized && !PlayerAccount.HasPersonalProfileDataPermission)
-                PlayerAccount.RequestPersonalProfileDataPermission(onAuthorizationCallback,
-                    (_) => onAuthorizationCallback?.Invoke());
+            void RequestPersonalProfileDataPermission()
+            {
+                if(IsPlayerAuthorized && !PlayerAccount.HasPersonalProfileDataPermission)
+                    PlayerAccount.RequestPersonalProfileDataPermission(onAuthorizationCallback,
+                        (_) => onAuthorizationCallback?.Invoke());
+            }
+#endif
         }
     }
 }

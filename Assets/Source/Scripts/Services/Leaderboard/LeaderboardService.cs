@@ -9,32 +9,35 @@ namespace Source.Scripts.Services.Leaderboard
         private readonly string _leaderboardName;
         private readonly IAuthorizationService _authorization;
 
-        public LeaderboardGetEntriesResponse LeaderboardEntries { get; private set; }
+        public LeaderboardGetEntriesResponse Entries { get; private set; }
         public LeaderboardEntryResponse PlayerEntry { get; private set; }
 
         public LeaderboardService(string leaderboardName, IAuthorizationService authorization)
         {
             _leaderboardName = leaderboardName;
             _authorization = authorization;
-            UpdateLeaderboardEntries();
+            UpdateEntries();
         }
 
-        public void UpdateLeaderboardEntries()
+        public void UpdateEntries()
         {
 #if YANDEX_GAMES && !UNITY_EDITOR
             Agava.YandexGames.Leaderboard.GetPlayerEntry(_leaderboardName, 
                 result => PlayerEntry = result);
             
             Agava.YandexGames.Leaderboard.GetEntries(_leaderboardName, 
-                result => LeaderboardEntries = result);
+                result => Entries = result);
 #elif UNITY_EDITOR
             #region Leaderboard Mockup for editor
 
-            PlayerEntry = new LeaderboardEntryResponse();
-            
-            LeaderboardEntries = new LeaderboardGetEntriesResponse()
+            PlayerEntry = new LeaderboardEntryResponse()
             {
-                //userRank = 2,
+                rank = 2
+            };
+            
+            Entries = new LeaderboardGetEntriesResponse()
+            {
+                userRank = 2,
                 entries = new[]
                 {
                     new LeaderboardEntryResponse()
@@ -96,7 +99,7 @@ namespace Source.Scripts.Services.Leaderboard
         {
 #if YANDEX_GAMES && !UNITY_EDITOR
             if (_authorization.IsPlayerAuthorized)
-                Agava.YandexGames.Leaderboard.SetScore(_leaderboardName, value, UpdateLeaderboardEntries);
+                Agava.YandexGames.Leaderboard.SetScore(_leaderboardName, value, UpdateEntries);
 #elif UNITY_EDITOR
             Debug.Log($"Player scores: {value} sent to leaderboard named: {_leaderboardName}");
 #endif

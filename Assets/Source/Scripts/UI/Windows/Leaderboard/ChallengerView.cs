@@ -12,7 +12,7 @@ namespace Source.Scripts.UI.Windows.Leaderboard
         private const string UnknownPlayerNameTr = "Bilinmeyen oyuncu";
         
         [SerializeField] private TextMeshProUGUI _rank;
-        [SerializeField] private Image _image;
+        [SerializeField] private Image _avatar;
         [SerializeField] private TextMeshProUGUI _name;
         [SerializeField] private TextMeshProUGUI _scores;
         [SerializeField] private Image _backgroundImage;
@@ -21,9 +21,8 @@ namespace Source.Scripts.UI.Windows.Leaderboard
         public void SetRank(int rank) => 
             _rank.text = rank.ToString();
 
-        public void SetAvatar(string avatar) =>
-            Debug.Log("Avatar Url: " + avatar);
-            //_image.sprite = avatar;
+        public void SetAvatar(Sprite avatar) =>
+            _avatar.sprite = avatar;
 
         public void SetName(string name) => 
             _name.text = string.IsNullOrEmpty(name) ? GetLocalLanguageUnknownPlayerName() : name;

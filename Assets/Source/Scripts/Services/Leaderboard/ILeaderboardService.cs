@@ -5,8 +5,8 @@ namespace Source.Scripts.Services.Leaderboard
     public interface ILeaderboardService : IService
     {
         void SetScore(int value);
-        void UpdateLeaderboardEntries();
-        LeaderboardGetEntriesResponse LeaderboardEntries { get; }
+        void UpdateEntries();
+        LeaderboardGetEntriesResponse Entries { get; }
         LeaderboardEntryResponse PlayerEntry { get; }
     }
 }
