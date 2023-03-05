@@ -25,6 +25,9 @@ namespace Source.Scripts.UI.Services.Windows
                 case WindowId.Leaderboard:
                     _uiFactory.CreateLeaderboardWindow();
                     break;
+                case WindowId.Settings:
+                    _uiFactory.CreateSettingsWindow();
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(windowId), windowId, null);
             }

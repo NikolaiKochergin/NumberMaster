@@ -109,6 +109,7 @@ namespace Source.Scripts.Infrastructure.States
                 _services.Single<IIAPService>(),
                 _services.Single<ILeaderboardService>(),
                 _services.Single<IAuthorizationService>(),
+                _services.Single<ILocalizationService>(),
                 out IWindowService windowService));
             
             _services.RegisterSingle<IWindowService>(windowService);

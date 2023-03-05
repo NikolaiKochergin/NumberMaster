@@ -4,6 +4,7 @@ using Source.Scripts.Services.Analytics;
 using Source.Scripts.Services.Authorization;
 using Source.Scripts.Services.IAP;
 using Source.Scripts.Services.Leaderboard;
+using Source.Scripts.Services.Localization;
 using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.SaveLoad;
 using Source.Scripts.Services.Sound;
@@ -13,6 +14,7 @@ using Source.Scripts.UI.Elements;
 using Source.Scripts.UI.Services.Windows;
 using Source.Scripts.UI.Windows.GameLoop;
 using Source.Scripts.UI.Windows.Leaderboard;
+using Source.Scripts.UI.Windows.Settings;
 using Source.Scripts.UI.Windows.Shop;
 using UnityEngine;
 
@@ -30,6 +32,7 @@ namespace Source.Scripts.UI.Services.Factory
         private readonly ILeaderboardService _leaderboardService;
         private readonly ISaveLoadService _saveLoad;
         private readonly IAuthorizationService _authorization;
+        private readonly ILocalizationService _localization;
         private readonly IWindowService _windowService;
 
         private Transform _uiRoot;
@@ -44,6 +47,7 @@ namespace Source.Scripts.UI.Services.Factory
             IIAPService iapService,
             ILeaderboardService leaderboardService,
             IAuthorizationService authorization,
+            ILocalizationService localization,
             out IWindowService windowService)
         {
             _stateMachine = stateMachine;
@@ -56,6 +60,7 @@ namespace Source.Scripts.UI.Services.Factory
             _iapService = iapService;
             _leaderboardService = leaderboardService;
             _authorization = authorization;
+            _localization = localization;
             windowService = new WindowService(this);
             _windowService = windowService;
         }
@@ -75,7 +80,7 @@ namespace Source.Scripts.UI.Services.Factory
         {
             WindowConfig config = _staticData.ForWindow(WindowId.GameMenu);
             GameLoopWindow window = Object.Instantiate(config.Template, _uiRoot) as GameLoopWindow;
-            window.Construct(_sounds, _progressService, _adsService, _analytic, _saveLoad, _windowService);
+            window.Construct(_progressService, _adsService, _analytic, _saveLoad, _windowService);
         }
 
         public void CreateLeaderboardWindow()
@@ -83,6 +88,13 @@ namespace Source.Scripts.UI.Services.Factory
             WindowConfig config = _staticData.ForWindow(WindowId.Leaderboard);
             LeaderboardWindow window = Object.Instantiate(config.Template, _uiRoot) as LeaderboardWindow;
             window.Construct(_leaderboardService, _authorization);
+        }
+
+        public void CreateSettingsWindow()
+        {
+            WindowConfig config = _staticData.ForWindow(WindowId.Settings);
+            SettingsWindow window = Object.Instantiate(config.Template, _uiRoot) as SettingsWindow;
+            window.Construct(_progressService, _localization, _sounds);
         }
     }
 }

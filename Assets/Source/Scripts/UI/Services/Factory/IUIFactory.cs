@@ -8,5 +8,6 @@ namespace Source.Scripts.UI.Services.Factory
         void InitUIRoot();
         void CreateGameLoopWindow();
         void CreateLeaderboardWindow();
+        void CreateSettingsWindow();
     }
 }

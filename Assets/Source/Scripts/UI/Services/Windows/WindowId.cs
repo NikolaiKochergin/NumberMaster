@@ -6,5 +6,6 @@ namespace Source.Scripts.UI.Services.Windows
         Shop = 1,
         GameMenu = 2,
         Leaderboard = 3,
+        Settings = 4,
     }
 }
