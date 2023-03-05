@@ -2,8 +2,9 @@ namespace Source.Scripts.Services.Localization
 {
     public enum LanguageType
     {
-        Russian = 0,
-        English = 1,
-        Turkish = 2
+        None = 0,
+        Russian = 1,
+        English = 2,
+        Turkish = 3
     }
 }

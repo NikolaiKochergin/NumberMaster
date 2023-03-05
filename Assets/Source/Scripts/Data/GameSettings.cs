@@ -1,4 +1,5 @@
 using System;
+using Source.Scripts.Services.Localization;
 using UnityEngine;
 
 namespace Source.Scripts.Data
@@ -6,6 +7,7 @@ namespace Source.Scripts.Data
     [Serializable]
     public class GameSettings
     {
+        public LanguageType Localization = LanguageType.None; 
         [SerializeField] private bool _isMusicOn = true;
 
         public bool IsMusicOn

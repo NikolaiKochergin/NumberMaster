@@ -5,6 +5,7 @@ using Source.Scripts.Services;
 using Source.Scripts.Services.Ads;
 using Source.Scripts.Services.Analytics;
 using Source.Scripts.Services.Leaderboard;
+using Source.Scripts.Services.Localization;
 using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.SaveLoad;
 using Source.Scripts.Services.Sound;
@@ -37,7 +38,8 @@ namespace Source.Scripts.Infrastructure.States
                 [typeof(LoadProgressState)] = new LoadProgressState(this, 
                     services.Single<IPersistentProgressService>(),
                     services.Single<IStaticDataService>(),
-                    services.Single<ISaveLoadService>()),
+                    services.Single<ISaveLoadService>(),
+                    services.Single<ILocalizationService>()),
                 
                 [typeof(ShopState)] = new ShopState(
                     services.Single<IWindowService>(),
