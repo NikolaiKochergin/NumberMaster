@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Lean.Localization;
 using Source.Scripts.Services.IAP;
 using UnityEngine;
 
@@ -7,7 +8,8 @@ namespace Source.Scripts.StaticData
     [CreateAssetMenu(fileName = "GameData", menuName = "Static Data/GameData")]
     public class GameStaticData : ScriptableObject
     {
-        [Header("Game Config")]
+        [Header("Game Config")] 
+        public LeanLocalization Localization; 
         public string LeaderboardName;
         [Min(1)] public int RepeatLevelNumber = 1;
 

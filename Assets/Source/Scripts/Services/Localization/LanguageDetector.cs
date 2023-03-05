@@ -2,7 +2,7 @@ using Agava.YandexGames;
 using Lean.Localization;
 using UnityEngine;
 
-namespace Source.Scripts.UI
+namespace Source.Scripts.Services.Localization
 {
     public class LanguageDetector : MonoBehaviour
     {

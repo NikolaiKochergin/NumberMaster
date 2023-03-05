@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Lean.Localization;
 using Source.Scripts.Services.IAP;
 using Source.Scripts.StaticData;
 using Source.Scripts.StaticData.Windows;
@@ -70,5 +71,8 @@ namespace Source.Scripts.Services.StaticData
 
         public string ForLeaderboardName() => 
             _gameData.LeaderboardName;
+
+        public LeanLocalization ForLocalization() =>
+            _gameData.Localization;
     }
 }

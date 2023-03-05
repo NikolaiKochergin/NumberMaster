@@ -10,6 +10,7 @@ using Source.Scripts.Services.Authorization;
 using Source.Scripts.Services.IAP;
 using Source.Scripts.Services.Input;
 using Source.Scripts.Services.Leaderboard;
+using Source.Scripts.Services.Localization;
 using Source.Scripts.Services.Pause;
 using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.SaveLoad;
@@ -63,6 +64,9 @@ namespace Source.Scripts.Infrastructure.States
             _services.RegisterSingle<IAssetProvider>(new AssetProvider());
             _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
             _services.RegisterSingle<IAuthorizationService>(new AuthorizationService());
+            
+            _services.RegisterSingle<ILocalizationService>(new LocalizationService(
+                _services.Single<IStaticDataService>()));
             
             _services.RegisterSingle<ILeaderboardService>(new LeaderboardService(
                 _services.Single<IStaticDataService>().ForLeaderboardName(),
