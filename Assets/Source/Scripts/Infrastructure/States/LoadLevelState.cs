@@ -21,7 +21,6 @@ namespace Source.Scripts.Infrastructure.States
         private readonly IGameFactory _gameFactory;
         private readonly IPersistentProgressService _progressService;
         private readonly IUIFactory _uiFactory;
-        private readonly ISoundService _sounds;
         private readonly IAdsService _ads;
         private readonly IAnalyticService _analytic;
         private readonly IStaticDataService _staticData;
@@ -32,7 +31,6 @@ namespace Source.Scripts.Infrastructure.States
             IPersistentProgressService progressService, 
             IStaticDataService staticData, 
             IUIFactory uiFactory,
-            ISoundService sounds,
             IAdsService ads,
             IAnalyticService analytic)
         {
@@ -42,7 +40,6 @@ namespace Source.Scripts.Infrastructure.States
             _progressService = progressService;
             _staticData = staticData;
             _uiFactory = uiFactory;
-            _sounds = sounds;
             _ads = ads;
             _analytic = analytic;
         }
@@ -87,11 +84,6 @@ namespace Source.Scripts.Infrastructure.States
             CameraFollow(player.transform);
             CameraShake(player);
             InitEnemies();
-            
-            if(_progressService.Progress.GameSettings.IsMusicOn)
-                _sounds.UnMute();
-            else
-                _sounds.Mute();
 
             Resources.UnloadUnusedAssets();
         }

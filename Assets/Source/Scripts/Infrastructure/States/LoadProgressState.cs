@@ -2,6 +2,7 @@
 using Source.Scripts.Services.Localization;
 using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.SaveLoad;
+using Source.Scripts.Services.Sound;
 using Source.Scripts.Services.StaticData;
 using UnityEngine;
 
@@ -14,15 +15,21 @@ namespace Source.Scripts.Infrastructure.States
         private readonly IStaticDataService _staticDataService;
         private readonly ISaveLoadService _saveLoadProgress;
         private readonly ILocalizationService _localizationService;
+        private readonly ISoundService _sounds;
 
-        public LoadProgressState(GameStateMachine stateMachine, IPersistentProgressService progressService,
-            IStaticDataService staticDataService, ISaveLoadService saveLoadProgress, ILocalizationService localizationService)
+        public LoadProgressState(GameStateMachine stateMachine, 
+            IPersistentProgressService progressService,
+            IStaticDataService staticDataService, 
+            ISaveLoadService saveLoadProgress, 
+            ILocalizationService localizationService,
+            ISoundService sounds)
         {
             _stateMachine = stateMachine;
             _progressService = progressService;
             _staticDataService = staticDataService;
             _saveLoadProgress = saveLoadProgress;
             _localizationService = localizationService;
+            _sounds = sounds;
         }
 
         public void Enter()
@@ -43,8 +50,20 @@ namespace Source.Scripts.Infrastructure.States
             _progressService.Progress = 
                 _saveLoadProgress.LoadProgress()
                 ?? new PlayerProgress();
-            
+
+            InitGameSettings();
+        }
+
+        private void InitGameSettings()
+        {
             _localizationService.SetLocalization(_progressService.Progress.GameSettings.Localization);
+            
+            if(_progressService.Progress.GameSettings.IsMusicOn)
+                _sounds.UnMute();
+            else
+                _sounds.Mute();
+            
+            _sounds.SetVolume(_progressService.Progress.GameSettings.Volume);
         }
     }
 }

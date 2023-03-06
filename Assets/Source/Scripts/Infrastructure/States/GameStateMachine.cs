@@ -31,7 +31,6 @@ namespace Source.Scripts.Infrastructure.States
                     services.Single<IPersistentProgressService>(),
                     services.Single<IStaticDataService>(),
                     services.Single<IUIFactory>(),
-                    services.Single<ISoundService>(),
                     services.Single<IAdsService>(),
                     services.Single<IAnalyticService>()),
                 
@@ -39,7 +38,8 @@ namespace Source.Scripts.Infrastructure.States
                     services.Single<IPersistentProgressService>(),
                     services.Single<IStaticDataService>(),
                     services.Single<ISaveLoadService>(),
-                    services.Single<ILocalizationService>()),
+                    services.Single<ILocalizationService>(),
+                    services.Single<ISoundService>()),
                 
                 [typeof(ShopState)] = new ShopState(
                     services.Single<IWindowService>(),

@@ -35,5 +35,11 @@ namespace Source.Scripts.Services.Sound
             if(_progressService.Progress.GameSettings.IsMusicOn)
                 _sounds.On();
         }
+
+        public void SetVolume(float value)
+        {
+            _sounds.SetVoulume(value);
+            _progressService.Progress.GameSettings.Volume = value;
+        }
     }
 }

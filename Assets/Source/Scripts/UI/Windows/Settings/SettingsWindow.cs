@@ -29,6 +29,8 @@ namespace Source.Scripts.UI.Windows.Settings
         protected override void Initialize()
         {
             RefreshSoundButtonView();
+            _volumeSlider.value = Progress.GameSettings.Volume;
+            
             foreach (LanguageToggle toggle in _languageToggleGroup.Toggles)
                 if (toggle.LanguageType == Progress.GameSettings.Localization)
                     toggle.SetToggle(true);
@@ -70,10 +72,8 @@ namespace Source.Scripts.UI.Windows.Settings
                 _soundButton.SetMuteView();
         }
 
-        private void OnVolumeChanged(float value)
-        {
-            
-        }
+        private void OnVolumeChanged(float value) => 
+            _sounds.SetVolume(value);
 
         private void OnLanguageSet(LanguageType type) => 
             _localizationService.SetLocalization(type);
