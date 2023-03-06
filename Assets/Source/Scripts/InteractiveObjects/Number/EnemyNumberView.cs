@@ -6,7 +6,7 @@ namespace Source.Scripts.InteractiveObjects.Number
 {
     public class EnemyNumberView : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI _text;
+        [SerializeField] private TextMeshPro _text;
         [SerializeField] private MeshRenderer _meshRenderer;
         [SerializeField] private Material _redMaterial;
         [SerializeField] private Material _blueMaterial;
