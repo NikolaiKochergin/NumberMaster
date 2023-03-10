@@ -1,6 +1,8 @@
 ﻿using Source.Scripts.Infrastructure.States;
-using GameAnalyticsSDK;
 using UnityEngine;
+#if GAME_ANALYTICS
+using GameAnalyticsSDK;
+#endif
 #if YANDEX_GAMES
 using System.Collections;
 using Agava.YandexGames;
@@ -25,7 +27,9 @@ namespace Source.Scripts.Infrastructure
 #else
         private void Start()
         {
+#if GAME_ANALYTICS
             GameAnalytics.Initialize();
+#endif
             _game = new Game(this);
             _game.StateMachine.Enter<BootstrapState>();
             DontDestroyOnLoad(this);

@@ -1,26 +1,23 @@
-using System.Collections;
+using NSubstitute;
 using NUnit.Framework;
-using UnityEngine.TestTools;
+using FluentAssertions;
+using Source.Scripts.Data;
 
 namespace Tests.EditMode
 {
     public class DirectionTests
     {
-        // A Test behaves as an ordinary method
         [Test]
-        public void DirectionTestSimplePasses()
+        public void WhenStoringItem_AndInventoryIsEmpty_ThenItemCountShouldBe1()
         {
-            // Use the Assert class to test conditions
-        }
+            // Arrange.
+            PlayerProgress progress = new PlayerProgress();
 
-        // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-        // `yield return null;` to skip a frame.
-        [UnityTest]
-        public IEnumerator DirectionTestWithEnumeratorPasses()
-        {
-            // Use the Assert class to test conditions.
-            // Use yield to skip a frame.
-            yield return null;
+            // Act.
+            progress.PlayerStats.StartNumber = 1;
+
+            // Assert.
+            progress.PlayerStats.StartNumber.Should().Be(1);
         }
     }
 }
