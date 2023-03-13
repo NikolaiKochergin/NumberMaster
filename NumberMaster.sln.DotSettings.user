@@ -3,5 +3,10 @@
   &lt;Assembly Path="G:\Unity Projects\NumberMaster\packages\NSubstitute.5.0.0\lib\net462\NSubstitute.dll" /&gt;&#xD;
 &lt;/AssemblyExplorer&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=6ad5209b_002D2ff7_002D4400_002Db55e_002D93a41b7af547/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="WhenIAPService_AndAddIncomingPurchase_ThenIncomingShouldBe1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;Project Location="G:\Unity Projects\NumberMaster" Presentation="&amp;lt;EditMode&amp;gt;" /&gt;&#xD;
+  &lt;Or&gt;&#xD;
+    &lt;Project Location="G:\Unity Projects\NumberMaster" Presentation="&amp;lt;EditMode&amp;gt;" /&gt;&#xD;
+    &lt;TestAncestor&gt;&#xD;
+      &lt;TestId&gt;NUnit3x::681F91C7-97E3-E03C-9E9F-97EEAA13EDAD::.NETFramework,Version=v4.7.1::Tests.PlayMode.PlayModeTests.Whenact_Andarrange_Thenassert&lt;/TestId&gt;&#xD;
+    &lt;/TestAncestor&gt;&#xD;
+  &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
