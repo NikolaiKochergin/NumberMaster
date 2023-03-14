@@ -15,6 +15,7 @@ Task("Build-WebGL")
     UnityEditor(2021, 3, 14, 'f', 1,
         new UnityEditorArguments
         {
+            ProjectPath = "",
             ExecuteMethod = "Editor.Builder.BuildWebGL",
             BuildTarget = BuildTarget.WebGL,
             LogFile = "./artifacts/unity.log"
