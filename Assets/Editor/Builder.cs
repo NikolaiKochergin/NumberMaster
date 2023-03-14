@@ -1,4 +1,6 @@
+using System;
 using UnityEditor;
+using UnityEditor.Build.Reporting;
 using static UnityEditor.BuildPipeline;
 
 namespace Editor
@@ -8,7 +10,7 @@ namespace Editor
         [MenuItem("Build/🕸️Build WebGL")]
         public static void BuildWebGL()
         {
-            BuildPlayer(
+            BuildReport report = BuildPlayer(
                 new BuildPlayerOptions()
                 {
                     target = BuildTarget.WebGL,
@@ -21,6 +23,9 @@ namespace Editor
                         "Assets/Scenes/003_Level_3.unity",
                     }
                 });
+
+            if (report.summary.result != BuildResult.Succeeded)
+                throw new Exception("Failed to build WebGL package. See log for details.");
         }
     }
 }
