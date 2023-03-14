@@ -20,7 +20,9 @@ namespace Tests.EditMode
             IStaticDataService staticData = Substitute.For<IStaticDataService>();
             IGameFactory factory = Substitute.For<IGameFactory>();
             IAnalyticService analytic = Substitute.For<IAnalyticService>();
-            Player player = Resources.Load<Player>("Player/Player");
+            Player playerPrefab = Resources.Load<Player>("Player/Player");
+            Player player = Object.Instantiate(playerPrefab);
+            player.LoadProgress(progressService.Progress);
             factory.Player.Returns(player);
             PurchaseConfig purchaseConfig = Resources.Load<GameStaticData>("StaticData/GameData")
                 .Purchases.Find(x => x.Type == purchaseType);

@@ -1,17 +1,9 @@
-using NSubstitute;
 using NUnit.Framework;
 using FluentAssertions;
 using Source.Scripts.Data;
-using Source.Scripts.Infrastructure.Factory;
-using Source.Scripts.PlayerLogic;
-using Source.Scripts.Services.Analytics;
 using Source.Scripts.Services.IAP;
 using Source.Scripts.Services.Pause;
 using Source.Scripts.Services.PersistentProgress;
-using Source.Scripts.Services.StaticData;
-using Source.Scripts.StaticData;
-using UnityEngine;
-
 namespace Tests.EditMode
 {
     public class EditorTests
