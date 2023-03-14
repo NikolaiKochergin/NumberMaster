@@ -14,107 +14,107 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelKey: 002_Level_2
   EnemyNumbers:
-  - Id: 002_Level_2_2055969f-795b-4b67-9ccd-51e67142a843
+  - Id: 002_Level_2_414077b4-8758-44db-bb2c-e8bd33cafcdf
     NumberValue: 10
-    Position: {x: 3.44, y: 0, z: 15.14}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-  - Id: 002_Level_2_5de70871-d0be-4e4f-9cf7-289697d685fa
+    Position: {x: 3.44, y: 0, z: 15.139999}
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+  - Id: 002_Level_2_888f11da-eb5c-4d24-89b1-191af6d5d70f
     NumberValue: 100
-    Position: {x: -1.93, y: 0, z: 53.66}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-  - Id: 002_Level_2_3814be83-52fd-4e7a-bff8-a9d309db51c0
+    Position: {x: -1.9299998, y: 0, z: 53.66}
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+  - Id: 002_Level_2_b5615e88-4451-4706-a6cf-a03f21eb2805
     NumberValue: 1000
-    Position: {x: 1.36, y: 0, z: 129.14}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-  - Id: 002_Level_2_7162097c-4b1f-4d6d-a786-06a69644f289
+    Position: {x: 1.3600001, y: 0, z: 129.14}
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+  - Id: 002_Level_2_7fa9d004-bf8c-4c05-bd38-2d118151ab04
     NumberValue: 7
-    Position: {x: -1.93, y: 0, z: 37.49}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-  - Id: 002_Level_2_5a377af7-27bf-4182-851f-c684b27b3036
+    Position: {x: -1.9299998, y: 0, z: 37.49}
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+  - Id: 002_Level_2_ba52b6b4-4450-49f7-bffe-fa0a0517bb64
     NumberValue: 1000
     Position: {x: -2.44, y: 0, z: 149.66}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-  - Id: 002_Level_2_bd465725-804a-4f0a-99d8-8ce5775527f0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+  - Id: 002_Level_2_eea7b041-58ac-479f-98c2-a0e13af2bf5b
     NumberValue: 1000
-    Position: {x: -0.29, y: 0, z: 142.87}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-  - Id: 002_Level_2_468ce6ad-3856-435f-a65a-f958149783a3
+    Position: {x: -0.28999996, y: 0, z: 142.87}
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+  - Id: 002_Level_2_94b488d4-447d-40f1-b2c9-38abb16931dc
     NumberValue: 5
-    Position: {x: -1.93, y: 0, z: 32.3}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-  - Id: 002_Level_2_6b1799fe-ac6a-484f-b8da-bc5003d08e34
+    Position: {x: -1.9299998, y: 0, z: 32.3}
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+  - Id: 002_Level_2_219a964e-8caa-4da8-aa96-93be1d79a809
     NumberValue: 300
-    Position: {x: -1.93, y: 0, z: 83.45}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-  - Id: 002_Level_2_28263c20-2a1f-4f7a-a9d9-c906646ba656
+    Position: {x: -1.9299998, y: 0, z: 83.45}
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+  - Id: 002_Level_2_b19a4b3e-7074-4377-b26d-4973fce4c902
     NumberValue: 1000
-    Position: {x: -0.27, y: 0, z: 119.36}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-  - Id: 002_Level_2_65469f75-2174-4c82-bfea-c2d4fe5dfadb
+    Position: {x: -0.26999998, y: 0, z: 119.36}
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+  - Id: 002_Level_2_29e280b8-1a49-4ece-a17e-e70c444ab847
     NumberValue: 6
-    Position: {x: -1.93, y: 0, z: 34.34}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-  - Id: 002_Level_2_391eaaca-308d-42c7-a535-2d1042c59a0b
+    Position: {x: -1.9299998, y: 0, z: 34.34}
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+  - Id: 002_Level_2_669671ce-175a-4584-9723-219b0b3cd51f
     NumberValue: 300
-    Position: {x: -1.93, y: 0, z: 92.8}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-  - Id: 002_Level_2_2fd848d6-ed5a-455d-a790-68c9d40844ab
+    Position: {x: -1.9299998, y: 0, z: 92.8}
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+  - Id: 002_Level_2_bdb2a48f-1158-40b0-813d-45af068e30e9
     NumberValue: 1
-    Position: {x: -3.68, y: 0, z: 10.76}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-  - Id: 002_Level_2_3864de1f-08da-4cf7-9c47-a5c06a901948
+    Position: {x: -3.68, y: 0, z: 10.760002}
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+  - Id: 002_Level_2_7c3d0cf5-0245-4334-acc2-12bca3126945
     NumberValue: 250
-    Position: {x: -1.93, y: 0, z: 68.55}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-  - Id: 002_Level_2_cf4fed83-c24f-4664-8cc2-7c75ed69906f
+    Position: {x: -1.9299998, y: 0, z: 68.55}
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+  - Id: 002_Level_2_1b306776-f783-42fb-b9eb-7f23e7609c59
     NumberValue: 3
     Position: {x: -3.33, y: 0, z: 20.57}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-  - Id: 002_Level_2_c852504d-7943-42ad-8dca-f7d815b4999e
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+  - Id: 002_Level_2_273cdffc-fae5-4a8f-853a-0dcee8c77123
     NumberValue: 8
-    Position: {x: -1.93, y: 0, z: 40.64}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-  - Id: 002_Level_2_91dca971-b414-4ff6-bd49-29fbddd6e88d
+    Position: {x: -1.9299998, y: 0, z: 40.64}
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+  - Id: 002_Level_2_e887329d-2e61-4000-b5ed-5c17ee602716
     NumberValue: 60
-    Position: {x: -1.93, y: 0, z: 48.34}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-  - Id: 002_Level_2_5655de14-7b5c-46b4-a7cb-effe0da1e1ab
+    Position: {x: -1.9299998, y: 0, z: 48.34}
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+  - Id: 002_Level_2_c827235b-33dd-49c1-964a-640aac94dbc4
     NumberValue: 300
-    Position: {x: -1.93, y: 0, z: 108.98}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-  - Id: 002_Level_2_25eaa980-c7cc-45cc-a0fd-e469a649d9ea
+    Position: {x: -1.9299998, y: 0, z: 108.98}
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+  - Id: 002_Level_2_f9ecc44c-d2c6-41df-b1bb-71b67941f3e1
     NumberValue: 1000
-    Position: {x: 1.74, y: 0, z: 159}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-  - Id: 002_Level_2_5441bc81-4a0c-44ac-baa2-fca19a6befff
+    Position: {x: 1.7400002, y: 0, z: 159}
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+  - Id: 002_Level_2_a3b5c601-948b-4a3c-91b5-fa440a2cbce2
     NumberValue: 1000
     Position: {x: -2.66, y: 0, z: 166.57}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-  - Id: 002_Level_2_42e811d5-4cd8-4466-9901-bc9be42ed8d9
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+  - Id: 002_Level_2_d1c7257a-2e36-40d1-9e4e-1f4e684f0f8b
     NumberValue: 300
-    Position: {x: -1.93, y: 0, z: 88.05}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-  - Id: 002_Level_2_4a380bd6-9190-4b42-a7b6-853a4dbc0a46
+    Position: {x: -1.9299998, y: 0, z: 88.05}
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+  - Id: 002_Level_2_024525f9-8408-438b-9e78-9f7a1dceaa4b
     NumberValue: 200
-    Position: {x: -1.93, y: 0, z: 62.11}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-  - Id: 002_Level_2_f83eed3e-9fbc-4967-8313-1d84f573a387
+    Position: {x: -1.9299998, y: 0, z: 62.11}
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+  - Id: 002_Level_2_6b189e74-8632-4d38-81ba-c85f02a14851
     NumberValue: 4
-    Position: {x: -1.93, y: 0, z: 30.27}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-  - Id: 002_Level_2_cc69c489-3808-4ca0-af39-aa50aebc33ea
+    Position: {x: -1.9299998, y: 0, z: 30.27}
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+  - Id: 002_Level_2_2cbf9f4b-2339-4b81-81b0-389224262569
     NumberValue: 300
-    Position: {x: -1.93, y: 0, z: 78.38}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-  - Id: 002_Level_2_dd12e1f2-19eb-4fbe-8516-baadbd25f734
+    Position: {x: -1.9299998, y: 0, z: 78.38}
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+  - Id: 002_Level_2_77134ced-881e-4ffa-b38a-b0a04b7755d7
     NumberValue: 2
-    Position: {x: -3.49, y: 0, z: 17.26}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-  - Id: 002_Level_2_70889695-d06d-4d8e-afa2-f80cfa885780
+    Position: {x: -3.49, y: 0, z: 17.260002}
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+  - Id: 002_Level_2_df9a8858-be33-45a4-9748-0cedb56d1ac9
     NumberValue: 30
-    Position: {x: -1.93, y: 0, z: 43.9}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-  - Id: 002_Level_2_20c03c81-49f7-42c9-bf32-82412f6e8a3d
+    Position: {x: -1.9299998, y: 0, z: 43.9}
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+  - Id: 002_Level_2_27e4687a-131a-4516-8978-2e9d9538867d
     NumberValue: 300
-    Position: {x: -1.93, y: 0, z: 100.37}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
+    Position: {x: -1.9299998, y: 0, z: 100.37}
+    Rotation: {x: -0, y: -0, z: -0, w: 1}

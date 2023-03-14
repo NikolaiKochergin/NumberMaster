@@ -21,7 +21,7 @@ namespace Source.Scripts.InteractiveObjects.BlockLogic
             _valueText.transform.localPosition = new Vector3(
                 _valueText.transform.localPosition.x,
                 _valueText.transform.localPosition.y,
-                _model.localPosition.z - _widthPerValue * value);
+                _model.localPosition.z - _widthPerValue * value - 0.1f);
             
             _valueText.SetText(-value);
         }

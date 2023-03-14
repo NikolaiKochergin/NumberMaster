@@ -8,11 +8,11 @@
       "hash": "b59fe44ce02ee3c36e2285abc7f14e1440cb2bad"
     },
     "com.agava.yandexgames": {
-      "version": "https://github.com/forcepusher/com.agava.yandexgames.git#11.0.0",
+      "version": "https://github.com/forcepusher/com.agava.yandexgames.git#11.2.0",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "51d2698d5aaa609e1679da6546bbb49148c4909c"
+      "hash": "e6d74d2a2e4b2e43b2d185b1d25aa62a3e8ef6d5"
     },
     "com.agava.yandexmetrica": {
       "version": "https://github.com/forcepusher/com.agava.yandexmetrica.git#1.1.0",
@@ -28,7 +28,7 @@
       "dependencies": {}
     },
     "com.unity.collab-proxy": {
-      "version": "1.17.6",
+      "version": "1.17.7",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -103,6 +103,15 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.recorder": {
+      "version": "3.0.3",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.timeline": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.services.core": {
       "version": "1.6.0",
       "depth": 1,
@@ -122,7 +131,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.test-framework": {
-      "version": "1.1.31",
+      "version": "1.1.33",
       "depth": 0,
       "source": "registry",
       "dependencies": {

@@ -11,7 +11,9 @@ namespace Source.Scripts.InteractiveObjects.Saw
 
         private void Start()
         {
-            transform.DOMove(new Vector3(_targetX, transform.position.y,transform.position.z),2).SetLoops(-1,LoopType.Yoyo);
+            //transform.DOMove(new Vector3(_targetX, transform.position.y, transform.position.z),2).SetLoops(-1,LoopType.Yoyo);
+
+            transform.DOLocalMoveX(-_targetX, 2).SetLoops(-1, LoopType.Yoyo);
         }
     }
 }

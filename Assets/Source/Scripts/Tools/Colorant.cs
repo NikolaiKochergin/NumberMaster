@@ -59,9 +59,9 @@ namespace Source.Scripts.Tools
             for (int i = 0; i < _meshRenderers.Count; i++)
             {
                 Material material = new(_templateMaterial);
-
+                
                 material.color = _gradient.Evaluate(_gradientStep * i);
-
+                
                 _meshRenderers[i].material = material;
             }
         }

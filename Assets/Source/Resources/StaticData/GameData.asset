@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df756f277b5a434ea8d89f53695462be, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
+  Localization: {fileID: 163927678855511403, guid: 4e809929482323e4e80354874aa1f2bc, type: 3}
+  LeaderboardName: NumberMaster
+  RepeatLevelNumber: 1
   PlayerSpeed: 6
   Purchases:
   - _type: 1
@@ -26,7 +29,6 @@ MonoBehaviour:
     _description: 
   MouseSensitivity: 0.2
   KeyboardSensitivity: 0.03
-  RepeatLevelNumber: 1
   LevelSceneNames:
   - Initial
   - 001_Level_1

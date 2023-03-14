@@ -4,6 +4,8 @@ using Source.Scripts.Infrastructure.Factory;
 using Source.Scripts.Services;
 using Source.Scripts.Services.Ads;
 using Source.Scripts.Services.Analytics;
+using Source.Scripts.Services.Leaderboard;
+using Source.Scripts.Services.Localization;
 using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.SaveLoad;
 using Source.Scripts.Services.Sound;
@@ -23,30 +25,38 @@ namespace Source.Scripts.Infrastructure.States
             _states = new Dictionary<Type, IExitableState>
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services),
+                
                 [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader,
                     services.Single<IGameFactory>(), 
                     services.Single<IPersistentProgressService>(),
                     services.Single<IStaticDataService>(),
                     services.Single<IUIFactory>(),
-                    services.Single<ISoundService>(),
                     services.Single<IAdsService>(),
                     services.Single<IAnalyticService>()),
+                
                 [typeof(LoadProgressState)] = new LoadProgressState(this, 
                     services.Single<IPersistentProgressService>(),
                     services.Single<IStaticDataService>(),
-                    services.Single<ISaveLoadService>()),
+                    services.Single<ISaveLoadService>(),
+                    services.Single<ILocalizationService>(),
+                    services.Single<ISoundService>()),
+                
                 [typeof(ShopState)] = new ShopState(
                     services.Single<IWindowService>(),
                     services.Single<ISaveLoadService>()),
-                [typeof(GameLoopState)] = new GameLoopState(services.Single<IGameFactory>()),
+                
+                [typeof(GameLoopState)] = new GameLoopState(
+                    services.Single<IGameFactory>()),
+                
                 [typeof(LevelCompleteState)] = new LevelCompleteState(this,
                     services.Single<IPersistentProgressService>(),
                     services.Single<IStaticDataService>(),
                     services.Single<ISaveLoadService>(),
                     services.Single<IGameFactory>(),
-                    services.Single<IAnalyticService>()),
-                [typeof(FailState)] = new FailState(this,
-                    sceneLoader,
+                    services.Single<IAnalyticService>(),
+                    services.Single<ILeaderboardService>()),
+                
+                [typeof(FailState)] = new FailState(this, sceneLoader,
                     services.Single<IPersistentProgressService>(),
                     services.Single<IStaticDataService>(),
                     services.Single<IAnalyticService>())
