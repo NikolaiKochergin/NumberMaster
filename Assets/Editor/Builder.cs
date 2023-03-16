@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEditor;
 using UnityEditor.Build.Reporting;
 using static UnityEditor.BuildPipeline;
@@ -15,13 +16,7 @@ namespace Editor
                 {
                     target = BuildTarget.WebGL,
                     locationPathName = "artifacts",
-                    scenes = new[]
-                    {
-                        "Assets/Scenes/Initial.unity",
-                        "Assets/Scenes/001_Level_1.unity",
-                        "Assets/Scenes/002_Level_2.unity",
-                        "Assets/Scenes/003_Level_3.unity",
-                    }
+                    scenes = EditorBuildSettings.scenes.Select(scene => scene.path).ToArray(),
                 });
 
             if (report.summary.result != BuildResult.Succeeded)
