@@ -12,7 +12,8 @@ Task("Build-WebGL")
     .IsDependentOn("Clean-Artifacts")
     .Does(() =>
 {
-    UnityEditor(2021, 3, 14, 'f', 1,
+    UnityEditor(
+        2021, 3, 14, 'f', 1,
         new UnityEditorArguments
         {
             ProjectPath = "../NumberMaster",
