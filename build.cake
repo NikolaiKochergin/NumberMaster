@@ -8,8 +8,29 @@ Task("Clean-Artifacts")
     CleanDirectory($"./artifacts");
 });
 
-Task("Build-WebGL")
+Task("Test-WebGL")
     .IsDependentOn("Clean-Artifacts")
+    .Does(() =>
+{
+    UnityEditor(
+        2021, 3, 14, 'f', 1,
+        new UnityEditorArguments
+        {
+            ProjectPath = "../NumberMaster",
+            BuildTarget = BuildTarget.WebGL,
+            LogFile = "./artifacts/unity.log",
+            RunTests = true,
+            TestPlatform = TestPlatform.StandaloneWindows
+        },
+        new UnityEditorSettings
+        {
+            RealTimeLog = true,
+        }
+        );
+});
+
+Task("Build-WebGL")
+    .IsDependentOn("Test-Artifacts")
     .Does(() =>
 {
     UnityEditor(
@@ -20,8 +41,6 @@ Task("Build-WebGL")
             ExecuteMethod = "Editor.Builder.BuildWebGL",
             BuildTarget = BuildTarget.WebGL,
             LogFile = "./artifacts/unity.log",
-            RunTests = true,
-            TestPlatform = TestPlatform.StandaloneWindows
         },
         new UnityEditorSettings
         {
