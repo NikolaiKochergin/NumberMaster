@@ -21,6 +21,7 @@ Task("Build-WebGL")
             BuildTarget = BuildTarget.WebGL,
             LogFile = "./artifacts/unity.log",
             RunTests = true,
+            Quit = true,
         },
         new UnityEditorSettings
         {
