@@ -30,7 +30,7 @@ Task("Test-WebGL")
 });
 
 Task("Build-WebGL")
-    .IsDependentOn("Test-Artifacts")
+    .IsDependentOn("Test-WebGL")
     .Does(() =>
 {
     UnityEditor(
