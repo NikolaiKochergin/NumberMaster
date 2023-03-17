@@ -19,7 +19,8 @@ Task("Build-WebGL")
             ProjectPath = "../NumberMaster",
             ExecuteMethod = "Editor.Builder.BuildWebGL",
             BuildTarget = BuildTarget.WebGL,
-            LogFile = "./artifacts/unity.log"
+            LogFile = "./artifacts/unity.log",
+            RunTests = true,
         },
         new UnityEditorSettings
         {
