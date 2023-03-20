@@ -1,4 +1,5 @@
-﻿using Source.Scripts.Data;
+﻿using System;
+using Source.Scripts.Data;
 using Source.Scripts.Infrastructure.Factory;
 using Source.Scripts.Services.PersistentProgress;
 using UnityEngine;
@@ -18,18 +19,16 @@ namespace Source.Scripts.Services.SaveLoad
             _gameFactory = gameFactory;
         }
 
-        public void SaveProgress()
+        public void SaveProgress(Action onSuccessCallback = null)
         {
             foreach (ISavedProgress progressWriter in _gameFactory.ProgressWriters)
                 progressWriter.UpdateProgress(_progressService.Progress);
       
             PlayerPrefs.SetString(ProgressKey, _progressService.Progress.ToJson());
+            onSuccessCallback?.Invoke();
         }
 
-        public PlayerProgress LoadProgress()
-        {
-            return PlayerPrefs.GetString(ProgressKey)?
-                .ToDeserialized<PlayerProgress>();
-        }
+        public void LoadProgress(Action<PlayerProgress> onSuccessCallback) => 
+            onSuccessCallback.Invoke(PlayerPrefs.GetString(ProgressKey)?.ToDeserialized<PlayerProgress>());
     }
 }

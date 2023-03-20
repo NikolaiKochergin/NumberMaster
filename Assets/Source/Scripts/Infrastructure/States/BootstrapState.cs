@@ -94,9 +94,17 @@ namespace Source.Scripts.Infrastructure.States
                 _services.Single<IGamePauseService>(),
                 _services.Single<ISoundService>()));
             
-            _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(
+            _services.RegisterSingle<ISaveLoadService>(
+#if YANDEX_GAMES && !UNITY_EDITOR
+                new YandexSaveLoadService(
+                    _services.Single<IPersistentProgressService>(),
+                    _services.Single<IGameFactory>())
+#else
+                new SaveLoadService(
                 _services.Single<IPersistentProgressService>(),
-                _services.Single<IGameFactory>()));
+                _services.Single<IGameFactory>())
+#endif
+                );
 
             _services.RegisterSingle<IUIFactory>(new UIFactory(
                 _services.Single<IGameStateMachine>(),

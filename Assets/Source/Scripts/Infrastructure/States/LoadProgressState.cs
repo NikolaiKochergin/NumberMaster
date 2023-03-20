@@ -1,4 +1,5 @@
-﻿using Source.Scripts.Data;
+﻿using System;
+using Source.Scripts.Data;
 using Source.Scripts.Services.Localization;
 using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.SaveLoad;
@@ -34,24 +35,27 @@ namespace Source.Scripts.Infrastructure.States
 
         public void Enter()
         {
-            LoadProgressOrInitNew();
+            LoadProgressOrInitNew(() =>
+            {
 #if UNITY_EDITOR
-            _progressService.Progress.World.CurrentLevel = PlayerPrefs.GetInt("SceneToLoad");
+                _progressService.Progress.World.CurrentLevel = PlayerPrefs.GetInt("SceneToLoad");
 #endif
-            _stateMachine.Enter<LoadLevelState, string>(_staticDataService.ForSceneName(_progressService.Progress.World.CurrentLevel));
+                InitGameSettings();
+                _stateMachine.Enter<LoadLevelState, string>(_staticDataService.ForSceneName(_progressService.Progress.World.CurrentLevel));
+            });
         }
 
         public void Exit()
         {
         }
 
-        private void LoadProgressOrInitNew()
+        private void LoadProgressOrInitNew(Action onSuccessCallback)
         {
-            _progressService.Progress = 
-                _saveLoadProgress.LoadProgress()
-                ?? new PlayerProgress();
-
-            InitGameSettings();
+            _saveLoadProgress.LoadProgress(progress =>
+            {
+                _progressService.Progress = progress ?? new PlayerProgress();
+                onSuccessCallback.Invoke();
+            });
         }
 
         private void InitGameSettings()
