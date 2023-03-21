@@ -8,6 +8,7 @@ namespace Source.Scripts.Tools
     [SelectionBase]
     public class RepeatedObject : MonoBehaviour
     {
+        [SerializeField] private Colorant _colorant;
         [SerializeField] private Vector3 _offset = Vector3.forward;
         [SerializeField] [Min(1)] private int _count = 1;
 
@@ -56,6 +57,8 @@ namespace Source.Scripts.Tools
                     DestroyImmediate(transform.GetChild(i).gameObject);
                 }
             }
+            
+            _colorant.CollectFinishPanels();
         }
     }
 }

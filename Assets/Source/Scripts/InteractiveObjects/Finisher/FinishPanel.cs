@@ -6,10 +6,14 @@ namespace Source.Scripts.InteractiveObjects.Finisher
     [SelectionBase]
     public class FinishPanel : MonoBehaviour
     {
+        [SerializeField] private Renderer _renderer;
         [SerializeField] private int _value;
         [SerializeField] private NumberText _numberText;
         [SerializeField] private TriggerObserver _triggerObserver;
+        
         private bool _isPlayerFinished;
+
+        public Renderer Renderer => _renderer;
         
         private void Awake() => 
             _numberText.SetText(_value);

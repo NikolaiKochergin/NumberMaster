@@ -1,70 +1,47 @@
-#if UNITY_EDITOR
-using System.Collections.Generic;
 using Source.Scripts.InteractiveObjects.Finisher;
 using UnityEngine;
 
 namespace Source.Scripts.Tools
 {
-    [ExecuteInEditMode]
     public class Colorant : MonoBehaviour
     {
+        private static readonly int Color = Shader.PropertyToID("_Color");
+        
         [SerializeField] private Material _templateMaterial;
         [SerializeField] private Gradient _gradient;
+        [SerializeField] private FinishPanel[] _finishPanels;
+        
         private float _gradientStep;
-
-        private readonly List<MeshRenderer> _meshRenderers = new();
-        private int _oldCount;
+        private MaterialPropertyBlock _propertyBlock;
 
         private void Start()
         {
-            if (Application.IsPlaying(this))
-            {
-                CorrectColor();
-                Destroy(this);
-            }
-
-            _oldCount = transform.childCount;
-        }
-
-        private void Update()
-        {
-            if (_oldCount != transform.childCount)
-            {
-                _oldCount = transform.childCount;
-                CorrectColor();
-            }
-        }
-
-        private void OnValidate() => 
+            _propertyBlock = new MaterialPropertyBlock();
             CorrectColor();
+        }
 
         private void CorrectColor()
         {
             if (_templateMaterial == null)
                 return;
-
-            _meshRenderers.Clear();
-
-            FinishPanel[] finishPanels = GetComponentsInChildren<FinishPanel>();
-
-            foreach (FinishPanel panel in finishPanels)
-                _meshRenderers.Add(panel.GetComponentInChildren<MeshRenderer>());
-
-            if (_meshRenderers.Count == 0)
-                return;
             
-            if(_meshRenderers.Count > 1)
-                _gradientStep = 1.0f / (_meshRenderers.Count - 1);
-            
-            for (int i = 0; i < _meshRenderers.Count; i++)
+            switch (_finishPanels.Length)
             {
-                Material material = new(_templateMaterial);
-                
-                material.color = _gradient.Evaluate(_gradientStep * i);
-                
-                _meshRenderers[i].material = material;
+                case 0:
+                    return;
+                case > 1:
+                    _gradientStep = 1.0f / (_finishPanels.Length - 1);
+                    break;
+            }
+
+            for (int i = 0; i < _finishPanels.Length; i++)
+            {
+                _propertyBlock.SetColor(Color, _gradient.Evaluate(_gradientStep * i));
+                _finishPanels[i].Renderer.SetPropertyBlock(_propertyBlock);
             }
         }
+
+        public void CollectFinishPanels() => 
+            _finishPanels = GetComponentsInChildren<FinishPanel>();
     }
 }
-#endif
