@@ -38,8 +38,8 @@ namespace Source.Scripts.UI.Windows.Settings
         {
             RefreshButtonsView();
             _volumeSlider.value = Progress.GameSettings.Volume;
-            _vibrationSlider.value = Progress.GameSettings.VibrationTime;
-            _vibrationInfo.SetVibrationInfo(_vibration.IsVibrationOn);
+            _vibrationSlider.value = Progress.GameSettings.VibrationDuration;
+            _vibrationInfo.SetVibrationInfo(_vibration.CanVibrate);
             
             foreach (LanguageToggle toggle in _languageToggleGroup.Toggles)
                 if (toggle.LanguageType == Progress.GameSettings.Localization)

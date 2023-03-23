@@ -9,7 +9,7 @@ namespace Source.Scripts.Data
     {
         public LanguageType Localization = LanguageType.None;
         public float Volume = 1;
-        public int VibrationTime = 100;
+        public int VibrationDuration = 100;
         [SerializeField] private bool _isMusicOn = true;
         [SerializeField] private bool _isVibrationOn = true;
 

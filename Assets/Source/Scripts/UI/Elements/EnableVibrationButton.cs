@@ -12,9 +12,9 @@ namespace Source.Scripts.UI.Elements
         public Button Button => _button;
 
         public void SetOffVibrationView() => 
-            _buttonText.text = "Off Vibration";
+            _buttonText.text = "Vibration is Off";
 
         public void SetOnVibrationView() => 
-            _buttonText.text = "On Vibration";
+            _buttonText.text = "Vibration is On";
     }
 }
