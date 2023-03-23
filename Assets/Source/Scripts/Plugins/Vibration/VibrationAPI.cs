@@ -8,6 +8,6 @@ namespace Source.Scripts.Plugins.Vibration
         public static extern bool CanVibrate();
         
         [DllImport("__Internal")]
-        public static extern void Vibrate(int time = 1000);
+        public static extern void Vibrate(int millisecondsDuration);
     }
 }

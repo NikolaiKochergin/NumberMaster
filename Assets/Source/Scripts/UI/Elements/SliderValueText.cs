@@ -1,10 +1,13 @@
 using TMPro;
 using UnityEngine;
 
-public class SliderValueText : MonoBehaviour
+namespace Source.Scripts.UI.Elements
 {
-    [SerializeField] private TMP_Text _valueText;
+    public class SliderValueText : MonoBehaviour
+    {
+        [SerializeField] private TMP_Text _valueText;
 
-    public void SetText(float value) => 
-        _valueText.text = value.ToString();
+        public void SetText(float value) => 
+            _valueText.text = value.ToString("0");
+    }
 }

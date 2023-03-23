@@ -6,22 +6,20 @@ namespace Source.Scripts.Services.Vibration
     public class VibrationService : IVibrationService
     {
         private readonly IPersistentProgressService _progressService;
-        private readonly bool _canVibrate;
-
+#if UNITY_WEBGL && !UNITY_EDITOR
+        public bool CanVibrate => VibrationAPI.CanVibrate();
+#else
+        public bool CanVibrate => true;
+#endif
         public bool IsVibrationOn => _progressService.Progress.GameSettings.IsVibrationOn;
 
-        public VibrationService(IPersistentProgressService progressService)
-        {
-#if UNITY_WEBGL && !UNITY_EDITOR
-            _canVibrate = VibrationAPI.CanVibrate();
-#endif
+        public VibrationService(IPersistentProgressService progressService) => 
             _progressService = progressService;
-        }
 
         public void Vibrate()
         {
 #if UNITY_WEBGL && !UNITY_EDITOR
-            if(_canVibrate && IsVibrationOn)
+            if(CanVibrate && IsVibrationOn)
                 VibrationAPI.Vibrate(_progressService.Progress.GameSettings.VibrationTime);
 #endif
         }
@@ -29,7 +27,7 @@ namespace Source.Scripts.Services.Vibration
         public void SetVibration(bool isPossible) => 
             _progressService.Progress.GameSettings.IsVibrationOn = isPossible;
 
-        public void SetVibrationTime(int milliseconds)
+        public void SetVibrationDuration(int milliseconds)
         {
             if(milliseconds < 0)
                 return;

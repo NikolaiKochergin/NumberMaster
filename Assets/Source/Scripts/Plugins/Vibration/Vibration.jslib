@@ -1,11 +1,12 @@
 mergeInto(LibraryManager.library, {
   
   CanVibrate: function (){
-    return window.navigator && window.navigator.vibrate
-  }
+    return window.navigator && window.navigator.vibrate;
+  },
   
-  Vibrate: function (var time){
-    window.navigator.vibrate(time);
-  }
+  Vibrate: function (millisecondsDuration){
+    if(window.navigator && window.navigator.vibrate)
+      window.navigator.vibrate(millisecondsDuration);
+  },
 
 });

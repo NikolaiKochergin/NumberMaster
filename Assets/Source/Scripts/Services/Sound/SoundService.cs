@@ -9,6 +9,8 @@ namespace Source.Scripts.Services.Sound
         private readonly IPersistentProgressService _progressService;
         private readonly Sounds _sounds;
 
+        public bool IsMusicOn => _progressService.Progress.GameSettings.IsMusicOn;
+
         public SoundService(IGameFactory factory, IPersistentProgressService progressService)
         {
             _progressService = progressService;

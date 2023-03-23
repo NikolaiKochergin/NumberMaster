@@ -7,5 +7,6 @@ namespace Source.Scripts.Services.Sound
         void AdsMute();
         void AdsUnMute();
         void SetVolume(float value);
+        bool IsMusicOn { get; }
     }
 }
