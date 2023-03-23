@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5624692921965630497}
   - component: {fileID: 3705362610060145234}
-  - component: {fileID: 8327630451629633065}
+  - component: {fileID: 4960528497179153161}
   m_Layer: 5
   m_Name: SettingsWindow
   m_TagString: Untagged
@@ -55,7 +55,7 @@ MonoBehaviour:
   _soundButton: {fileID: 6218573681920079677}
   _volumeSlider: {fileID: 3855252393849986089}
   _languageToggleGroup: {fileID: 480090581558774732}
---- !u!114 &8327630451629633065
+--- !u!114 &4960528497179153161
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -64,12 +64,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 428301419364743377}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b26d97b25ba7a74a9a70827e790977f, type: 3}
+  m_Script: {fileID: 11500000, guid: 595443ab75ee45169aff43d615fc19f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _vibrationOnes: {fileID: 7844509374370330799}
-  _vibrationHoldBegin: {fileID: 6669764474938791676}
-  _vibrationHoldStop: {fileID: 7281071293626341475}
+  _vibrationOnesButton: {fileID: 7844509374370330799}
 --- !u!1 &1234536018067826270
 GameObject:
   m_ObjectHideFlags: 0
