@@ -9,6 +9,7 @@ using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.SaveLoad;
 using Source.Scripts.Services.Sound;
 using Source.Scripts.Services.StaticData;
+using Source.Scripts.Services.Vibration;
 using Source.Scripts.StaticData.Windows;
 using Source.Scripts.UI.Elements;
 using Source.Scripts.UI.Services.Windows;
@@ -33,6 +34,7 @@ namespace Source.Scripts.UI.Services.Factory
         private readonly ISaveLoadService _saveLoad;
         private readonly IAuthorizationService _authorization;
         private readonly ILocalizationService _localization;
+        private readonly IVibrationService _vibration;
         private readonly IWindowService _windowService;
 
         private Transform _uiRoot;
@@ -48,6 +50,7 @@ namespace Source.Scripts.UI.Services.Factory
             ILeaderboardService leaderboardService,
             IAuthorizationService authorization,
             ILocalizationService localization,
+            IVibrationService vibrationService,
             out IWindowService windowService)
         {
             _stateMachine = stateMachine;
@@ -61,6 +64,7 @@ namespace Source.Scripts.UI.Services.Factory
             _leaderboardService = leaderboardService;
             _authorization = authorization;
             _localization = localization;
+            _vibration = vibrationService;
             windowService = new WindowService(this);
             _windowService = windowService;
         }
@@ -94,7 +98,7 @@ namespace Source.Scripts.UI.Services.Factory
         {
             WindowConfig config = _staticData.ForWindow(WindowId.Settings);
             SettingsWindow window = Object.Instantiate(config.Template, _uiRoot) as SettingsWindow;
-            window.Construct(_progressService, _localization, _sounds);
+            window.Construct(_progressService, _localization, _sounds, _vibration);
         }
     }
 }

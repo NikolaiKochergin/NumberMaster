@@ -9,7 +9,9 @@ namespace Source.Scripts.Data
     {
         public LanguageType Localization = LanguageType.None;
         public float Volume = 1;
+        public int VibrationTime = 100;
         [SerializeField] private bool _isMusicOn = true;
+        [SerializeField] private bool _isVibrationOn = true;
 
         public bool IsMusicOn
         {
@@ -20,6 +22,19 @@ namespace Source.Scripts.Data
                     return;
 
                 _isMusicOn = value;
+                Changed?.Invoke();
+            }
+        }
+        
+        public bool IsVibrationOn
+        {
+            get => _isVibrationOn;
+            set
+            {
+                if(value == _isVibrationOn)
+                    return;
+
+                _isVibrationOn = value;
                 Changed?.Invoke();
             }
         }

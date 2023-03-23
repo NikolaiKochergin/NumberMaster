@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Agava.YandexGames;
 using Source.Scripts.Analytics;
 using Source.Scripts.Infrastructure.AssetManagement;
 using Source.Scripts.Infrastructure.Factory;
@@ -16,10 +15,14 @@ using Source.Scripts.Services.PersistentProgress;
 using Source.Scripts.Services.SaveLoad;
 using Source.Scripts.Services.Sound;
 using Source.Scripts.Services.StaticData;
+using Source.Scripts.Services.Vibration;
 using Source.Scripts.UI.Services.Factory;
 using Source.Scripts.UI.Services.Windows;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+#if YANDEX_GAMES
+using Agava.YandexGames;
+#endif
 
 namespace Source.Scripts.Infrastructure.States
 {
@@ -64,6 +67,9 @@ namespace Source.Scripts.Infrastructure.States
             _services.RegisterSingle<IAssetProvider>(new AssetProvider());
             _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
             _services.RegisterSingle<IAuthorizationService>(new AuthorizationService());
+            
+            _services.RegisterSingle<IVibrationService>(new VibrationService(
+                _services.Single<IPersistentProgressService>()));
 
             _services.RegisterSingle<ILocalizationService>(new LocalizationService(
                 _services.Single<IPersistentProgressService>(),
@@ -118,6 +124,7 @@ namespace Source.Scripts.Infrastructure.States
                 _services.Single<ILeaderboardService>(),
                 _services.Single<IAuthorizationService>(),
                 _services.Single<ILocalizationService>(),
+                _services.Single<IVibrationService>(),
                 out IWindowService windowService));
             
             _services.RegisterSingle<IWindowService>(windowService);
