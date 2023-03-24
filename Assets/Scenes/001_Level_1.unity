@@ -18768,6 +18768,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraContainer
       objectReference: {fileID: 0}
+    - target: {fileID: 1633585353592997582, guid: b334302a9f32a664aa019e1f008fe3a8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1707344950350629587, guid: b334302a9f32a664aa019e1f008fe3a8, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.5000076
