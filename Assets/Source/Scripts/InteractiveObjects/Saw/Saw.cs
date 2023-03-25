@@ -24,7 +24,7 @@ namespace Source.Scripts.InteractiveObjects.Saw
         {
             if(colliderTarget.attachedRigidbody.TryGetComponent(out Player player))
             {
-               _damgeSaw.enabled= true;
+               _damgeSaw.enabled = true;
                _damgeSaw.SetHealth(player.PlayerNumber);
             }
         }
