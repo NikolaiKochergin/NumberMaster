@@ -15,11 +15,7 @@
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
-    "defineConstraints": [
-        "YANDEX_GAMES",
-        "YANDEX_METRICA",
-        "GAME_ANALYTICS"
-    ],
+    "defineConstraints": [],
     "versionDefines": [],
     "noEngineReferences": false
 }

@@ -7,5 +7,6 @@ namespace Source.Scripts.Services.Vibration
         void Vibrate();
         void SetVibration(bool isPossible);
         void SetVibrationDuration(int milliseconds);
+        void Vibrate(int[] pattern);
     }
 }

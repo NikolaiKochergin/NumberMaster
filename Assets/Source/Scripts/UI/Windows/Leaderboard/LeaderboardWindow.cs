@@ -65,8 +65,7 @@ namespace Source.Scripts.UI.Windows.Leaderboard
                 newChallengerView.SetRank(entry.rank);
                 newChallengerView.SetName(entry.player.publicName);
                 newChallengerView.SetScores(entry.score);
-                Debug.Log(entry.avatarUrl +" <------------------- Avatar Url");
-                newChallengerView.SetAvatar(entry.avatarUrl);
+                newChallengerView.SetAvatar(entry.player.avatarUrl.small);
                 if(entry.rank == result.userRank)
                     newChallengerView.MakeHighlight();
             }

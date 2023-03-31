@@ -1,7 +1,7 @@
 mergeInto(LibraryManager.library, {
   
   CanVibrate: function (){
-    return  window.navigator && window.navigator.vibrate([])
+    return window.navigator && window.navigator.vibrate;
   },
   
   Vibrate: function (millisecondsDuration){

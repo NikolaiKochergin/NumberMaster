@@ -120,7 +120,7 @@
         half _Smoothness3;
 
         void surfTerrain(Input IN, inout SurfaceOutputDustyroom o) {
-            half4 c = SurfaceCore(IN.worldNormal, IN.worldPos, IN.lightDir, IN.viewDir);
+            half4 c = SurfaceCore(IN.world_normal, IN.world_pos, IN.lightDir, IN.viewDir);
             
             half4 splat_control;
             half weight;

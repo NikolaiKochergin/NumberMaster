@@ -6,8 +6,8 @@ struct Input
     /*--->*/
     float3 viewDir;
     float3 lightDir;
-    float3 worldPos;
-    float3 worldNormal;
+    float3 world_pos;
+    float3 world_normal;
     /*<---*/
     
     float2 uv_Splat0 : TEXCOORD0;

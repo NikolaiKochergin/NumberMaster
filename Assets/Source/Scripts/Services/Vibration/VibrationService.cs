@@ -27,6 +27,14 @@ namespace Source.Scripts.Services.Vibration
 #endif
         }
 
+        public void Vibrate(int[] pattern)
+        {
+#if UNITY_WEBGL && !UNITY_EDITOR
+            if(IsVibrationOn)
+                VibrationAPI.Vibrate(pattern);
+#endif
+        }
+
         public void SetVibration(bool isPossible) => 
             _progressService.Progress.GameSettings.IsVibrationOn = isPossible;
 
