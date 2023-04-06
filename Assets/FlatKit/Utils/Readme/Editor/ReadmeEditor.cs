@@ -150,22 +150,6 @@ public class ReadmeEditor : Editor {
 
         {
             DrawUILine(Color.gray, 1, 20);
-            GUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("Configure project for", EditorStyles.label);
-
-            if (GUILayout.Button("URP", EditorStyles.miniButtonLeft)) {
-                ConfigureUrp();
-            }
-
-            if (GUILayout.Button("Built-in RP", EditorStyles.miniButtonLeft)) {
-                ConfigureBuiltIn();
-            }
-
-            GUILayout.EndHorizontal();
-        }
-
-        {
-            DrawUILine(Color.gray, 1, 20);
             EditorGUILayout.LabelField("Package Manager", EditorStyles.label);
 
             if (GUILayout.Button("Clear cache")) {
@@ -302,51 +286,6 @@ public class ReadmeEditor : Editor {
 
     private void OnImportPackageCancelled(string packageName) {
         Debug.LogError($"<b>[{AssetName}]</b> Cancelled unpacking {packageName}.");
-    }
-
-    private void ConfigureUrp() {
-        string path = AssetDatabase.GUIDToAssetPath(UrpPipelineAssetGuid.ToString());
-        if (path == null) {
-            Debug.LogError($"[{AssetName}] Couldn't find the URP pipeline asset. " +
-                           "Have you unpacked the URP package?");
-            return;
-        }
-
-        var pipelineAsset = AssetDatabase.LoadAssetAtPath<RenderPipelineAsset>(path);
-        if (pipelineAsset == null) {
-            Debug.LogError($"[{AssetName}] Couldn't load the URP pipeline asset.");
-            return;
-        }
-
-        Debug.Log(
-            $"<b>[{AssetName}]</b> Set the render pipeline asset in the Graphics settings to the {AssetName} example.");
-        GraphicsSettings.renderPipelineAsset = pipelineAsset;
-        GraphicsSettings.defaultRenderPipeline = pipelineAsset;
-
-        ChangePipelineAssetAllQualityLevels(pipelineAsset);
-    }
-
-    private void ConfigureBuiltIn() {
-        GraphicsSettings.renderPipelineAsset = null;
-        Debug.Log($"<b>[{AssetName}]</b> Cleared the render pipeline asset in the Graphics settings.");
-
-        ChangePipelineAssetAllQualityLevels(null);
-    }
-
-    private void ChangePipelineAssetAllQualityLevels(RenderPipelineAsset pipelineAsset) {
-        var originalQualityLevel = QualitySettings.GetQualityLevel();
-
-        var logString = $"<b>[{AssetName}]</b> Set the render pipeline asset for the quality levels:";
-
-        for (int i = 0; i < QualitySettings.names.Length; i++) {
-            logString += $"\n\t{QualitySettings.names[i]}";
-            QualitySettings.SetQualityLevel(i, false);
-            QualitySettings.renderPipeline = pipelineAsset;
-        }
-
-        Debug.Log(logString);
-
-        QualitySettings.SetQualityLevel(originalQualityLevel, false);
     }
 
     private void DrawColorSpaceCheck() {
