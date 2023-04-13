@@ -8,7 +8,7 @@ namespace Source.Scripts.Tools
         public void ClearData()
         {
 #if YANDEX_GAMES && !UNITY_EDITOR
-            PlayerAccount.SetPlayerData("");
+            PlayerAccount.SetCloudSaveData("");
             Debug.Log("Remote Data Cleared");
 #endif
         }

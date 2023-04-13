@@ -24,9 +24,8 @@ namespace Source.Scripts.UI.Windows.Leaderboard
 
         protected override void Initialize()
         {
-            if (_authorization.IsPlayerAuthorized)
-                ShowChallengers();
-            else
+            ShowChallengers();
+            if(_authorization.IsPlayerAuthorized == false)
                 ShowAuthorizationMenu();
         }
 
@@ -52,6 +51,7 @@ namespace Source.Scripts.UI.Windows.Leaderboard
             {
                 _authorizationMenu.AuthorizationButton.onClick.RemoveListener(OnAuthorizationButtonClicked);
                 _authorizationMenu.Hide();
+                ClearChallengerViews();
                 ShowChallengers();
             });
         }
@@ -65,10 +65,19 @@ namespace Source.Scripts.UI.Windows.Leaderboard
                 newChallengerView.SetRank(entry.rank);
                 newChallengerView.SetName(entry.player.publicName);
                 newChallengerView.SetScores(entry.score);
-                newChallengerView.SetAvatar(entry.player.avatarUrl.small);
+                newChallengerView.SetAvatar(entry.player.profilePicture);
                 if(entry.rank == result.userRank)
                     newChallengerView.MakeHighlight();
             }
+        }
+
+        private void ClearChallengerViews()
+        {
+            ChallengerView[] views = _challengerViewContainer.GetComponentsInChildren<ChallengerView>();
+
+            foreach (ChallengerView view in views) 
+                Destroy(view.gameObject);
+
         }
     }
 }

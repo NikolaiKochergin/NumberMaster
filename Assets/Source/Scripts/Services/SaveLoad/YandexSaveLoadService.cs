@@ -23,12 +23,12 @@ namespace Source.Scripts.Services.SaveLoad
             foreach (ISavedProgress progressWriter in _gameFactory.ProgressWriters)
                 progressWriter.UpdateProgress(_progressService.Progress);
       
-            PlayerAccount.SetPlayerData(_progressService.Progress.ToJson(), onSuccessCallback);
+            PlayerAccount.SetCloudSaveData(_progressService.Progress.ToJson(), onSuccessCallback);
         }
 
         public void LoadProgress(Action<PlayerProgress> onSuccessCallback)
         {
-            PlayerAccount.GetPlayerData(data=> 
+            PlayerAccount.GetCloudSaveData(data=> 
                 onSuccessCallback.Invoke(data.ToDeserialized<PlayerProgress>()),
                 _ => onSuccessCallback.Invoke(null));
         }
