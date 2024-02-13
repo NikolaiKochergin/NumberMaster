@@ -40,7 +40,7 @@ namespace Source.Scripts.Services.Sound
 
         public void SetVolume(float value)
         {
-            _sounds.SetVoulume(value);
+            _sounds.SetVolume(value);
             _progressService.Progress.GameSettings.Volume = value;
         }
     }

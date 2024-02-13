@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Source.Scripts.Data
 {
@@ -20,6 +21,9 @@ namespace Source.Scripts.Data
             World = new World();
             GameSettings = new GameSettings();
             PurchaseData = new PurchaseData();
+
+            if (PurchaseData.AnotherPurchases.Contains(135))
+                Debug.Log("eeeee");
         }
     }
 }

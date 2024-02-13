@@ -59,7 +59,7 @@ namespace Source.Scripts.Infrastructure
             AudioListener.volume = 0f;
         }
 
-        public void SetVoulume(float value)
+        public void SetVolume(float value)
         {
             _musicSource.volume = value;
         }
